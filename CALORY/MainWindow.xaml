@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="Authorization" Height="550" Width="800">
     <Grid>
-
+        <TextBox x:Name="TextBoxLoginAuthorization" HorizontalAlignment="Left" Margin="221,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="PasswordBoxAuthorization" HorizontalAlignment="Left" Margin="221,202,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonComeInAuthorization" Content="Войти" HorizontalAlignment="Left" Margin="221,245,0,0" VerticalAlignment="Top" Click="ButtonComeInAuthorization_Click"/> 
+        <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="224,137,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="221,185,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="221,265,0,0" VerticalAlignment="Top" Width="137"/>
     </Grid>
 </Window>
