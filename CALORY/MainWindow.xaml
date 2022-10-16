@@ -5,13 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="Authorization" Height="550" Width="800">
-    <Grid>
-        <TextBox x:Name="TextBoxLoginAuthorization" HorizontalAlignment="Left" Margin="221,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="PasswordBoxAuthorization" HorizontalAlignment="Left" Margin="221,202,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ButtonComeInAuthorization" Content="Войти" HorizontalAlignment="Left" Margin="221,245,0,0" VerticalAlignment="Top" Click="ButtonComeInAuthorization_Click"/> 
-        <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="224,137,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="221,185,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="221,265,0,0" VerticalAlignment="Top" Width="137"/>
+        Title="Authorization" Height="550" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFF0F0F0">
+        <TextBox x:Name="TextBoxLoginAuthorization" HorizontalAlignment="Left" Margin="465,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center">
+            <TextBox.Template >
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+
+        <PasswordBox x:Name="PasswordBoxAuthorization" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center">
+            <PasswordBox.Template>
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </PasswordBox.Template>
+        </PasswordBox>
+        <Button x:Name="ButtonComeInAuthorization" Content="Войти" HorizontalAlignment="Left" Margin="489,356,0,0" VerticalAlignment="Top" Click="ButtonComeInAuthorization_Click" FontFamily="Montserrat Medium" Width="177" Height="38" Cursor="Hand" Background="#FFC597DE" Foreground="White" BorderBrush="#FFC597DE">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFE0E0E0"/>
+            </Button.Effect>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="463,178,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
+        <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="463,257,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
+        <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="512,399,0,0" VerticalAlignment="Top" Width="136" FontFamily="Montserrat" HorizontalContentAlignment="Center"/>
+        <Image x:Name="FON" HorizontalAlignment="Left" Height="534" VerticalAlignment="Center" Width="391" Source="/фонавторизация 1.png"/>
+        <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,109,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
     </Grid>
 </Window>

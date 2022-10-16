@@ -38,6 +38,8 @@
     <None Remove="images\plus_minus_icon_173627.png" />
     <None Remove="images\Rectangle 1.png" />
     <None Remove="products.txt" />
+    <None Remove="фонавторизация 1.png" />
+    <None Remove="фонавторизация.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -81,6 +83,8 @@
     <Resource Include="images\plus_minus_icon_173627.png" />
     <Resource Include="images\Rectangle 1.png" />
     <Resource Include="products.txt" />
+    <Resource Include="фонавторизация 1.png" />
+    <Resource Include="фонавторизация.png" />
   </ItemGroup>
 
 </Project>
