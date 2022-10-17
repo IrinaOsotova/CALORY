@@ -19,7 +19,7 @@
                     <Label Content="Ужин" HorizontalAlignment="Center" Margin="187,319,517,157.4" VerticalAlignment="Center" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
                     <Label x:Name="nameProject" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat Medium"/>
                     <Label x:Name="exitLabel" Content="Выход" HorizontalAlignment="Center" Margin="60,480,678,18.8" VerticalAlignment="Center"  Height="24" Width="55" FontSize="12" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="textBoxBreakfast" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black">
+                    <TextBox x:Name="textBoxBreakfast" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -28,7 +28,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxLunch" HorizontalAlignment="Left" Height="72" Margin="184,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="textBoxLunch" HorizontalAlignment="Left" Height="72" Margin="184,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
                         <TextBox.Template>
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -37,7 +37,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxDiner" HorizontalAlignment="Left" Height="72" Margin="184,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="textBoxDiner" HorizontalAlignment="Left" Height="72" Margin="184,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -46,7 +46,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="648,149,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White" Cursor="Hand" FontFamily="Montserrat" >
+                    <Button x:Name="AddBreakfast" Content="Добавить" HorizontalAlignment="Left" Margin="648,149,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White" Cursor="Hand" FontFamily="Montserrat" Click="AddBreakfast_Click" >
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -77,7 +77,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="649,364,0,0" VerticalAlignment="Top" Width="103" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat">
+                    <Button x:Name="AddDinner" Content="Добавить" HorizontalAlignment="Left" Margin="649,364,0,0" VerticalAlignment="Top" Width="103" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat" Click="AddDinner_Click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -108,7 +108,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="649,256,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat">
+                    <Button x:Name="AddLunch" Content="Добавить" HorizontalAlignment="Left" Margin="649,256,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat" Click="AddLunch_Click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -143,7 +143,7 @@
 
                     <Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="714,477,-3,2.4" VerticalAlignment="Center"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
-                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="78,37,78,463.4" VerticalContentAlignment="Center">
+                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="78,37,78,455" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2">
                         <!--<ComboBox.Template>
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="4" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -151,7 +151,7 @@
                             </ControlTemplate>
                         </ComboBox.Template>-->
                     </ComboBox>
-                    <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="86,40,0,468.4" Foreground="DarkGray" Width="60" FontFamily="Montserrat Light">
+                    <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="80,44,0,0" Foreground="DarkGray" Width="60" FontFamily="Montserrat Light">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -164,7 +164,7 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="684,39,0,0" VerticalAlignment="Top" Foreground="White" Background="White" RenderTransformOrigin="0.5,0.5" Width="18" Height="23">
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="691,41,0,0" VerticalAlignment="Top" Foreground="White" Background="White" RenderTransformOrigin="0.5,0.5" Width="18" Height="27">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -174,13 +174,13 @@
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
-                    <Image Height="19" Margin="689,42,80,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
+                    <Image Height="28" Margin="679,44,87,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
-                                <SkewTransform/>
+                                <SkewTransform AngleX="0.005"/>
                                 <RotateTransform Angle="360.058"/>
-                                <TranslateTransform X="0.024" Y="0.29"/>
+                                <TranslateTransform X="0.021" Y="0.29"/>
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>

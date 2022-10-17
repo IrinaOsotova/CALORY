@@ -19,12 +19,12 @@ namespace CALORY
     public class Product
     {
         public string name { get; set; }
-        public int kkal { get; set; }
+        public double kkal { get; set; }
         public double ugl { get; set; }
         public double fats { get; set; }
         public double bel { get; set; }
-        private int gram = 100;
-        public int gramm
+        private double gram = 100;
+        public double gramm
         {
             get
             {
@@ -38,20 +38,38 @@ namespace CALORY
                 }
             }
         }
+        public void Recalculate()
+        {
+            kkal = Math.Round(kkal * gram / 100, 2);
+            bel = Math.Round(bel * gram / 100, 2);
+            ugl = Math.Round(ugl * gram / 100, 2);
+            fats = Math.Round(fats * gram / 100, 2);
+        }
+
+        public Product Copy()
+        {
+            return new Product(name, gram.ToString(), kkal.ToString(), bel.ToString(), fats.ToString(), ugl.ToString());
+        }
         public override string ToString()
         {
             return name;
         }
+
+        public string ToStringFull()
+        {
+            return name + " " + gramm + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.\r\n__________________________________________________________\r";
+        }
+
         public Product(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
         {
             if (_name != null)
             {
                 name = _name;
-                kkal = int.Parse(_kkal);
+                kkal = double.Parse(_kkal);
                 bel = double.Parse(_bel);
                 fats = double.Parse(_fat);
                 ugl = double.Parse(_ugl);
-                gram = int.Parse(_gram);
+                gram = double.Parse(_gram);
             }
             else
             {
@@ -64,9 +82,11 @@ namespace CALORY
     {
         //public Product[] massiv;
         public List<Product> productsBase = new List<Product>();
+        public static Diary instance;
         public Diary()
         {
             InitializeComponent();
+            instance = this;
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
                 var jsr = new JsonTextReader(GroceryList);
@@ -96,6 +116,57 @@ namespace CALORY
                     CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(ComboBoxSearch.ItemsSource);
                     cv.Filter = s => s.ToString().IndexOf(ComboBoxSearch.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
                 }
+            }
+        }
+
+        private void AddBreakfast_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxSearch.SelectedItem == null)
+            {
+                MessageBox.Show("Продукт не выбран");
+            }
+            else if (textBoxBreakfast.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Данный продукт уже есть в списке");
+            }
+            else
+            {
+                AddWindow SelectedProductsWindow = new AddWindow("Breakfast");
+                SelectedProductsWindow.Show();
+            }
+        }
+
+        private void AddLunch_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxSearch.SelectedItem == null)
+            {
+                MessageBox.Show("Продукт не выбран");
+            }
+            else if (textBoxLunch.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Данный продукт уже есть в списке");
+            }
+            else
+            {
+                AddWindow SelectedProductsWindow = new AddWindow("Lunch");
+                SelectedProductsWindow.Show();
+            }
+        }
+
+        private void AddDinner_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxSearch.SelectedItem == null)
+            {
+                MessageBox.Show("Продукт не выбран");
+            }
+            else if (textBoxDiner.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
+            {
+                MessageBox.Show("Данный продукт уже есть в списке");
+            }
+            else
+            {
+                AddWindow SelectedProductsWindow = new AddWindow("Diner");
+                SelectedProductsWindow.Show();
             }
         }
     }
