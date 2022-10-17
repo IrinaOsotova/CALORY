@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="Diary" Height="550" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Diary" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <TabControl Margin="0,-30,-7.6,-8.2" Height="557" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="#FFF0F0F0" >
             <TabItem Header="Дневник" Style="{DynamicResource TabItemStyle}" Margin="28,274,-28,-274.2"  FontSize="14" FontFamily="Montserrat">
@@ -15,8 +15,8 @@
                     <Image x:Name="logo" Height="92" Margin="31,89,666,0" VerticalAlignment="Top" Source="images\logo.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="exitApp" Height="28" Margin="32,485,738,0" VerticalAlignment="Top" Source="images\4115235-exit-logout-sign-out_114030.png" RenderTransformOrigin="0.5,0.772"/>
                     <Label Content="Завтрак" HorizontalAlignment="Left" Margin="183,105,0,371.4" VerticalAlignment="Center"  Height="52" Width="99" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
-                    <Label Content="Обед" HorizontalAlignment="Center" Margin="187,212,517,264.4" VerticalAlignment="Center"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
-                    <Label Content="Ужин" HorizontalAlignment="Center" Margin="187,319,517,157.4" VerticalAlignment="Center" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
+                    <Label Content="Обед" HorizontalAlignment="Left" Margin="185,216,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
+                    <Label Content="Ужин" HorizontalAlignment="Left" Margin="185,327,0,0" VerticalAlignment="Top" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
                     <Label x:Name="nameProject" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat Medium"/>
                     <Label x:Name="exitLabel" Content="Выход" HorizontalAlignment="Center" Margin="60,480,678,18.8" VerticalAlignment="Center"  Height="24" Width="55" FontSize="12" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <TextBox x:Name="textBoxBreakfast" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2">
@@ -28,7 +28,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxLunch" HorizontalAlignment="Left" Height="72" Margin="184,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
+                    <TextBox x:Name="textBoxLunch" HorizontalAlignment="Left" Height="72" Margin="184,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
                         <TextBox.Template>
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -37,7 +37,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxDiner" HorizontalAlignment="Left" Height="72" Margin="184,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
+                    <TextBox x:Name="textBoxDiner" HorizontalAlignment="Left" Height="72" Margin="184,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -77,7 +77,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="AddDinner" Content="Добавить" HorizontalAlignment="Left" Margin="649,364,0,0" VerticalAlignment="Top" Width="103" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat" Click="AddDinner_Click">
+                    <Button x:Name="AddDinner" Content="Добавить" HorizontalAlignment="Left" Margin="649,368,0,0" VerticalAlignment="Top" Width="103" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat" Click="AddDinner_Click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -108,7 +108,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="AddLunch" Content="Добавить" HorizontalAlignment="Left" Margin="649,256,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat" Click="AddLunch_Click">
+                    <Button x:Name="AddLunch" Content="Добавить" HorizontalAlignment="Left" Margin="649,260,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="Montserrat" Click="AddLunch_Click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
