@@ -1,0 +1,31 @@
+﻿<Window x:Class="CALORY.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CALORY"
+        mc:Ignorable="d"
+        Title="AddWindow" Height="416.4" Width="437.6" FontFamily="Montserrat" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Добавить в мой дневник" HorizontalAlignment="Left" Margin="47,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="169"/>
+        <TextBox x:Name="TextBoxSelectedProduct" HorizontalAlignment="Left" Height="23" Margin="49,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="341" VerticalContentAlignment="Center"/>
+        <Label Content="Укажите колличество грамм:" HorizontalAlignment="Left" Margin="49,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="199"/>
+        <TextBox x:Name="grams" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="86,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"  VerticalContentAlignment="Center" TextChanged="grams_TextChanged_1" IsEnabled="True"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="49,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+        <TextBox x:Name="BelTextBox"  HorizontalAlignment="Left" Height="41" Margin="223,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">
+        </TextBox>
+        <TextBox x:Name="KalTextBox" HorizontalAlignment="Left" Height="41" Margin="49,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">
+        </TextBox>
+        <TextBox x:Name="FatTextBox" HorizontalAlignment="Left" Height="41" Margin="48,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <TextBox x:Name="UglTextBox" HorizontalAlignment="Left" Height="41" Margin="223,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="253,144,0,0" VerticalAlignment="Top" Width="139" Height="30" Click="Button_Click"/>
+        <Button Content="Вернуться назад" HorizontalAlignment="Left" Margin="146,303,0,0" VerticalAlignment="Top" Width="139" Height="30" Click="Button_Click_1"/>
+        <Label Content="г" HorizontalAlignment="Left" Margin="217,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.042,1.742" Width="19"/>
+        <Image HorizontalAlignment="Left" Height="25" Margin="53,147,0,0" VerticalAlignment="Top" Width="24" Source="/plus_minus_icon_173627.png"/>
+        <Label Content="Ккал" HorizontalAlignment="Left" Margin="111,203,0,0" VerticalAlignment="Top"/>
+        <Label Content="Бел" HorizontalAlignment="Left" Margin="290,203,0,0" VerticalAlignment="Top"/>
+        <Label Content="Жир" HorizontalAlignment="Left" Margin="112,252,0,0" VerticalAlignment="Top"/>
+        <Label Content="Угл" HorizontalAlignment="Left" Margin="293,252,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
