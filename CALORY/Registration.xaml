@@ -10,8 +10,11 @@
         <TextBox x:Name="TextBoxNameRegistration" HorizontalAlignment="Left" Margin="183,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TextBoxLoginRegistration" HorizontalAlignment="Left" Margin="183,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="PasswordBoxRegistration" HorizontalAlignment="Left" Margin="183,199,0,0" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="PasswordBoxRegistration1" HorizontalAlignment="Left" Margin="183,247,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="ButtonRegister" Content="Зарегаться" HorizontalAlignment="Left" Margin="183,291,0,0" VerticalAlignment="Top" Height="32" Width="120" Click="ButtonRegister_Click" />
-        <Label x:Name="LabelLinkToAuthorizationRegistration" Content="Уже есть аккаунт?" HorizontalAlignment="Left" Margin="183,328,0,0" VerticalAlignment="Top" Width="206" MouseDoubleClick="LabelLinkToAuthorizationRegistration_MouseDoubleClick"/>
+        <Button x:Name="ButtonRegister" Content="Зарегаться" HorizontalAlignment="Left" Margin="183,336,0,0" VerticalAlignment="Top" Height="32" Width="120" Click="ButtonRegister_Click" />
+        <Label x:Name="LabelLinkToAuthorizationRegistration" Content="Уже есть аккаунт?" HorizontalAlignment="Left" Margin="183,373,0,0" VerticalAlignment="Top" Width="206" MouseDoubleClick="LabelLinkToAuthorizationRegistration_MouseDoubleClick"/>
+        <Image x:Name="ShowPassword" HorizontalAlignment="Left" Height="18" Margin="303,199,0,0" VerticalAlignment="Top" Width="18" Source="\images\eyeclose.png" MouseDown="ShowPassword_MouseDown"/>
+        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="183,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Image x:Name="HidePassword" HorizontalAlignment="Left" Height="18" Margin="303,199,0,0" VerticalAlignment="Top" Width="18" Source="/images/eye.png" MouseDown="ShowPassword_MouseDown" Visibility="Hidden"/>
+        
     </Grid>
 </Window>

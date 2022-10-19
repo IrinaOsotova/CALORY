@@ -64,5 +64,9 @@
         <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="512,399,0,0" VerticalAlignment="Top" Width="136" FontFamily="Montserrat" HorizontalContentAlignment="Center" MouseDoubleClick="LabelLinkToRegistrationAuthorization_MouseDoubleClick" />
         <Image x:Name="FON" HorizontalAlignment="Left" Height="534" VerticalAlignment="Center" Width="391" Source="/фонавторизация 1.png"/>
         <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,109,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
+        <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="694,294,0,0" VerticalAlignment="Top" Width="18" Source="\images\eyeclose.png" MouseDown="ShowPasswordA_MouseDown" />
+        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Image x:Name="HidePasswordA" HorizontalAlignment="Left" Height="18" Margin="694,294,0,0" VerticalAlignment="Top" Width="18" Source="/images/eye.png"  MouseDown="ShowPasswordA_MouseDown" Visibility="Hidden" />
+
     </Grid>
 </Window>

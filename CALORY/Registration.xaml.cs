@@ -43,22 +43,10 @@ namespace CALORY
                 MessageBox.Show("Введите пароль");
                 return;
             }
-            string password = PasswordBoxRegistration.Password;
-            bool result = PasswordVerification(password);
+            bool result = PasswordVerification(PasswordBoxRegistration);
             if(result == false)
             {
                 MessageBox.Show("Пароль должен соответствовать следующим требованиям:\n 1.Длина не менее 7 символов \n 2.Cодержит только латинские буквы и цифры \n 3.Cодержит хотя бы 1 букву верхнего регистра \n 4.Cодержит хотя бы 1 букву нижнего регистра \n 5.Cодержит хотя бы 1 цифру");
-                return;
-            }
-
-            if (PasswordBoxRegistration1.Password == "")
-            {
-                MessageBox.Show("Введите еще раз пароль");
-                return;
-            }
-            if (PasswordBoxRegistration.Password != PasswordBoxRegistration1.Password)
-            {
-                MessageBox.Show("Пароли не совпадают");
                 return;
             }
             using (var db = new ApplicationContext())
@@ -81,15 +69,16 @@ namespace CALORY
         public static char[] Uppercase = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         public static char[] Lowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
-        static bool PasswordVerification(string password)
+        static bool PasswordVerification(PasswordBox passwordBox)
         {
+            string password = passwordBox.Password;
             bool result = false;
             bool presenceNumber = false;
             bool presenceUppercase = false;
             bool presenceLowercase = false;
             char[] CharPassword = password.ToCharArray();
             int countPassword = 0;
-            bool othersymbol = false;
+            bool othersymbol = true;
             foreach (var item in CharPassword)
             {
                 bool num = CharVerification(item, Numbers);
@@ -99,8 +88,8 @@ namespace CALORY
                 bool low = CharVerification(item, Lowercase);
                 if (low == true) presenceLowercase = true;
                 countPassword++;
-                if (Numbers.Contains(item) || Uppercase.Contains(item) || Lowercase.Contains(item))
-                    othersymbol = true;
+                if (Numbers.Contains(item)==false && Uppercase.Contains(item) == false && Lowercase.Contains(item) == false)
+                    othersymbol = false;
             }
             if (countPassword > 6 && othersymbol && presenceNumber && presenceUppercase && presenceLowercase)
                 result = true;
@@ -137,6 +126,30 @@ namespace CALORY
             MainWindow window = new MainWindow();
             window.Show();
             Close();
+        }
+
+
+        
+        private void ShowPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            IsEyeClick(TextBoxShowPassword, PasswordBoxRegistration, ShowPassword, HidePassword);
+        }
+        
+        public void IsEyeClick(TextBox textBox, PasswordBox password, Image showimage, Image hideimage)
+        {
+            if (textBox.Visibility == Visibility)
+            {
+                showimage.Visibility = Visibility;
+                hideimage.Visibility = Visibility.Hidden;
+                textBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                showimage.Visibility = Visibility.Hidden;
+                hideimage.Visibility = Visibility;
+                textBox.Visibility = Visibility;
+                textBox.Text = password.Password;
+            }
         }
     }
 }

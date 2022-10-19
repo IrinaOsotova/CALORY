@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CALORY
 {
@@ -40,12 +41,35 @@ namespace CALORY
                 }
             }
         }
+        
 
         private void LabelLinkToRegistrationAuthorization_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Registration window = new Registration();
             window.Show();
             Close();
+        }
+
+        private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            IsEyeClick(TextBoxShowPasswordA, PasswordBoxAuthorization, ShowPasswordA, HidePasswordA);
+        }
+
+        public void IsEyeClick(TextBox textBox, PasswordBox password, Image showimage, Image hideimage)
+        {
+            if (textBox.Visibility == Visibility)
+            {
+                showimage.Visibility = Visibility;
+                hideimage.Visibility = Visibility.Hidden;
+                textBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                showimage.Visibility = Visibility.Hidden;
+                hideimage.Visibility = Visibility;
+                textBox.Visibility = Visibility;
+                textBox.Text = password.Password;
+            }
         }
     }
 }
