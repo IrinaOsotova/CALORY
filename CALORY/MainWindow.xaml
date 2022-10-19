@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="Authorization" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Authorization" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid Background="#FFF0F0F0">
         <TextBox x:Name="TextBoxLoginAuthorization" HorizontalAlignment="Left" Margin="465,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="3,0,0,0">
             <TextBox.Template >
@@ -61,12 +61,46 @@
         <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="463,178,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
         <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="463,257,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
         <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
-        <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="512,399,0,0" VerticalAlignment="Top" Width="136" FontFamily="Montserrat" HorizontalContentAlignment="Center" MouseDoubleClick="LabelLinkToRegistrationAuthorization_MouseDoubleClick" />
-        <Image x:Name="FON" HorizontalAlignment="Left" Height="534" VerticalAlignment="Center" Width="391" Source="/фонавторизация 1.png"/>
         <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,109,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
-        <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="694,294,0,0" VerticalAlignment="Top" Width="18" Source="\images\eyeclose.png" MouseDown="ShowPasswordA_MouseDown" />
-        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <Image x:Name="HidePasswordA" HorizontalAlignment="Left" Height="18" Margin="694,294,0,0" VerticalAlignment="Top" Width="18" Source="/images/eye.png"  MouseDown="ShowPasswordA_MouseDown" Visibility="Hidden" />
+        <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" MouseDown="ShowPasswordA_MouseDown" Cursor="Hand" />
+        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0"  TextWrapping="Wrap" Text="" Visibility="Hidden">
+            <TextBox.Template>
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <Image x:Name="HidePasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eye2.png"  MouseDown="ShowPasswordA_MouseDown" Visibility="Hidden" Cursor="Hand" />
+        <Button x:Name="ButtonLinkToRegistrationAuthorization" Content="Ещё нет аккаунта?" HorizontalAlignment="Left" Height="33" Margin="520,399,0,0" VerticalAlignment="Top" Width="124" FontFamily="Montserrat" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonLinkToRegistrationAuthorization_Click" Cursor="Hand">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </Grid>
 </Window>

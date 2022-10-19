@@ -43,12 +43,12 @@ namespace CALORY
         }
         
 
-        private void LabelLinkToRegistrationAuthorization_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Registration window = new Registration();
-            window.Show();
-            Close();
-        }
+        //private void LabelLinkToRegistrationAuthorization_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
+        //    Registration window = new Registration();
+        //    window.Show();
+        //    Close();
+        //}
 
         private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -70,6 +70,13 @@ namespace CALORY
                 textBox.Visibility = Visibility;
                 textBox.Text = password.Password;
             }
+        }
+
+        private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
+        {
+            Registration window = new Registration();
+            window.Show();
+            Close();
         }
     }
 }
