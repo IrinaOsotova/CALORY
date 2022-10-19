@@ -19,7 +19,7 @@
                     <Label Content="Ужин" HorizontalAlignment="Left" Margin="185,327,0,0" VerticalAlignment="Top" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
                     <Label x:Name="nameProject" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat Medium"/>
                     <Label x:Name="exitLabel" Content="Выход" HorizontalAlignment="Center" Margin="60,480,678,18.8" VerticalAlignment="Center"  Height="24" Width="55" FontSize="12" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="textBoxBreakfast" IsReadOnly ="True" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2" IsEnabled="False">
+                    <TextBox x:Name="textBoxBreakfast" IsReadOnly ="True" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -28,7 +28,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxLunch" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2" IsEnabled="False">
+                    <TextBox x:Name="textBoxLunch" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
                         <TextBox.Template>
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -37,7 +37,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxDiner" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2" IsEnabled="False">
+                    <TextBox x:Name="textBoxDiner" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
