@@ -36,13 +36,13 @@ namespace CALORY
                 MessageBox.Show("Введите логин");
                 return;
             }
+            if (IsUserExists())
+                return;
             if (PasswordBoxRegistration.Password == "")
             {
                 MessageBox.Show("Введите пароль");
                 return;
             }
-            if (IsUserExists())
-                return;
             string password = PasswordBoxRegistration.Password;
             bool result = PasswordVerification(password);
             if(result == false)
@@ -125,6 +125,13 @@ namespace CALORY
                 else
                     return false;
             }
+        }
+
+        private void LabelLinkToAuthorizationRegistration_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+            Close();
         }
     }
 }

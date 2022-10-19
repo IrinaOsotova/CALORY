@@ -12,6 +12,6 @@
         <PasswordBox x:Name="PasswordBoxRegistration" HorizontalAlignment="Left" Margin="183,199,0,0" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="PasswordBoxRegistration1" HorizontalAlignment="Left" Margin="183,247,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ButtonRegister" Content="Зарегестрироваться" HorizontalAlignment="Left" Margin="183,291,0,0" VerticalAlignment="Top" Height="32" Width="153" Click="ButtonRegister_Click" />
-        <Label x:Name="LabelLinkToAuthorizationRegistration" Content="Уже есть аккаунт?" HorizontalAlignment="Left" Margin="183,328,0,0" VerticalAlignment="Top" Width="206"/>
+        <Label x:Name="LabelLinkToAuthorizationRegistration" Content="Уже есть аккаунт?" HorizontalAlignment="Left" Margin="183,328,0,0" VerticalAlignment="Top" Width="206" MouseDoubleClick="LabelLinkToAuthorizationRegistration_MouseDoubleClick"/>
     </Grid>
 </Window>

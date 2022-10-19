@@ -40,5 +40,12 @@ namespace CALORY
                 }
             }
         }
+
+        private void LabelLinkToRegistrationAuthorization_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Registration window = new Registration();
+            window.Show();
+            Close();
+        }
     }
 }
