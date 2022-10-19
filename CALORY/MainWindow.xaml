@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="Authorization" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Authorization" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat" >
     <Grid Background="#FFF0F0F0">
-        <TextBox x:Name="TextBoxLoginAuthorization" HorizontalAlignment="Left" Margin="465,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="3,0,0,0">
+        <TextBox x:Name="TextBoxLoginAuthorization" HorizontalAlignment="Left" Margin="465,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="3,0,0,0">
             <TextBox.Template >
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -17,7 +17,7 @@
             </TextBox.Template>
         </TextBox>
 
-        <PasswordBox x:Name="PasswordBoxAuthorization" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0">
+        <PasswordBox x:Name="PasswordBoxAuthorization" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0">
             <PasswordBox.Template>
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -26,7 +26,7 @@
                 </ControlTemplate>
             </PasswordBox.Template>
         </PasswordBox>
-        <Button x:Name="ButtonComeInAuthorization" Content="Войти" HorizontalAlignment="Left" Margin="489,356,0,0" VerticalAlignment="Top" Click="ButtonComeInAuthorization_Click" FontFamily="Montserrat Medium" Width="177" Height="38" Cursor="Hand" Background="#FFC597DE" Foreground="White" BorderBrush="#FFC597DE">
+        <Button x:Name="ButtonComeInAuthorization" Content="Войти" HorizontalAlignment="Left" Margin="489,356,0,0" VerticalAlignment="Top" Click="ButtonComeInAuthorization_Click" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" Width="177" Height="38" Cursor="Hand" Background="#FFC597DE" Foreground="White" BorderBrush="#FFC597DE">
             <Button.Effect>
                 <DropShadowEffect Color="#FFE0E0E0"/>
             </Button.Effect>
@@ -58,12 +58,12 @@
             </Button.Style>
         </Button>
 
-        <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="463,178,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
-        <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="463,257,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
+        <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="463,178,0,0" VerticalAlignment="Top" Width="114" FontFamily="pack://application:,,,/Fonts/#Montserrat" FontSize="14"/>
+        <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="463,257,0,0" VerticalAlignment="Top" Width="114" FontFamily="pack://application:,,,/Fonts/#Montserrat" FontSize="14"/>
         <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
-        <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,117,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
+        <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,117,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" FontSize="24"/>
         <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" MouseDown="ShowPasswordA_MouseDown" Cursor="Hand" />
-        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0"  TextWrapping="Wrap" Text="" Visibility="Hidden">
+        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0"  TextWrapping="Wrap" Text="" Visibility="Hidden">
             <TextBox.Template>
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -73,7 +73,7 @@
             </TextBox.Template>
         </TextBox>
         <Image x:Name="HidePasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eye2.png"  MouseDown="ShowPasswordA_MouseDown" Visibility="Hidden" Cursor="Hand" />
-        <Button x:Name="ButtonLinkToRegistrationAuthorization" Content="Ещё нет аккаунта?" HorizontalAlignment="Left" Height="33" Margin="520,399,0,0" VerticalAlignment="Top" Width="124" FontFamily="Montserrat" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonLinkToRegistrationAuthorization_Click" Cursor="Hand">
+        <Button x:Name="ButtonLinkToRegistrationAuthorization" Content="Ещё нет аккаунта?" HorizontalAlignment="Left" Height="33" Margin="520,399,0,0" VerticalAlignment="Top" Width="124" FontFamily="pack://application:,,,/Fonts/#Montserrat" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonLinkToRegistrationAuthorization_Click" Cursor="Hand">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
