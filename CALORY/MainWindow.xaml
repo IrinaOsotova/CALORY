@@ -60,8 +60,6 @@
 
         <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="463,178,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
         <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="463,257,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
-        <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="512,399,0,0" VerticalAlignment="Top" Width="136" FontFamily="Montserrat" HorizontalContentAlignment="Center"/>
-        <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,117,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
         <Label x:Name="LabelLinkToRegistrationAuthorization" Content="Еще нет аккаунта?" HorizontalAlignment="Left" Margin="512,399,0,0" VerticalAlignment="Top" Width="136" FontFamily="Montserrat" HorizontalContentAlignment="Center" MouseDoubleClick="LabelLinkToRegistrationAuthorization_MouseDoubleClick" />
         <Image x:Name="FON" HorizontalAlignment="Left" Height="534" VerticalAlignment="Center" Width="391" Source="/фонавторизация 1.png"/>

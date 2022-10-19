@@ -77,17 +77,19 @@ namespace CALORY
             Close();
 
         }
+        public static char[] Numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        public static char[] Uppercase = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        public static char[] Lowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
         static bool PasswordVerification(string password)
         {
             bool result = false;
             bool presenceNumber = false;
             bool presenceUppercase = false;
             bool presenceLowercase = false;
-            char[] Numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            char[] Uppercase = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            char[] Lowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
             char[] CharPassword = password.ToCharArray();
             int countPassword = 0;
+            bool othersymbol = false;
             foreach (var item in CharPassword)
             {
                 bool num = CharVerification(item, Numbers);
@@ -97,14 +99,17 @@ namespace CALORY
                 bool low = CharVerification(item, Lowercase);
                 if (low == true) presenceLowercase = true;
                 countPassword++;
+                if (Numbers.Contains(item) || Uppercase.Contains(item) || Lowercase.Contains(item))
+                    othersymbol = true;
             }
-            if (countPassword > 6 && presenceNumber && presenceUppercase && presenceLowercase)
+            if (countPassword > 6 && othersymbol && presenceNumber && presenceUppercase && presenceLowercase)
                 result = true;
             return result;
         }
         static bool CharVerification(char symbol, char[] symbolArray)
         {
             bool result = false;
+            
             foreach (var item in symbolArray)
             {
                 if (symbol == item)
