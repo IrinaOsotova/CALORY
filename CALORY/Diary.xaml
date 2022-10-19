@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="Diary" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Diary" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <TabControl Margin="0,-30,-7.6,-8.2" Height="557" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="#FFF0F0F0" >
             <TabItem Header="Дневник" Style="{DynamicResource TabItemStyle}" Margin="28,274,-28,-274.2"  FontSize="14" FontFamily="Montserrat">
@@ -19,7 +19,7 @@
                     <Label Content="Ужин" HorizontalAlignment="Left" Margin="185,327,0,0" VerticalAlignment="Top" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat"/>
                     <Label x:Name="nameProject" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="Montserrat Medium"/>
                     <Label x:Name="exitLabel" Content="Выход" HorizontalAlignment="Center" Margin="60,480,678,18.8" VerticalAlignment="Center"  Height="24" Width="55" FontSize="12" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="textBoxBreakfast" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2">
+                    <TextBox x:Name="textBoxBreakfast" IsReadOnly ="True" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2" IsEnabled="False">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -28,7 +28,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxLunch" HorizontalAlignment="Left" Height="72" Margin="184,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
+                    <TextBox x:Name="textBoxLunch" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2" IsEnabled="False">
                         <TextBox.Template>
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -37,7 +37,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxDiner" HorizontalAlignment="Left" Height="72" Margin="184,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
+                    <TextBox x:Name="textBoxDiner" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2" IsEnabled="False">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -143,7 +143,7 @@
 
                     <Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="714,477,-3,2.4" VerticalAlignment="Center"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
-                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="78,37,78,455" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2">
+                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="78,37,78,455" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <!--<ComboBox.Template>
                             <ControlTemplate >
                                 <Border Background="White" CornerRadius="4" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -174,7 +174,7 @@
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
-                    <Image Height="28" Margin="679,44,87,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
+                    <Image Height="26" Margin="691,46,80,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

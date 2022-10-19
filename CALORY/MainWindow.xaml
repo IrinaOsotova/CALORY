@@ -61,7 +61,7 @@
         <Label x:Name="LabelLoginAuthorization" Content="Логин:" HorizontalAlignment="Left" Margin="463,178,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
         <Label x:Name="LabelPasswordAuthorization" Content="Пароль:" HorizontalAlignment="Left" Margin="463,257,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
         <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
-        <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,109,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
+        <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,117,0,0" VerticalAlignment="Top" FontFamily="Montserrat SemiBold" FontSize="24"/>
         <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" MouseDown="ShowPasswordA_MouseDown" Cursor="Hand" />
         <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0"  TextWrapping="Wrap" Text="" Visibility="Hidden">
             <TextBox.Template>

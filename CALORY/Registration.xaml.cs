@@ -121,14 +121,6 @@ namespace CALORY
             }
         }
 
-        private void LabelLinkToAuthorizationRegistration_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow window = new MainWindow();
-            window.Show();
-            Close();
-        }
-
-
         
         private void ShowPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -150,6 +142,13 @@ namespace CALORY
                 textBox.Visibility = Visibility;
                 textBox.Text = password.Password;
             }
+        }
+
+        private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+            Close();
         }
     }
 }
