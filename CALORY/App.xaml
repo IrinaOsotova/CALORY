@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:CALORY"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style x:Key="MontserratFont">
+            <Setter Property="TextElement.FontFamily" Value="Montserrat, /CALORY; Fonts/#Montserrat" />
+        </Style>
         <!--Start: TabItem Style-->
         <Style x:Key="TabItemStyle" TargetType="TabItem">
             <Setter Property="Background" Value ="Transparent"/>
