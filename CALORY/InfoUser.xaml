@@ -7,7 +7,21 @@
         mc:Ignorable="d"
         Title="InfoUser" Height="450" Width="800">
     <Grid>
-        <Label Content="ПРИвтт оо укткфмкодштмллостють" Margin="36,62,275,88" FontFamily="Montserrat ExtraBold" FontSize="72"/>
+        <TabControl Margin="-7,0,0,0" Height="557" VerticalAlignment="Bottom" Background="#FFF0F0F0" >
+            <TabItem Header="Пол и возраст">
+                <Grid>
+                    <TextBox x:Name="textBoxAge" HorizontalAlignment="Left" Height="24" Margin="513,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                    <Label Content="Возраст" HorizontalAlignment="Left" Margin="477,345,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Параметры">
 
+            </TabItem>
+            <TabItem Header="Активность">
+
+            </TabItem>
+        </TabControl>
     </Grid>
+
 </Window>
