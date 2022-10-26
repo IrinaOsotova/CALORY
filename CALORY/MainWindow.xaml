@@ -63,7 +63,7 @@
         <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
         <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,117,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" FontSize="24"/>
         <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" MouseDown="ShowPasswordA_MouseDown" Cursor="Hand" />
-        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0"  TextWrapping="Wrap" Text="" Visibility="Hidden">
+        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0"  TextWrapping="Wrap" Text="" IsReadOnly="True" Visibility="Hidden">
             <TextBox.Template>
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -72,7 +72,7 @@
                 </ControlTemplate>
             </TextBox.Template>
         </TextBox>
-        <Image x:Name="HidePasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eye2.png"  MouseDown="ShowPasswordA_MouseDown" Visibility="Hidden" Cursor="Hand" />
+        <Image x:Name="HidePasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eye2.png"  Visibility="Hidden" Cursor="Hand" MouseUp="HidePasswordA_MouseUp" />
         <Button x:Name="ButtonLinkToRegistrationAuthorization" Content="Ещё нет аккаунта?" HorizontalAlignment="Left" Height="33" Margin="520,399,0,0" VerticalAlignment="Top" Width="124" FontFamily="pack://application:,,,/Fonts/#Montserrat" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonLinkToRegistrationAuthorization_Click" Cursor="Hand">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

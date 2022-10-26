@@ -26,6 +26,7 @@ namespace CALORY
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
+            #region examination
             if (TextBoxNameRegistration.Text == "")
             {
                 MessageBox.Show("Введите имя");
@@ -38,17 +39,25 @@ namespace CALORY
             }
             if (IsUserExists())
                 return;
+            bool resultLogin = LoginVerification(TextBoxLoginRegistration);
+            if (resultLogin == false)
+            {
+                MessageBox.Show("Логин должен соответствовать следующим требованиям:\n 1.Длина не менее 5 символов \n 2.Cодержит только латинские буквы и цифры");
+                return;
+            }
             if (PasswordBoxRegistration.Password == "")
             {
                 MessageBox.Show("Введите пароль");
                 return;
             }
-            bool result = PasswordVerification(PasswordBoxRegistration);
-            if(result == false)
+            bool resultPassword = PasswordVerification(PasswordBoxRegistration);
+            if(resultPassword == false)
             {
                 MessageBox.Show("Пароль должен соответствовать следующим требованиям:\n 1.Длина не менее 7 символов \n 2.Cодержит только латинские буквы и цифры \n 3.Cодержит хотя бы 1 букву верхнего регистра \n 4.Cодержит хотя бы 1 букву нижнего регистра \n 5.Cодержит хотя бы 1 цифру");
                 return;
             }
+            
+            #endregion
             using (var db = new ApplicationContext())
             {
                 db.Users.Add(new User()
@@ -69,6 +78,23 @@ namespace CALORY
         public static char[] Uppercase = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         public static char[] Lowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
+        static bool LoginVerification(TextBox LoginBox)
+        {
+            string login = LoginBox.Text;
+            char[] CharLogin = login.ToCharArray();
+            bool result = true;
+            int countLogin = 0;
+            foreach (var item in CharLogin)
+            {
+                countLogin++;
+                if (Numbers.Contains(item) == false && Uppercase.Contains(item) == false && Lowercase.Contains(item) == false)
+                    result = false;
+            }
+            if (result && countLogin > 4)
+                return result = true;
+            return result;
+
+        }
         static bool PasswordVerification(PasswordBox passwordBox)
         {
             string password = passwordBox.Password;
@@ -106,6 +132,10 @@ namespace CALORY
             }
             return result;
         }
+        /// <summary>
+        /// Метод проверяет есть ли пользователь с таким логином в БД
+        /// </summary>
+        /// <returns></returns>
         public Boolean IsUserExists()
         {
             using (var db = new ApplicationContext())
@@ -120,35 +150,28 @@ namespace CALORY
                     return false;
             }
         }
-
-        
-        private void ShowPassword_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            IsEyeClick(TextBoxShowPassword, PasswordBoxRegistration, ShowPassword, HidePassword);
-        }
-        
-        public void IsEyeClick(TextBox textBox, PasswordBox password, Image showimage, Image hideimage)
-        {
-            if (textBox.Visibility == Visibility)
-            {
-                showimage.Visibility = Visibility;
-                hideimage.Visibility = Visibility.Hidden;
-                textBox.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                showimage.Visibility = Visibility.Hidden;
-                hideimage.Visibility = Visibility;
-                textBox.Visibility = Visibility;
-                textBox.Text = password.Password;
-            }
-        }
-
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
             window.Show();
             Close();
+        }
+
+        private void ShowPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ShowPassword.Visibility = Visibility.Hidden;
+            HidePassword.Visibility = Visibility;
+            TextBoxShowPassword.Visibility = Visibility;
+            TextBoxShowPassword.Text = PasswordBoxRegistration.Password;
+            PasswordBoxRegistration.IsEnabled = false;
+        }
+
+        private void HidePassword_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ShowPassword.Visibility = Visibility;
+            HidePassword.Visibility = Visibility.Hidden;
+            TextBoxShowPassword.Visibility = Visibility.Hidden;
+            PasswordBoxRegistration.IsEnabled = true;
         }
     }
 }

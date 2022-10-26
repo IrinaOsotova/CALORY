@@ -68,9 +68,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image x:Name="ShowPassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" MouseDown="ShowPassword_MouseDown" Cursor="Hand"/>
-        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0" TextWrapping="Wrap" Text="" Visibility="Hidden">
-            <TextBox.Template>
+        <Image x:Name="ShowPassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" Cursor="Hand" MouseDown="ShowPassword_MouseDown"/>
+        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18"  IsReadOnly="True" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0" TextWrapping="Wrap" Text="" Visibility="Hidden">
+            <TextBox.Template> 
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
                         <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
@@ -78,7 +78,7 @@
                 </ControlTemplate>
             </TextBox.Template>
         </TextBox>
-        <Image x:Name="HidePassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Source="/eye2.png" MouseDown="ShowPassword_MouseDown" Visibility="Hidden" Cursor="Hand"/>
+        <Image x:Name="HidePassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Source="/eye2.png" Visibility="Hidden" Cursor="Hand" MouseUp="HidePassword_MouseUp"/>
         <Label x:Name="LabelPasswordRegistration" Content="Пароль:" HorizontalAlignment="Left" Margin="450,291,0,0" VerticalAlignment="Top" Width="114" FontFamily="pack://application:,,,/Fonts/#Montserrat" FontSize="14"/>
         <Button x:Name="ButtonLinkToAuthorizationRegistration" Content="Уже есть аккаунт?" HorizontalAlignment="Left" Height="33" Margin="520,425,0,0" VerticalAlignment="Top" Width="124" FontFamily="pack://application:,,,/Fonts/#Montserrat" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonLinkToRegistrationAuthorization_Click" Cursor="Hand">
             <Button.Style>

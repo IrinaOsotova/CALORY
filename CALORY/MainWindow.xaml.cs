@@ -52,31 +52,29 @@ namespace CALORY
 
         private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            IsEyeClick(TextBoxShowPasswordA, PasswordBoxAuthorization, ShowPasswordA, HidePasswordA);
+
+            ShowPasswordA.Visibility = Visibility.Hidden;
+            HidePasswordA.Visibility = Visibility;
+            TextBoxShowPasswordA.Visibility = Visibility;
+            TextBoxShowPasswordA.Text = PasswordBoxAuthorization.Password;
+            PasswordBoxAuthorization.IsEnabled = false;
         }
 
-        public void IsEyeClick(TextBox textBox, PasswordBox password, Image showimage, Image hideimage)
+        private void HidePasswordA_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (textBox.Visibility == Visibility)
-            {
-                showimage.Visibility = Visibility;
-                hideimage.Visibility = Visibility.Hidden;
-                textBox.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                showimage.Visibility = Visibility.Hidden;
-                hideimage.Visibility = Visibility;
-                textBox.Visibility = Visibility;
-                textBox.Text = password.Password;
-            }
-        }
+            ShowPasswordA.Visibility = Visibility;
+            HidePasswordA.Visibility = Visibility.Hidden;
+            TextBoxShowPasswordA.Visibility = Visibility.Hidden;
+            PasswordBoxAuthorization.IsEnabled = true;
 
+        }
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
         {
             Registration window = new Registration();
             window.Show();
             Close();
         }
+
+       
     }
 }
