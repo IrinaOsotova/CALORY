@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
@@ -139,19 +140,13 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <TextBox x:Name="caloryTextBox" Text="2100" HorizontalAlignment="Left" Height="43" Margin="632,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Foreground="Black" BorderBrush="White"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="caloryTextBox" Text="2100" HorizontalAlignment="Left" Height="43" Margin="632,480,0,0" TextWrapping="Wrap" IsReadOnly ="True" VerticalAlignment="Top" Width="90"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Foreground="Black" BorderBrush="White"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                     <Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="714,477,-3,2.4" VerticalAlignment="Center"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
-                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="78,37,78,455" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <!--<ComboBox.Template>
-                            <ControlTemplate >
-                                <Border Background="White" CornerRadius="4" Padding="2" BorderThickness="1" BorderBrush="White">
-                                </Border>
-                            </ControlTemplate>
-                        </ComboBox.Template>-->
+                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="184,35,34,457" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}">
                     </ComboBox>
-                    <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="80,44,0,0" Foreground="DarkGray" Width="60" FontFamily="pack://application:,,,/Fonts/#Montserrat Light">
+                    <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="187,42,0,0" Foreground="DarkGray" Width="52" FontFamily="pack://application:,,,/Fonts/#Montserrat Light">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -164,28 +159,29 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="691,41,0,0" VerticalAlignment="Top" Foreground="White" Background="White" RenderTransformOrigin="0.5,0.5" Width="18" Height="27">
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="737,39,0,0" VerticalAlignment="Top" Foreground="White" Background="White" RenderTransformOrigin="0.5,0.5" Width="16" Height="27">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="-0.306"/>
+                                <SkewTransform AngleY="-0.079"/>
+                                <RotateTransform Angle="-0.269"/>
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
-                    <Image Height="26" Margin="691,46,80,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
+                    <Image Height="33" Margin="726,43,41,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
-                                <SkewTransform AngleX="0.005"/>
-                                <RotateTransform Angle="360.058"/>
+                                <SkewTransform AngleX="0" AngleY="0.019"/>
+                                <RotateTransform Angle="0.046"/>
                                 <TranslateTransform X="0.021" Y="0.29"/>
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
                     <Label x:Name="kkl_Copy" Background="White" Content="Количество ккал на день:" HorizontalAlignment="Left" Margin="170,477,0,2.4" VerticalAlignment="Center" Height="49" Width="215" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                    <TextBox HorizontalAlignment="Left" Height="43" Margin="383,480,0,0" TextWrapping="Wrap" Text="2100" VerticalAlignment="Top" Width="67" BorderBrush="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox HorizontalAlignment="Left" Height="43" Margin="383,480,0,0" TextWrapping="Wrap" Text="2100" VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <DatePicker x:Name="CalendarPiker" Margin="10,33,0,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="pack://application:,,,/Fonts/#Montserrat" BorderThickness="3,1,3,1" ClipToBounds="True" BorderBrush="{x:Null}" Height="39" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" SelectedDateChanged="CalendarPiker_Changed"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-74,362,0,-362.2" RenderTransformOrigin="0.554,0.656" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">

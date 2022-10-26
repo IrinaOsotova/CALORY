@@ -172,6 +172,7 @@ namespace CALORY
             HidePassword.Visibility = Visibility.Hidden;
             TextBoxShowPassword.Visibility = Visibility.Hidden;
             PasswordBoxRegistration.IsEnabled = true;
+            PasswordBoxRegistration.Focus();
         }
     }
 }

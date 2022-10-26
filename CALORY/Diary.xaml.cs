@@ -83,10 +83,13 @@ namespace CALORY
         //public Product[] massiv;
         public List<Product> productsBase = new List<Product>();
         public static Diary instance;
+        bool IsNeedSkip = false;
         public Diary()
         {
             InitializeComponent();
             instance = this;
+            
+            CalendarPiker.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), DateTime.Now.AddDays(340)));
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
                 var jsr = new JsonTextReader(GroceryList);
@@ -97,6 +100,14 @@ namespace CALORY
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            if (CalendarPiker.Text == ""  && !IsNeedSkip)
+            {
+                IsNeedSkip = true;
+                ComboBoxSearch.Text = "";
+                IsNeedSkip = false;
+                MessageBox.Show("Выберите дату, в которую хотите внести продукты");              
+            }
             if (ComboBoxSearch.Text.Length > 2)
             {
 
@@ -121,9 +132,10 @@ namespace CALORY
 
         private void AddBreakfast_Click(object sender, RoutedEventArgs e)
         {
+           
             if (ComboBoxSearch.SelectedItem == null)
             {
-                MessageBox.Show("Продукт не выбран");
+                MessageBox.Show("Продукт не выбран", "Поиск продуктов");
             }
             else if (textBoxBreakfast.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
             {
@@ -168,6 +180,16 @@ namespace CALORY
                 AddWindow SelectedProductsWindow = new AddWindow("Diner");
                 SelectedProductsWindow.Show();
             }
+        }
+        private void CalendarPiker_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            if(sender.ToString() == "")
+            {
+                CalendarPiker.Text = "";
+            }
+            textBoxBreakfast.Text = "";
+            textBoxLunch.Text = "";
+            textBoxDiner.Text = "";
         }
     }
 }

@@ -66,6 +66,7 @@ namespace CALORY
             HidePasswordA.Visibility = Visibility.Hidden;
             TextBoxShowPasswordA.Visibility = Visibility.Hidden;
             PasswordBoxAuthorization.IsEnabled = true;
+            PasswordBoxAuthorization.Focus();
 
         }
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
