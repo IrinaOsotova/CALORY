@@ -109,6 +109,7 @@
             </Button.Style>
         </Button>
         <Label x:Name="LabelNameRegistration_Copy" Content="Логин:" HorizontalAlignment="Left" Margin="450,215,0,0" VerticalAlignment="Top" Width="114" FontFamily="Montserrat" FontSize="14"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="450,458,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>

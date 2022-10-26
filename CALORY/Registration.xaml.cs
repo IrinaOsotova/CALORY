@@ -60,7 +60,7 @@ namespace CALORY
                 });
                 db.SaveChanges();
             }
-            Diary window = new Diary();
+            InfoUser window = new();
             window.Show();
             Close();
 
@@ -147,6 +147,13 @@ namespace CALORY
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
+            window.Show();
+            Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            InfoUser window = new();
             window.Show();
             Close();
         }
