@@ -28,13 +28,15 @@ namespace CALORY
             }
             using (var db = new ApplicationContext())
             {
-                var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
+                var user = db.Users
+                    .FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
                 if (user == null)
                 {
                     MessageBox.Show("Не правильно введен логин или пароль");
                 }
                 else
                 {
+                    Constants.login = user.login;
                     Diary window = new Diary();
                     window.Show();
                     Close();
@@ -42,14 +44,6 @@ namespace CALORY
             }
         }
         
-
-        //private void LabelLinkToRegistrationAuthorization_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
-        //    Registration window = new Registration();
-        //    window.Show();
-        //    Close();
-        //}
-
         private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 

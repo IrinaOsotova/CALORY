@@ -140,7 +140,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <TextBox x:Name="caloryTextBox" Text="2100" HorizontalAlignment="Left" Height="43" Margin="632,480,0,0" TextWrapping="Wrap" IsReadOnly ="True" VerticalAlignment="Top" Width="90"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Foreground="Black" BorderBrush="White"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="caloryTextBox" Text="" HorizontalAlignment="Left" Height="43" Margin="632,480,0,0" TextWrapping="Wrap" IsReadOnly ="True" VerticalAlignment="Top" Width="90"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Foreground="Black" BorderBrush="White"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
                     <Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="714,477,-3,2.4" VerticalAlignment="Center"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
@@ -180,8 +180,8 @@
                         </Image.RenderTransform>
                     </Image>
                     <Label x:Name="kkl_Copy" Background="White" Content="Количество ккал на день:" HorizontalAlignment="Left" Margin="170,477,0,2.4" VerticalAlignment="Center" Height="49" Width="215" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                    <TextBox HorizontalAlignment="Left" Height="43" Margin="383,480,0,0" TextWrapping="Wrap" Text="2100" VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <DatePicker x:Name="CalendarPiker" Margin="10,33,0,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="pack://application:,,,/Fonts/#Montserrat" BorderThickness="3,1,3,1" ClipToBounds="True" BorderBrush="{x:Null}" Height="39" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" SelectedDateChanged="CalendarPiker_Changed"/>
+                    <TextBox x:Name="rskGoalTextBox"  HorizontalAlignment="Left" Height="43" Margin="383,480,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <DatePicker x:Name="CalendarPiker" Margin="10,33,0,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="pack://application:,,,/Fonts/#Montserrat" BorderThickness="3,1,3,1" ClipToBounds="True" BorderBrush="{x:Null}" Height="39" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  SelectedDateChanged="CalendarPiker_Changed" Focusable="False"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-74,362,0,-362.2" RenderTransformOrigin="0.554,0.656" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">

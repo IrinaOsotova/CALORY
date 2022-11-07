@@ -84,12 +84,14 @@ namespace CALORY
         public List<Product> productsBase = new List<Product>();
         public static Diary instance;
         bool IsNeedSkip = false;
+        private Int16 rsk = 0;
+
         public Diary()
         {
             InitializeComponent();
             instance = this;
-            
             CalendarPiker.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), DateTime.Now.AddDays(340)));
+            CalendarPiker.SelectedDate = DateTime.Now;
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
                 var jsr = new JsonTextReader(GroceryList);
@@ -97,6 +99,12 @@ namespace CALORY
             }
             //massiv = new Product[productsBase.Count()];
             ComboBoxSearch.ItemsSource = productsBase;
+            using (var db = new ApplicationContext())
+            {
+                var user = db.Users.FirstOrDefault(x => x.login == Constants.login);
+                rskGoalTextBox.Text = user.rsk.ToString();
+                caloryTextBox.Text = user.rsk.ToString();
+            }
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -62,7 +62,6 @@ namespace CALORY
             {
                 db.Users.Add(new User()
                 {
-                    id = 0,
                     name = TextBoxNameRegistration.Text,
                     login = TextBoxLoginRegistration.Text,
                     password = Crypt.GetHashPassword(PasswordBoxRegistration.Password)
@@ -90,8 +89,8 @@ namespace CALORY
                 if (Numbers.Contains(item) == false && Uppercase.Contains(item) == false && Lowercase.Contains(item) == false)
                     result = false;
             }
-            if (result && countLogin > 4)
-                return result = true;
+            if (result == false || countLogin < 5)
+                return false;
             return result;
 
         }
