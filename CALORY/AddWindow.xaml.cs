@@ -34,9 +34,10 @@ namespace CALORY
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (_time == "Breakfast") Diary.instance.textBoxBreakfast.Text += current.ToStringFull();
+            if (_time == "Breakfast") Diary.instance.ListBoxBreakfast.Items.Add(current.ToStringFull());
             if (_time == "Lunch") Diary.instance.textBoxLunch.Text += current.ToStringFull();
             if (_time == "Diner") Diary.instance.textBoxDiner.Text += current.ToStringFull();
-            Diary.instance.caloryTextBox.Text = $"{Math.Round(Convert.ToDouble(Diary.instance.caloryTextBox.Text), 2) - Math.Round(Convert.ToDouble(KalTextBox.Text),2)}";
+            //Diary.instance.caloryTextBox.Text = $"{Math.Round(Convert.ToDouble(Diary.instance.caloryTextBox.Text), 2) - Math.Round(Convert.ToDouble(KalTextBox.Text),2)}";
 
             Close();
         }

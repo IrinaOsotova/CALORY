@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:CALORY"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ControlTemplate x:Key="ArrowedItemsControl" TargetType="{x:Type ItemsControl}">
+            <Border>
+                <Grid>
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=mask}" />
+                    </Grid.OpacityMask>
+                    <Border
+                Name="mask"
+                Background="White"                     
+                BorderThickness="1"  
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                CornerRadius="12" />
+                    <ItemsPresenter />
+                </Grid>
+            </Border>
+        </ControlTemplate>
         <!--In this example, an implecit style for Calendar is defined elsewhere 
   in the application.  DatePickerCalendarStyle is based on the implicit 
   style so that the DatePicker will use the application's calendar style.-->

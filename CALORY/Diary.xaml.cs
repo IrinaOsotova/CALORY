@@ -57,7 +57,7 @@ namespace CALORY
 
         public string ToStringFull()
         {
-            return name + " " + gramm + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.\r\n__________________________________________________________\r";
+            return name + " " + gramm + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.";
         }
 
         public Product(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
@@ -80,7 +80,6 @@ namespace CALORY
     }
     public partial class Diary : Window
     {
-        //public Product[] massiv;
         public List<Product> productsBase = new List<Product>();
         public static Diary instance;
         bool IsNeedSkip = false;
@@ -97,14 +96,14 @@ namespace CALORY
                 var jsr = new JsonTextReader(GroceryList);
                 productsBase = new JsonSerializer().Deserialize<List<Product>>(jsr);
             }
-            //massiv = new Product[productsBase.Count()];
+
             ComboBoxSearch.ItemsSource = productsBase;
-            using (var db = new ApplicationContext())
-            {
-                var user = db.Users.FirstOrDefault(x => x.login == Constants.login);
-                rskGoalTextBox.Text = user.rsk.ToString();
-                caloryTextBox.Text = user.rsk.ToString();
-            }
+            //using (var db = new ApplicationContext())
+            //{
+            //    var user = db.Users.FirstOrDefault(x => x.login == Constants.login);
+            //    rskGoalTextBox.Text = user.rsk.ToString();
+            //    caloryTextBox.Text = user.rsk.ToString();
+            //}
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
