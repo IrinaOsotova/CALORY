@@ -5,20 +5,45 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ControlTemplate x:Key="ArrowedItemsControl" TargetType="{x:Type ItemsControl}">
-            <Border>
-                <Grid>
-                    <Grid.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=mask}" />
-                    </Grid.OpacityMask>
-                    <Border
-                Name="mask"
-                Background="White"                     
-                BorderThickness="1"  
-                ScrollViewer.VerticalScrollBarVisibility="Visible"
-                CornerRadius="12" />
-                    <ItemsPresenter />
-                </Grid>
+            <Border Name="Border"
+                BorderThickness="1"
+                CornerRadius="12">
+                <Border.Background>
+                    <SolidColorBrush Color="White" />
+                </Border.Background>
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="White" />
+                </Border.BorderBrush>
+                <ScrollViewer Margin="5"
+                        Focusable="false">
+                    <StackPanel Margin="2"
+                        IsItemsHost="True" />
+                </ScrollViewer>
             </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"
+                   Value="false">
+                    <Setter TargetName="Border"
+                    Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="White" />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter TargetName="Border"
+                    Property="BorderBrush">
+                        <Setter.Value>
+                            <SolidColorBrush Color="White" />
+                        </Setter.Value>
+
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsGrouping"
+                   Value="true">
+                    <Setter Property="ScrollViewer.CanContentScroll"
+                    Value="false" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+         
         </ControlTemplate>
         <!--In this example, an implecit style for Calendar is defined elsewhere 
   in the application.  DatePickerCalendarStyle is based on the implicit 

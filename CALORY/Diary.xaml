@@ -16,38 +16,11 @@
                     <Image x:Name="logo" Height="92" Margin="31,89,666,0" VerticalAlignment="Top" Source="images\logo.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="exitApp" Height="28" Margin="32,485,738,0" VerticalAlignment="Top" Source="images\4115235-exit-logout-sign-out_114030.png" RenderTransformOrigin="0.5,0.772"/>
                     <Label Content="Завтрак" HorizontalAlignment="Left" Margin="183,105,0,371.4" VerticalAlignment="Center"  Height="52" Width="99" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
-                    <Label Content="Обед" HorizontalAlignment="Left" Margin="185,216,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
-                    <Label Content="Ужин" HorizontalAlignment="Left" Margin="185,327,0,0" VerticalAlignment="Top" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
+                    <Label Content="Обед" HorizontalAlignment="Left" Margin="185,217,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
+                    <Label Content="Ужин" HorizontalAlignment="Left" Margin="185,330,0,0" VerticalAlignment="Top" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
                     <Label x:Name="nameProject" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"/>
                     <Label x:Name="exitLabel" Content="Выход" HorizontalAlignment="Center" Margin="60,480,678,18.8" VerticalAlignment="Center"  Height="24" Width="55" FontSize="12" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="textBoxBreakfast" IsReadOnly ="True" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" BorderBrush="White" Foreground="Black" Padding="3,2,3,2">
-                        <TextBox.Template >
-                            <ControlTemplate >
-                                <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
-                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
-                                </Border>
-                            </ControlTemplate>
-                        </TextBox.Template>
-                    </TextBox>
-                    <TextBox x:Name="textBoxLunch" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
-                        <TextBox.Template>
-                            <ControlTemplate >
-                                <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
-                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
-                                </Border>
-                            </ControlTemplate>
-                        </TextBox.Template>
-                    </TextBox>
-                    <TextBox x:Name="textBoxDiner" IsReadOnly ="True" HorizontalAlignment="Left" Height="72" Margin="184,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="3,2,3,2">
-                        <TextBox.Template >
-                            <ControlTemplate >
-                                <Border Background="White" CornerRadius="12" Padding="2" BorderThickness="1" BorderBrush="White">
-                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
-                                </Border>
-                            </ControlTemplate>
-                        </TextBox.Template>
-                    </TextBox>
-                    <Button x:Name="AddBreakfast" Content="Добавить" HorizontalAlignment="Left" Margin="648,149,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White" Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" Click="AddBreakfast_Click" >
+                    <Button x:Name="AddBreakfast" Content="Добавить" HorizontalAlignment="Left" Margin="648,145,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White" Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" Click="AddBreakfast_Click" >
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -78,7 +51,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="AddDinner" Content="Добавить" HorizontalAlignment="Left" Margin="649,368,0,0" VerticalAlignment="Top" Width="103" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" Click="AddDinner_Click">
+                    <Button x:Name="AddDinner" Content="Добавить" HorizontalAlignment="Left" Margin="648,372,0,0" VerticalAlignment="Top" Width="103" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" Click="AddDinner_Click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -109,7 +82,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button x:Name="AddLunch" Content="Добавить" HorizontalAlignment="Left" Margin="649,260,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" Click="AddLunch_Click">
+                    <Button x:Name="AddLunch" Content="Добавить" HorizontalAlignment="Left" Margin="648,260,0,0" VerticalAlignment="Top" Width="104" Height="44" Background="#FFC597DE" Foreground="White"  Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" Click="AddLunch_Click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FFE0E0E0"/>
                         </Button.Effect>
@@ -182,13 +155,42 @@
                     <Label x:Name="kkl_Copy" Background="White" Content="Количество ккал на день:" HorizontalAlignment="Left" Margin="170,477,0,2.4" VerticalAlignment="Center" Height="49" Width="215" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <TextBox x:Name="rskGoalTextBox"  HorizontalAlignment="Left" Height="43" Margin="383,480,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <DatePicker x:Name="CalendarPiker" Margin="10,33,0,0" VerticalAlignment="Top" Background="{x:Null}" FontFamily="pack://application:,,,/Fonts/#Montserrat" BorderThickness="3,1,3,1" ClipToBounds="True" BorderBrush="{x:Null}" Height="39" Width="145" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left"  SelectedDateChanged="CalendarPiker_Changed" Focusable="False"/>
-                    <ListBox x:Name="ListBoxBreakfast" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="White" HorizontalAlignment="Left" Height="86" Margin="83,386,0,0" VerticalAlignment="Top" Width="442"  BorderBrush="White" Foreground="Black"  Template="{DynamicResource ArrowedItemsControl}" d:ItemsSource="{d:SampleData ItemCount=100}" ScrollViewer.CanContentScroll="True">
+                    <ListBox x:Name="listBoxBreakfast" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left" Height="72" Margin="184,135,0,0" VerticalAlignment="Top" Width="444"  BorderBrush="White" Foreground="Black"  Template="{DynamicResource ArrowedItemsControl}" d:ItemsSource="{d:SampleData ItemCount=100}" ScrollViewer.CanContentScroll="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}" TextWrapping="Wrap" Padding="5,5,0,0" />
+                                <TextBlock Text="{Binding}" TextWrapping="Wrap" Padding="0,1,0,0" />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <ListBox x:Name="listBoxLunch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left" Height="72" Margin="186,245,0,0" VerticalAlignment="Top" Width="442"  BorderBrush="White" Foreground="Black"  Template="{DynamicResource ArrowedItemsControl}" d:ItemsSource="{d:SampleData ItemCount=100}" ScrollViewer.CanContentScroll="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" TextWrapping="Wrap" Padding="0,1,0,0" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ListBox x:Name="listBoxDiner" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left" Height="72" Margin="185,360,0,0" VerticalAlignment="Top" Width="443"  BorderBrush="White" Foreground="Black"  Template="{DynamicResource ArrowedItemsControl}" d:ItemsSource="{d:SampleData ItemCount=100}" ScrollViewer.CanContentScroll="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" TextWrapping="Wrap" Padding="0,1,0,0" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button x:Name="buttonDeleteBreakfast" Content="Удалить" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteBreakfast_Click">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="buttonDeleteLunch" Content="Удалить" HorizontalAlignment="Left" Margin="548,222,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteLunch_Click">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="buttonDeleteDiner" Content="Удалить" HorizontalAlignment="Left" Margin="548,334,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteDiner_Click">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-74,362,0,-362.2" RenderTransformOrigin="0.554,0.656" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">

@@ -23,6 +23,7 @@ namespace CALORY
         public static AddWindow? instance;
         public Product current;
         public string _time;
+        private bool correct = false;
 
         public AddWindow(string time)
         {
@@ -33,19 +34,27 @@ namespace CALORY
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (_time == "Breakfast") Diary.instance.textBoxBreakfast.Text += current.ToStringFull();
-            if (_time == "Breakfast") Diary.instance.ListBoxBreakfast.Items.Add(current.ToStringFull());
-            if (_time == "Lunch") Diary.instance.textBoxLunch.Text += current.ToStringFull();
-            if (_time == "Diner") Diary.instance.textBoxDiner.Text += current.ToStringFull();
-            //Diary.instance.caloryTextBox.Text = $"{Math.Round(Convert.ToDouble(Diary.instance.caloryTextBox.Text), 2) - Math.Round(Convert.ToDouble(KalTextBox.Text),2)}";
+            if (correct)
+            {
+                if (_time == "Breakfast") Diary.instance.listBoxBreakfast.Items.Add(current.ToStringFull());
+                if (_time == "Lunch") Diary.instance.listBoxLunch.Items.Add(current.ToStringFull());
+                if (_time == "Diner") Diary.instance.listBoxDiner.Items.Add(current.ToStringFull());
 
-            Close();
+                //Diary.instance.caloryTextBox.Text = $"{Math.Round(Convert.ToDouble(Diary.instance.caloryTextBox.Text), 2) - Math.Round(Convert.ToDouble(KalTextBox.Text),2)}";
+
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка ввода!");
+                grams.Text = "";
+            }
         }
         private void grams_TextChanged_1(object sender, TextChangedEventArgs e)
         {           
             try
             {
-                if (grams.Text != "")
+                if (grams.Text != "" && grams.Text != "0")
                 {
                     current = ((Product)Diary.instance.ComboBoxSearch.SelectedItem).Copy();
                     current.gramm = int.Parse(grams.Text);
@@ -54,9 +63,11 @@ namespace CALORY
                     BelTextBox.Text = current.bel.ToString();
                     FatTextBox.Text = current.fats.ToString();
                     UglTextBox.Text = current.ugl.ToString();
+                    correct = true;
                 }
                 else
                 {
+                    correct = false;
                     KalTextBox.Text = BelTextBox.Text = FatTextBox.Text = UglTextBox.Text = "";
                 }
             }

@@ -143,11 +143,7 @@ namespace CALORY
             if (ComboBoxSearch.SelectedItem == null)
             {
                 MessageBox.Show("Продукт не выбран", "Поиск продуктов");
-            }
-            else if (textBoxBreakfast.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
-            {
-                MessageBox.Show("Данный продукт уже есть в списке");
-            }
+            }  
             else
             {
                 AddWindow SelectedProductsWindow = new AddWindow("Breakfast");
@@ -161,10 +157,6 @@ namespace CALORY
             {
                 MessageBox.Show("Продукт не выбран");
             }
-            else if (textBoxLunch.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
-            {
-                MessageBox.Show("Данный продукт уже есть в списке");
-            }
             else
             {
                 AddWindow SelectedProductsWindow = new AddWindow("Lunch");
@@ -177,11 +169,7 @@ namespace CALORY
             if (ComboBoxSearch.SelectedItem == null)
             {
                 MessageBox.Show("Продукт не выбран");
-            }
-            else if (textBoxDiner.Text.Contains(ComboBoxSearch.SelectedItem.ToString()))
-            {
-                MessageBox.Show("Данный продукт уже есть в списке");
-            }
+            }    
             else
             {
                 AddWindow SelectedProductsWindow = new AddWindow("Diner");
@@ -194,9 +182,34 @@ namespace CALORY
             {
                 CalendarPiker.Text = "";
             }
-            textBoxBreakfast.Text = "";
-            textBoxLunch.Text = "";
-            textBoxDiner.Text = "";
+        }
+
+        private void buttonDeleteBreakfast_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxBreakfast.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите продукт для удаления");
+            }
+            else listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
+
+        }
+
+        private void buttonDeleteLunch_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxLunch.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите продукт для удаления");
+            }
+            else listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
+        }
+
+        private void buttonDeleteDiner_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxDiner.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите продукт для удаления");
+            }
+            else listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex);
         }
     }
 }
