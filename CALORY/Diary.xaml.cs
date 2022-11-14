@@ -190,8 +190,16 @@ namespace CALORY
             {
                 MessageBox.Show("Выберите продукт для удаления");
             }
-            else listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
-
+            else 
+            {
+                using (var db = new ApplicationContext())
+                {
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login && x.food == ComboBoxSearch.SelectedItem.ToString());
+                    db.Meal.RemoveRange(deleting);
+                    db.SaveChanges();
+                }
+                listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
+            }
         }
 
         private void buttonDeleteLunch_Click(object sender, RoutedEventArgs e)
@@ -200,7 +208,16 @@ namespace CALORY
             {
                 MessageBox.Show("Выберите продукт для удаления");
             }
-            else listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
+            else
+            {
+                using (var db = new ApplicationContext())
+                {
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login && x.food == ComboBoxSearch.SelectedItem.ToString());
+                    db.Meal.RemoveRange(deleting);
+                    db.SaveChanges();
+                }
+                listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
+            }
         }
 
         private void buttonDeleteDiner_Click(object sender, RoutedEventArgs e)
@@ -209,7 +226,26 @@ namespace CALORY
             {
                 MessageBox.Show("Выберите продукт для удаления");
             }
-            else listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex);
+            else 
+            {
+                using (var db = new ApplicationContext())
+                {
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login && x.food == ComboBoxSearch.SelectedItem.ToString());
+                    db.Meal.RemoveRange(deleting);
+                    db.SaveChanges();
+                }
+                listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex); 
+            }
+
+        }
+
+        private void CalendarPiker_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            using (var db = new ApplicationContext())
+            {
+                var meal = db.Meal.FirstOrDefault(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login);
+                //var meal = db.Meal.ToList<Meal>(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login);
+            }
         }
     }
 }

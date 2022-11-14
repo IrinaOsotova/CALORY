@@ -38,16 +38,13 @@ namespace CALORY
             {
                 if (_time == "Breakfast")
                 {
-                    //var year = Diary.instance.CalendarPiker.;
-                    //int day = Diary.instance.CalendarPiker.
-                    //int month = Diary.instance.CalendarPiker.
                     Diary.instance.listBoxBreakfast.Items.Add(current.ToStringFull());
                     using (var db = new ApplicationContext())
                     {
                         db.Meal.Add(new Meal()
                         {
                             code = 0,
-                            data = Diary.instance.CalendarPiker.SelectedDate,
+                            day = Diary.instance.CalendarPiker.SelectedDate,
                             ration = _time,
                             food = Diary.instance.ComboBoxSearch.SelectedItem.ToString(),
                             gram = Convert.ToInt16(grams.Text),
@@ -57,8 +54,42 @@ namespace CALORY
                         db.SaveChanges();
                     }
                 }
-                if (_time == "Lunch") Diary.instance.listBoxLunch.Items.Add(current.ToStringFull());
-                if (_time == "Diner") Diary.instance.listBoxDiner.Items.Add(current.ToStringFull());
+                if (_time == "Lunch")
+                {
+                    Diary.instance.listBoxLunch.Items.Add(current.ToStringFull());
+                    using (var db = new ApplicationContext())
+                    {
+                        db.Meal.Add(new Meal()
+                        {
+                            code = 0,
+                            day = Diary.instance.CalendarPiker.SelectedDate,
+                            ration = _time,
+                            food = Diary.instance.ComboBoxSearch.SelectedItem.ToString(),
+                            gram = Convert.ToInt16(grams.Text),
+                            kkal = Convert.ToInt16(current.kkal),
+                            loginUser = Constants.login
+                        });
+                        db.SaveChanges();
+                    }
+                }
+                if (_time == "Diner")
+                {
+                    using (var db = new ApplicationContext())
+                    {
+                        db.Meal.Add(new Meal()
+                        {
+                            code = 0,
+                            day = Diary.instance.CalendarPiker.SelectedDate,
+                            ration = _time,
+                            food = Diary.instance.ComboBoxSearch.SelectedItem.ToString(),
+                            gram = Convert.ToInt16(grams.Text),
+                            kkal = Convert.ToInt16(current.kkal),
+                            loginUser = Constants.login
+                        });
+                        db.SaveChanges();
+                    }
+                    Diary.instance.listBoxDiner.Items.Add(current.ToStringFull());
+                }
 
                 //Diary.instance.caloryTextBox.Text = $"{Math.Round(Convert.ToDouble(Diary.instance.caloryTextBox.Text), 2) - Math.Round(Convert.ToDouble(KalTextBox.Text),2)}";
 

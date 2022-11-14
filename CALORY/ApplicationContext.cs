@@ -32,7 +32,7 @@ namespace CALORY
     {
         [Key]
         public Int16 code { get; set; }
-        public DateTime? data { get; set; }
+        public DateTime? day { get; set; }
         public string? ration { get; set; }
         public string? food { get; set; }
         public Int16 gram { get; set; }
