@@ -11,8 +11,8 @@ namespace CALORY
 {
     public class User
     {
-        
         [Key]
+        public Int16 id { get; set; }
         public string login { get; set; }
         public string name { get; set; }
         public string password { get; set; }
@@ -28,9 +28,22 @@ namespace CALORY
     }
 
 
+    public class Meal
+    {
+        [Key]
+        public Int16 code { get; set; }
+        public DateTime? data { get; set; }
+        public string? ration { get; set; }
+        public string? food { get; set; }
+        public Int16 gram { get; set; }
+        public Int16 kkal { get; set; }
+        public string? loginUser { get; set; }
+
+    }
     public class ApplicationContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Meal> Meal { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

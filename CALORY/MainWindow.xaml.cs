@@ -28,8 +28,7 @@ namespace CALORY
             }
             using (var db = new ApplicationContext())
             {
-                var user = db.Users
-                    .FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
+                var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
                 if (user == null)
                 {
                     MessageBox.Show("Не правильно введен логин или пароль");

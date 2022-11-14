@@ -98,12 +98,12 @@ namespace CALORY
             }
 
             ComboBoxSearch.ItemsSource = productsBase;
-            //using (var db = new ApplicationContext())
-            //{
-            //    var user = db.Users.FirstOrDefault(x => x.login == Constants.login);
-            //    rskGoalTextBox.Text = user.rsk.ToString();
-            //    caloryTextBox.Text = user.rsk.ToString();
-            //}
+            using (var db = new ApplicationContext())
+            {
+                var user = db.Users.FirstOrDefault(x => x.login == Constants.login);
+                rskGoalTextBox.Text = user.rsk.ToString();
+                caloryTextBox.Text = user.rsk.ToString();
+            }
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {

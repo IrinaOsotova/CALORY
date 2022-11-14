@@ -62,6 +62,7 @@ namespace CALORY
             {
                 db.Users.Add(new User()
                 {
+                    id = 0,
                     name = TextBoxNameRegistration.Text,
                     login = TextBoxLoginRegistration.Text,
                     password = Crypt.GetHashPassword(PasswordBoxRegistration.Password)

@@ -36,7 +36,27 @@ namespace CALORY
         {
             if (correct)
             {
-                if (_time == "Breakfast") Diary.instance.listBoxBreakfast.Items.Add(current.ToStringFull());
+                if (_time == "Breakfast")
+                {
+                    //var year = Diary.instance.CalendarPiker.;
+                    //int day = Diary.instance.CalendarPiker.
+                    //int month = Diary.instance.CalendarPiker.
+                    Diary.instance.listBoxBreakfast.Items.Add(current.ToStringFull());
+                    using (var db = new ApplicationContext())
+                    {
+                        db.Meal.Add(new Meal()
+                        {
+                            code = 0,
+                            data = Diary.instance.CalendarPiker.SelectedDate,
+                            ration = _time,
+                            food = Diary.instance.ComboBoxSearch.SelectedItem.ToString(),
+                            gram = Convert.ToInt16(grams.Text),
+                            kkal = Convert.ToInt16(current.kkal),
+                            loginUser = Constants.login
+                        }) ;
+                        db.SaveChanges();
+                    }
+                }
                 if (_time == "Lunch") Diary.instance.listBoxLunch.Items.Add(current.ToStringFull());
                 if (_time == "Diner") Diary.instance.listBoxDiner.Items.Add(current.ToStringFull());
 
