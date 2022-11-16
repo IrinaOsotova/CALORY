@@ -13,11 +13,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace CALORY
 {
     public class Product
     {
+        public static Product getProductFromMeal(Meal meal)
+        {
+            Product product = new Product("1","1","1","1","1","1");
+            product.name = meal.food;
+            product.gramm = meal.gram;
+            product.Recalculate();
+            return product;
+        }
         public string name { get; set; }
         public double kkal { get; set; }
         public double ugl { get; set; }
@@ -54,7 +63,7 @@ namespace CALORY
         {
             return name;
         }
-
+        
         public string ToStringFull()
         {
             return name + " " + gramm + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.";
@@ -178,6 +187,27 @@ namespace CALORY
         }
         private void CalendarPiker_Changed(object sender, SelectionChangedEventArgs e)
         {
+            listBoxLunch.Items.Clear();
+            listBoxDiner.Items.Clear();
+            listBoxBreakfast.Items.Clear();
+            var calendarDay = CalendarPiker.SelectedDate;
+            using (var db = new ApplicationContext())
+            {
+                foreach (var item in db.Meal.Where(x => x.day == calendarDay && x.ration == "Breakfast"))
+                {
+                    listBoxBreakfast.Items.Add(Product.getProductFromMeal(item).ToStringFull());
+                }
+
+                foreach (var item in db.Meal.Where(x => x.day == calendarDay && x.ration == "Diner"))
+                {
+                    listBoxDiner.Items.Add(Product.getProductFromMeal(item).ToStringFull());
+                }
+
+                foreach (var item in db.Meal.Where(x => x.day == calendarDay && x.ration == "Lunch"))
+                {
+                    listBoxLunch.Items.Add(Product.getProductFromMeal(item).ToStringFull());
+                }
+            }
             if(sender.ToString() == "")
             {
                 CalendarPiker.Text = "";
