@@ -13,7 +13,6 @@ namespace CALORY
         {
             InitializeComponent();
         }
-
         private void ButtonComeInAuthorization_Click(object sender, RoutedEventArgs e)
         {
             if (TextBoxLoginAuthorization.Text == "")
@@ -30,29 +29,23 @@ namespace CALORY
             {
                 var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
                 if (user == null)
-                {
                     MessageBox.Show("Не правильно введен логин или пароль");
-                }
                 else
                 {
-                    Constants.login = user.login;
-                    Diary window = new Diary();
+                    Diary window = new Diary(TextBoxLoginAuthorization.Text);
                     window.Show();
                     Close();
                 }
             }
         }
-        
         private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
             ShowPasswordA.Visibility = Visibility.Hidden;
             HidePasswordA.Visibility = Visibility;
             TextBoxShowPasswordA.Visibility = Visibility;
             TextBoxShowPasswordA.Text = PasswordBoxAuthorization.Password;
             PasswordBoxAuthorization.IsEnabled = false;
         }
-
         private void HidePasswordA_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ShowPasswordA.Visibility = Visibility;
@@ -60,7 +53,6 @@ namespace CALORY
             TextBoxShowPasswordA.Visibility = Visibility.Hidden;
             PasswordBoxAuthorization.IsEnabled = true;
             PasswordBoxAuthorization.Focus();
-
         }
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +60,5 @@ namespace CALORY
             window.Show();
             Close();
         }
-
-       
     }
 }

@@ -11,53 +11,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace CALORY
 {
-    /// <summary>
-    /// Логика взаимодействия для Registration.xaml
-    /// </summary>
     public partial class Registration : Window
     {
         public Registration()
         {
             InitializeComponent();
         }
-
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
-            #region examination
-            if (TextBoxNameRegistration.Text == "")
+            if (!Verification(TextBoxNameRegistration))
             {
-                MessageBox.Show("Введите имя");
+                MessageBox.Show("Имя должно соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры");
                 return;
             }
-            if (TextBoxLoginRegistration.Text == "")
+            if (!Verification(TextBoxLoginRegistration))
             {
-                MessageBox.Show("Введите логин");
+                MessageBox.Show("Логин должен соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры");
                 return;
             }
             if (IsUserExists())
                 return;
-            bool resultLogin = LoginVerification(TextBoxLoginRegistration);
-            if (resultLogin == false)
-            {
-                MessageBox.Show("Логин должен соответствовать следующим требованиям:\n 1.Длина не менее 5 символов \n 2.Cодержит только латинские буквы и цифры");
-                return;
-            }
-            if (PasswordBoxRegistration.Password == "")
-            {
-                MessageBox.Show("Введите пароль");
-                return;
-            }
-            bool resultPassword = PasswordVerification(PasswordBoxRegistration);
-            if(resultPassword == false)
+            if (!PasswordVerification(PasswordBoxRegistration))
             {
                 MessageBox.Show("Пароль должен соответствовать следующим требованиям:\n 1.Длина не менее 7 символов \n 2.Cодержит только латинские буквы и цифры \n 3.Cодержит хотя бы 1 букву верхнего регистра \n 4.Cодержит хотя бы 1 букву нижнего регистра \n 5.Cодержит хотя бы 1 цифру");
                 return;
             }
-            
-            #endregion
             using (var db = new ApplicationContext())
             {
                 db.Users.Add(new User()
@@ -69,73 +51,20 @@ namespace CALORY
                 });
                 db.SaveChanges();
             }
-            Diary window = new Diary();
+            Diary window = new Diary(TextBoxLoginRegistration.Text);
             window.Show();
             Close();
-
         }
-        public static char[] Numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-        public static char[] Uppercase = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-        public static char[] Lowercase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-
-        static bool LoginVerification(TextBox LoginBox)
+        static bool Verification(TextBox temp)
         {
-            string login = LoginBox.Text;
-            char[] CharLogin = login.ToCharArray();
-            bool result = true;
-            int countLogin = 0;
-            foreach (var item in CharLogin)
-            {
-                countLogin++;
-                if (Numbers.Contains(item) == false && Uppercase.Contains(item) == false && Lowercase.Contains(item) == false)
-                    result = false;
-            }
-            if (result == false || countLogin < 5)
-                return false;
-            return result;
-
+            string regex = "^[0-9A-zА-я]{3,}$";
+            return Regex.IsMatch(temp.Text, regex);
         }
         static bool PasswordVerification(PasswordBox passwordBox)
         {
-            string password = passwordBox.Password;
-            bool result = false;
-            bool presenceNumber = false;
-            bool presenceUppercase = false;
-            bool presenceLowercase = false;
-            char[] CharPassword = password.ToCharArray();
-            int countPassword = 0;
-            bool othersymbol = true;
-            foreach (var item in CharPassword)
-            {
-                bool num = CharVerification(item, Numbers);
-                if (num == true) presenceNumber = true;
-                bool up = CharVerification(item, Uppercase);
-                if (up == true) presenceUppercase = true;
-                bool low = CharVerification(item, Lowercase);
-                if (low == true) presenceLowercase = true;
-                countPassword++;
-                if (Numbers.Contains(item)==false && Uppercase.Contains(item) == false && Lowercase.Contains(item) == false)
-                    othersymbol = false;
-            }
-            if (countPassword > 6 && othersymbol && presenceNumber && presenceUppercase && presenceLowercase)
-                result = true;
-            return result;
+            string regex = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[0-9A-Za-z]{7,}$";
+            return Regex.IsMatch(passwordBox.Password, regex);
         }
-        static bool CharVerification(char symbol, char[] symbolArray)
-        {
-            bool result = false;
-            
-            foreach (var item in symbolArray)
-            {
-                if (symbol == item)
-                    result = true;
-            }
-            return result;
-        }
-        /// <summary>
-        /// Метод проверяет есть ли пользователь с таким логином в БД
-        /// </summary>
-        /// <returns></returns>
         public Boolean IsUserExists()
         {
             using (var db = new ApplicationContext())
@@ -156,7 +85,6 @@ namespace CALORY
             window.Show();
             Close();
         }
-
         private void ShowPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ShowPassword.Visibility = Visibility.Hidden;
@@ -165,7 +93,6 @@ namespace CALORY
             TextBoxShowPassword.Text = PasswordBoxRegistration.Password;
             PasswordBoxRegistration.IsEnabled = false;
         }
-
         private void HidePassword_MouseUp(object sender, MouseButtonEventArgs e)
         {
             ShowPassword.Visibility = Visibility;

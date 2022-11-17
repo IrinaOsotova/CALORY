@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="eye2.png" />
-    <None Remove="eyeclose2.png" />
     <None Remove="Fonts\Montserrat-Black.ttf" />
     <None Remove="Fonts\Montserrat-BlackItalic.ttf" />
     <None Remove="Fonts\Montserrat-Bold.ttf" />
@@ -58,8 +56,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="eye2.png" />
-    <Resource Include="eyeclose2.png" />
     <Resource Include="Fonts\Montserrat-Black.ttf" />
     <Resource Include="Fonts\Montserrat-BlackItalic.ttf" />
     <Resource Include="Fonts\Montserrat-Bold.ttf" />

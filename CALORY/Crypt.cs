@@ -15,10 +15,7 @@ namespace CALORY
             var hash = crypt.ComputeHash(Encoding.UTF8.GetBytes(password));
             var hashString = new StringBuilder();
             foreach (var x in hash)
-            {
                 hashString.Append(x.ToString("x2"));
-
-            }
 
             return hashString.ToString();
         }

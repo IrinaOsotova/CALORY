@@ -14,88 +14,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace CALORY
 {
-    public class Product
-    {
-        public static Product getProductFromMeal(Meal meal)
-        {
-            Product product = new Product("1","1","1","1","1","1");
-            product.name = meal.food;
-            product.gramm = meal.gram;
-            product.Recalculate();
-            return product;
-        }
-        public string name { get; set; }
-        public double kkal { get; set; }
-        public double ugl { get; set; }
-        public double fats { get; set; }
-        public double bel { get; set; }
-        private double gram = 100;
-        public double gramm
-        {
-            get
-            {
-                return gram;
-            }
-            set
-            {
-                if (value != 0)
-                {
-                    gram = value;
-                }
-            }
-        }
-        public void Recalculate()
-        {
-            kkal = Math.Round(kkal * gram / 100, 2);
-            bel = Math.Round(bel * gram / 100, 2);
-            ugl = Math.Round(ugl * gram / 100, 2);
-            fats = Math.Round(fats * gram / 100, 2);
-        }
-
-        public Product Copy()
-        {
-            return new Product(name, gram.ToString(), kkal.ToString(), bel.ToString(), fats.ToString(), ugl.ToString());
-        }
-        public override string ToString()
-        {
-            return name;
-        }
-        
-        public string ToStringFull()
-        {
-            return name + " " + gramm + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.";
-        }
-
-        public Product(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
-        {
-            if (_name != null)
-            {
-                name = _name;
-                kkal = double.Parse(_kkal);
-                bel = double.Parse(_bel);
-                fats = double.Parse(_fat);
-                ugl = double.Parse(_ugl);
-                gram = double.Parse(_gram);
-            }
-            else
-            {
-                name = "";
-
-            }
-        }
-    }
     public partial class Diary : Window
     {
         public List<Product> productsBase = new List<Product>();
-        public static Diary instance;
-        bool IsNeedSkip = false;
-        private Int16 rsk = 0;
-
-        public Diary()
+        public static Diary? instance;
+        private string Login;
+        public Diary(string login)
         {
+            Login = login;
             InitializeComponent();
             instance = this;
             CalendarPiker.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), DateTime.Now.AddDays(340)));
@@ -105,28 +35,12 @@ namespace CALORY
                 var jsr = new JsonTextReader(GroceryList);
                 productsBase = new JsonSerializer().Deserialize<List<Product>>(jsr);
             }
-
             ComboBoxSearch.ItemsSource = productsBase;
-            using (var db = new ApplicationContext())
-            {
-                var user = db.Users.FirstOrDefault(x => x.login == Constants.login);
-                rskGoalTextBox.Text = user.rsk.ToString();
-                caloryTextBox.Text = user.rsk.ToString();
-            }
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
-            if (CalendarPiker.Text == ""  && !IsNeedSkip)
-            {
-                IsNeedSkip = true;
-                ComboBoxSearch.Text = "";
-                IsNeedSkip = false;
-                MessageBox.Show("Выберите дату, в которую хотите внести продукты");              
-            }
             if (ComboBoxSearch.Text.Length > 2)
             {
-
                 var tb = (TextBox)e.OriginalSource;
                 if (tb.SelectionStart != 0)
                 {
@@ -145,137 +59,100 @@ namespace CALORY
                 }
             }
         }
-
-        private void AddBreakfast_Click(object sender, RoutedEventArgs e)
-        {
-           
-            if (ComboBoxSearch.SelectedItem == null)
-            {
-                MessageBox.Show("Продукт не выбран", "Поиск продуктов");
-            }  
-            else
-            {
-                AddWindow SelectedProductsWindow = new AddWindow("Breakfast");
-                SelectedProductsWindow.Show();
-            }
-        }
-
-        private void AddLunch_Click(object sender, RoutedEventArgs e)
+        public void Add(string timeMeal)
         {
             if (ComboBoxSearch.SelectedItem == null)
-            {
                 MessageBox.Show("Продукт не выбран");
-            }
             else
             {
-                AddWindow SelectedProductsWindow = new AddWindow("Lunch");
+                AddWindow SelectedProductsWindow = new AddWindow(timeMeal, Login);
                 SelectedProductsWindow.Show();
             }
         }
+        private void AddBreakfast_Click(object sender, RoutedEventArgs e){
+            Add("Breakfast"); }
+        
+        private void AddLunch_Click(object sender, RoutedEventArgs e){
+            Add("Lunch"); }
 
-        private void AddDinner_Click(object sender, RoutedEventArgs e)
-        {
-            if (ComboBoxSearch.SelectedItem == null)
-            {
-                MessageBox.Show("Продукт не выбран");
-            }    
-            else
-            {
-                AddWindow SelectedProductsWindow = new AddWindow("Diner");
-                SelectedProductsWindow.Show();
-            }
-        }
+        private void AddDinner_Click(object sender, RoutedEventArgs e){
+            Add("Diner"); }
+
         private void CalendarPiker_Changed(object sender, SelectionChangedEventArgs e)
         {
+            listBoxBreakfast.Items.Clear();
             listBoxLunch.Items.Clear();
             listBoxDiner.Items.Clear();
-            listBoxBreakfast.Items.Clear();
             var calendarDay = CalendarPiker.SelectedDate;
             using (var db = new ApplicationContext())
             {
-                foreach (var item in db.Meal.Where(x => x.day == calendarDay && x.ration == "Breakfast"))
-                {
-                    listBoxBreakfast.Items.Add(Product.getProductFromMeal(item).ToStringFull());
-                }
+                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Breakfast"))
+                    listBoxBreakfast.Items.Add(item.ToStringFull());
 
-                foreach (var item in db.Meal.Where(x => x.day == calendarDay && x.ration == "Diner"))
-                {
-                    listBoxDiner.Items.Add(Product.getProductFromMeal(item).ToStringFull());
-                }
+                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Diner"))
+                    listBoxDiner.Items.Add(item.ToStringFull());
 
-                foreach (var item in db.Meal.Where(x => x.day == calendarDay && x.ration == "Lunch"))
-                {
-                    listBoxLunch.Items.Add(Product.getProductFromMeal(item).ToStringFull());
-                }
+                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Lunch"))
+                    listBoxLunch.Items.Add(item.ToStringFull());
+                var user = db.Users.FirstOrDefault(x => x.login == Login);
+                rskGoalTextBox.Text = user.rsk.ToString();
+                double eaten = 0;
+                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay))
+                    eaten += item.kkal;
+                caloryTextBox.Text = (user.rsk - eaten).ToString();
             }
-            if(sender.ToString() == "")
-            {
-                CalendarPiker.Text = "";
-            }
+            if (sender.ToString() == "") CalendarPiker.Text = "";
         }
-
         private void buttonDeleteBreakfast_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxBreakfast.SelectedItems.Count == 0)
-            {
                 MessageBox.Show("Выберите продукт для удаления");
-            }
             else 
             {
                 using (var db = new ApplicationContext())
                 {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login && x.food == ComboBoxSearch.SelectedItem.ToString());
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == ComboBoxSearch.SelectedItem.ToString());
                     db.Meal.RemoveRange(deleting);
                     db.SaveChanges();
                 }
                 listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
             }
         }
-
         private void buttonDeleteLunch_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxLunch.SelectedItems.Count == 0)
-            {
                 MessageBox.Show("Выберите продукт для удаления");
-            }
             else
             {
                 using (var db = new ApplicationContext())
                 {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login && x.food == ComboBoxSearch.SelectedItem.ToString());
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == ComboBoxSearch.SelectedItem.ToString());
                     db.Meal.RemoveRange(deleting);
                     db.SaveChanges();
                 }
                 listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
             }
         }
-
         private void buttonDeleteDiner_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxDiner.SelectedItems.Count == 0)
-            {
                 MessageBox.Show("Выберите продукт для удаления");
-            }
             else 
             {
                 using (var db = new ApplicationContext())
                 {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login && x.food == ComboBoxSearch.SelectedItem.ToString());
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == ComboBoxSearch.SelectedItem.ToString());
                     db.Meal.RemoveRange(deleting);
                     db.SaveChanges();
                 }
                 listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex); 
             }
-
         }
-
-        private void CalendarPiker_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void ExitButtonDiary_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new ApplicationContext())
-            {
-                var meal = db.Meal.FirstOrDefault(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login);
-                //var meal = db.Meal.ToList<Meal>(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Constants.login);
-            }
+            MainWindow window = new MainWindow();
+            window.Show();
+            Close();
         }
     }
 }
