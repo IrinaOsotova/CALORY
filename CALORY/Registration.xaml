@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
+        Icon="/icons.png"
         Title="Registration" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat">
     <Grid Background="#FFF0F0F0" Cursor="Hand">
         <Label x:Name="Authorization" Content="Регистрация" HorizontalAlignment="Left" Margin="489,83,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" FontSize="24"/>
@@ -55,6 +56,7 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="Cursor" Value="Hand"/>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
@@ -68,8 +70,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Image x:Name="ShowPassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" Cursor="Hand" MouseDown="ShowPassword_MouseDown"/>
-        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18"  IsReadOnly="True" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0" TextWrapping="Wrap" Text="" Visibility="Hidden">
+        <Image x:Name="ShowPassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Cursor="Hand" MouseDown="ShowPassword_MouseDown" Source="/eyeclose2.png"/>
+        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18"  IsReadOnly="True" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0" TextWrapping="Wrap" Text="" Visibility="Hidden" Cursor="Hand">
             <TextBox.Template> 
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
+        Icon="/icons.png"
         Title="AddWindow" Height="416.4" Width="437.6" FontFamily="Montserrat" ResizeMode="NoResize">
     <Grid>
         <Label Content="Добавить в мой дневник" HorizontalAlignment="Left" Margin="47,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="169"/>
