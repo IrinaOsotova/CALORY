@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>images\logotype.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -46,6 +47,10 @@
     <None Remove="products.txt" />
     <None Remove="фонавторизация 1.png" />
     <None Remove="фонавторизация.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="images\logotype.ico" />
   </ItemGroup>
 
   <ItemGroup>
