@@ -44,22 +44,16 @@ namespace CALORY
             ComboBoxSearch.ItemsSource = productsBase;
 
             DateTime thisDay = DateTime.Today;;
-            double Kkal = 0;
-            double Kkal2 = 0;
-            double Kkal3 = 0;
-            double Kkal4 = 0;
-            double Kkal5 = 0;
-            double Kkal6 = 0;
-            double Kkal7 = 0;
+            double EatenKkal = 0;
             double[] values = { 0, 0, 0, 0, 0, 0, 0 };
             using (var db = new ApplicationContext())
             {
                 for (int i = 0; i < 7; i++)
                 {
                     foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
-                        Kkal += item.kkal;
-                    values[6-i] = Kkal;
-                    Kkal = 0;
+                        EatenKkal += item.kkal;
+                    values[6-i] = EatenKkal;
+                    EatenKkal = 0;
                 }
                 
             }
@@ -70,7 +64,6 @@ namespace CALORY
 
             Chart.Plot.XTicks(positions, labels);
             Chart.Plot.SetAxisLimits(yMin: 0);
-            //Chart.Plot.SaveFig("bar_labels.png");
             Chart.Refresh();
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
