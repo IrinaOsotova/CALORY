@@ -194,20 +194,89 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button x:Name="buttonDeleteBreakfast" Content="Удалить" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteBreakfast_Click">
-                        <Button.Background>
-                            <ImageBrush/>
-                        </Button.Background>
+                    <Button x:Name="buttonDeleteBreakfast" Content="Удалить" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteBreakfast_Click" Background="{x:Null}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
-                    <Button x:Name="buttonDeleteLunch" Content="Удалить" HorizontalAlignment="Left" Margin="548,222,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteLunch_Click">
-                        <Button.Background>
-                            <ImageBrush/>
-                        </Button.Background>
+                    <Button x:Name="buttonDeleteLunch" Content="Удалить" HorizontalAlignment="Left" Margin="548,222,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteLunch_Click" Background="{x:Null}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
-                    <Button x:Name="buttonDeleteDiner" Content="Удалить" HorizontalAlignment="Left" Margin="548,334,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteDiner_Click">
-                        <Button.Background>
-                            <ImageBrush/>
-                        </Button.Background>
+                    <Button x:Name="buttonDeleteDiner" Content="Удалить" HorizontalAlignment="Left" Margin="548,334,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="88" Cursor="Hand" Click="buttonDeleteDiner_Click" Background="{x:Null}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
                 </Grid>
             </TabItem>
