@@ -25,6 +25,7 @@ namespace CALORY
         public string _time;
         private bool correct = false;
         private string Login;
+       
 
         public AddWindow(string time, string login)
         {
@@ -62,18 +63,21 @@ namespace CALORY
                 if (_time == "Breakfast")
                 {
                     Diary.instance.listBoxBreakfast.Items.Add(current.ToStringFull());
+                    Diary.instance.productsBreakfast.Add(current);
                     AddDB(_time);
                     Close();
                 }
                 if (_time == "Lunch")
                 {
                     Diary.instance.listBoxLunch.Items.Add(current.ToStringFull());
+                    Diary.instance.productsLunch.Add(current);
                     AddDB(_time);
                     Close();
                 }
                 if (_time == "Diner")
                 {
                     Diary.instance.listBoxDiner.Items.Add(current.ToStringFull());
+                    Diary.instance.productsDiner.Add(current);
                     AddDB(_time);
                     Close();
                 }

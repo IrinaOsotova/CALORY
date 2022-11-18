@@ -302,6 +302,7 @@
                      Padding="5" 
                      BorderThickness="1" 
                      BorderBrush="White">
+                           
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">
                                     <VisualState x:Name="Normal" />
@@ -340,8 +341,8 @@
                                HorizontalContentAlignment="Center"                                                  
                                Grid.Row="0"
                                Text=""
+                               IsEnabled="False"
                                VerticalContentAlignment="Center" />
-
                                 <Grid x:Name="PART_DisabledVisual"
                   Grid.ColumnSpan="1"
                   Grid.Column="0"

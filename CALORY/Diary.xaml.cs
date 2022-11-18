@@ -20,6 +20,9 @@ namespace CALORY
 {
     public partial class Diary : Window
     {
+        public List<Product> productsBreakfast = new List<Product>();
+        public List<Product> productsLunch = new List<Product>();
+        public List<Product> productsDiner = new List<Product>();
         public List<Product> productsBase = new List<Product>();
         public static Diary? instance;
         private string Login;
@@ -66,11 +69,11 @@ namespace CALORY
             else
             {
                 AddWindow SelectedProductsWindow = new AddWindow(timeMeal, Login);
-                SelectedProductsWindow.Show();
+                SelectedProductsWindow.ShowDialog();
             }
         }
-        private void AddBreakfast_Click(object sender, RoutedEventArgs e){
-            Add("Breakfast"); }
+        private void AddBreakfast_Click(object sender, RoutedEventArgs e){          
+            Add("Breakfast");}
         
         private void AddLunch_Click(object sender, RoutedEventArgs e){
             Add("Lunch"); }
@@ -83,17 +86,29 @@ namespace CALORY
             listBoxBreakfast.Items.Clear();
             listBoxLunch.Items.Clear();
             listBoxDiner.Items.Clear();
+            productsBreakfast.Clear();
+            productsLunch.Clear();
+            productsDiner.Clear();
             var calendarDay = CalendarPiker.SelectedDate;
             using (var db = new ApplicationContext())
             {
                 foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Breakfast"))
+                {
                     listBoxBreakfast.Items.Add(item.ToStringFull());
+                    productsBreakfast.Add(item);
+                }
 
                 foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Diner"))
+                {
                     listBoxDiner.Items.Add(item.ToStringFull());
+                    productsDiner.Add(item);
+                }
 
                 foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Lunch"))
+                {
                     listBoxLunch.Items.Add(item.ToStringFull());
+                    productsLunch.Add(item);
+                }
                 var user = db.Users.FirstOrDefault(x => x.login == Login);
                 rskGoalTextBox.Text = user.rsk.ToString();
                 double eaten = 0;
@@ -103,6 +118,7 @@ namespace CALORY
             }
             if (sender.ToString() == "") CalendarPiker.Text = "";
         }
+
         private void buttonDeleteBreakfast_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxBreakfast.SelectedItems.Count == 0)
@@ -111,11 +127,13 @@ namespace CALORY
             {
                 using (var db = new ApplicationContext())
                 {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == ComboBoxSearch.SelectedItem.ToString());
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
                     db.Meal.RemoveRange(deleting);
                     db.SaveChanges();
                 }
+                productsBreakfast.RemoveAt(listBoxBreakfast.SelectedIndex);
                 listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
+                
             }
         }
         private void buttonDeleteLunch_Click(object sender, RoutedEventArgs e)
@@ -126,10 +144,11 @@ namespace CALORY
             {
                 using (var db = new ApplicationContext())
                 {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == ComboBoxSearch.SelectedItem.ToString());
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
                     db.Meal.RemoveRange(deleting);
                     db.SaveChanges();
                 }
+                productsLunch.RemoveAt(listBoxLunch.SelectedIndex);
                 listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
             }
         }
@@ -141,10 +160,11 @@ namespace CALORY
             {
                 using (var db = new ApplicationContext())
                 {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == ComboBoxSearch.SelectedItem.ToString());
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsDiner[listBoxDiner.SelectedIndex].name);
                     db.Meal.RemoveRange(deleting);
                     db.SaveChanges();
                 }
+                productsDiner.RemoveAt(listBoxDiner.SelectedIndex);
                 listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex); 
             }
         }

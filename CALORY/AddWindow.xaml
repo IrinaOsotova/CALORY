@@ -6,27 +6,146 @@
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
         Icon="/icons.png"
-        Title="AddWindow" Height="416.4" Width="437.6" FontFamily="Montserrat" ResizeMode="NoResize">
-    <Grid>
-        <Label Content="Добавить в мой дневник" HorizontalAlignment="Left" Margin="47,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="169"/>
-        <TextBox x:Name="TextBoxSelectedProduct" HorizontalAlignment="Left" Height="23" Margin="49,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="341" VerticalContentAlignment="Center"/>
-        <Label Content="Укажите колличество грамм:" HorizontalAlignment="Left" Margin="49,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="199"/>
-        <TextBox x:Name="grams" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="86,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"  VerticalContentAlignment="Center" TextChanged="grams_TextChanged_1" IsEnabled="True"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="49,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
-        <TextBox x:Name="BelTextBox"  HorizontalAlignment="Left" Height="41" Margin="223,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">
+        Title="AddWindow" Height="346" Width="425" FontFamily="Montserrat" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Cursor="Hand" Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="319*"/>
+            <ColumnDefinition Width="94*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Добавить в мой дневник:" HorizontalAlignment="Left" Margin="33,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="169"/>
+        <TextBox x:Name="TextBoxSelectedProduct" HorizontalAlignment="Left" Height="41" Margin="36,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="341" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" IsReadOnly="True" Grid.ColumnSpan="2" IsEnabled="False">
+            <TextBox.Template >
+            <ControlTemplate >
+                <Border>
+                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                </Border>
+            </ControlTemplate>
+            </TextBox.Template>
         </TextBox>
-        <TextBox x:Name="KalTextBox" HorizontalAlignment="Left" Height="41" Margin="49,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">
+        <Label Content="Укажите колличество грамм:" HorizontalAlignment="Left" Margin="33,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="199"/>
+        <TextBox x:Name="grams" HorizontalAlignment="Left" MaxLength="4" Height="32" Margin="70,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"  VerticalContentAlignment="Center" TextChanged="grams_TextChanged_1" IsEnabled="True" BorderBrush="{x:Null}" Background="#FFF0F0F0" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.054"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.248"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+            <TextBox.Template >
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
         </TextBox>
-        <TextBox x:Name="FatTextBox" HorizontalAlignment="Left" Height="41" Margin="48,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-        <TextBox x:Name="UglTextBox" HorizontalAlignment="Left" Height="41" Margin="223,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="253,144,0,0" VerticalAlignment="Top" Width="139" Height="30" Click="Button_Click"/>
-        <Button Content="Вернуться назад" HorizontalAlignment="Left" Margin="146,303,0,0" VerticalAlignment="Top" Width="139" Height="30" Click="Button_Click_1"/>
-        <Label Content="г" HorizontalAlignment="Left" Margin="217,147,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.042,1.742" Width="19"/>
-        <Image HorizontalAlignment="Left" Height="25" Margin="53,147,0,0" VerticalAlignment="Top" Width="24" Source="/plus_minus_icon_173627.png"/>
-        <Label Content="Ккал" HorizontalAlignment="Left" Margin="111,203,0,0" VerticalAlignment="Top"/>
-        <Label Content="Бел" HorizontalAlignment="Left" Margin="290,203,0,0" VerticalAlignment="Top"/>
-        <Label Content="Жир" HorizontalAlignment="Left" Margin="112,252,0,0" VerticalAlignment="Top"/>
-        <Label Content="Угл" HorizontalAlignment="Left" Margin="293,252,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BelTextBox"  HorizontalAlignment="Left" Height="41" Margin="209,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" IsReadOnly="True" Grid.ColumnSpan="2" IsEnabled="False">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.054"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.248"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+            <TextBox.Template >
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <TextBox x:Name="KalTextBox" HorizontalAlignment="Left" Height="41" Margin="35,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" IsReadOnly="True" IsEnabled="False">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.054"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.248"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+            <TextBox.Template >
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <TextBox x:Name="FatTextBox" HorizontalAlignment="Left" Height="41" Margin="34,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" IsReadOnly="True" IsEnabled="False">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.054"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.248"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+            <TextBox.Template >
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <TextBox x:Name="UglTextBox" HorizontalAlignment="Left" Height="41" Margin="209,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" IsReadOnly="True" Grid.ColumnSpan="2" IsEnabled="False">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.054"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.248"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+            <TextBox.Template >
+                <ControlTemplate >
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="233,135,0,0" VerticalAlignment="Top" Width="142" Height="34" Click="Button_Click" Cursor="Hand" Background="#FFC597DE" BorderBrush="#FFC597DE" Foreground="White" Grid.ColumnSpan="2">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFE0E0E0"/>
+            </Button.Effect>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label Content="г" HorizontalAlignment="Left" Margin="199,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.042,1.742" Width="19"/>
+        <Image HorizontalAlignment="Left" Height="25" Margin="36,140,0,0" VerticalAlignment="Top" Width="24" Source="/plus_minus_icon_173627.png"/>
+        <Label Content="Ккал" HorizontalAlignment="Left" Margin="97,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="Бел" HorizontalAlignment="Left" Margin="276,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="Жир" HorizontalAlignment="Left" Margin="98,240,0,0" VerticalAlignment="Top"/>
+        <Label Content="Угл" HorizontalAlignment="Left" Margin="279,240,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

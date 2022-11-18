@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>images\logotype.ico</ApplicationIcon>
+    <ApplicationIcon>images\log.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,6 +41,7 @@
     <None Remove="images\icons8-привод-96.png" />
     <None Remove="images\icons8-умножение-96.png" />
     <None Remove="images\logo.png" />
+    <None Remove="images\logotype.png" />
     <None Remove="images\plus_minus_icon_173627.png" />
     <None Remove="images\Rectangle 1.png" />
     <None Remove="plus_minus_icon_173627.png" />
@@ -50,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="images\logotype.ico" />
+    <Content Include="images\log.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,6 +101,7 @@
     <Resource Include="images\icons8-привод-96.png" />
     <Resource Include="images\icons8-умножение-96.png" />
     <Resource Include="images\logo.png" />
+    <Resource Include="images\logotype.png" />
     <Resource Include="images\plus_minus_icon_173627.png" />
     <Resource Include="images\Rectangle 1.png" />
     <Resource Include="plus_minus_icon_173627.png" />
