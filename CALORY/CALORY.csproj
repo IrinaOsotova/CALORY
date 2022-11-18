@@ -62,6 +62,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+    <PackageReference Include="ScottPlot.WPF" Version="4.1.59" />
   </ItemGroup>
 
   <ItemGroup>

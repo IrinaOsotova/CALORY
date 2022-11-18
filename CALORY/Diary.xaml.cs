@@ -26,19 +26,52 @@ namespace CALORY
         public List<Product> productsBase = new List<Product>();
         public static Diary? instance;
         private string Login;
+     
         public Diary(string login)
         {
             Login = login;
             InitializeComponent();
             instance = this;
-            CalendarPiker.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), DateTime.Now.AddDays(340)));
+            //CalendarPiker.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), DateTime.Now.AddDays(340)));
             CalendarPiker.SelectedDate = DateTime.Now;
+            CalendarPiker.DisplayDateStart = DateTime.Today.AddDays(-7);
+            CalendarPiker.DisplayDateEnd = DateTime.Now;
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
                 var jsr = new JsonTextReader(GroceryList);
                 productsBase = new JsonSerializer().Deserialize<List<Product>>(jsr);
             }
             ComboBoxSearch.ItemsSource = productsBase;
+
+            DateTime thisDay = DateTime.Today;;
+            double Kkal = 0;
+            double Kkal2 = 0;
+            double Kkal3 = 0;
+            double Kkal4 = 0;
+            double Kkal5 = 0;
+            double Kkal6 = 0;
+            double Kkal7 = 0;
+            double[] values = { 0, 0, 0, 0, 0, 0, 0 };
+            using (var db = new ApplicationContext())
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
+                        Kkal += item.kkal;
+                    values[6-i] = Kkal;
+                    Kkal = 0;
+                }
+                
+            }
+            double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
+            string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
+            Chart.Plot.AddBar(values, positions);
+            Chart.Plot.AddBar(values);
+
+            Chart.Plot.XTicks(positions, labels);
+            Chart.Plot.SetAxisLimits(yMin: 0);
+            //Chart.Plot.SaveFig("bar_labels.png");
+            Chart.Refresh();
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -111,12 +144,8 @@ namespace CALORY
                 }
                 var user = db.Users.FirstOrDefault(x => x.login == Login);
                 rskGoalTextBox.Text = user.rsk.ToString();
-                double eaten = 0;
-                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay))
-                    eaten += item.kkal;
-                caloryTextBox.Text = (user.rsk - eaten).ToString();
             }
-            if (sender.ToString() == "") CalendarPiker.Text = "";
+            //if (sender.ToString() == "") CalendarPiker.Text = "";
         }
 
         private void buttonDeleteBreakfast_Click(object sender, RoutedEventArgs e)
@@ -174,5 +203,6 @@ namespace CALORY
             window.Show();
             Close();
         }
+
     }
 }

@@ -125,8 +125,8 @@
                         </TextBox.Template>
                     </TextBox>
 
-                    <Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                    <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="714,477,-3,2.4" VerticalAlignment="Center"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
+                    <!--<Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>-->
+                    <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="454,477,0,0" VerticalAlignment="Top"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
                     <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="184,35,34,457" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}">
                     </ComboBox>
                     <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="187,42,0,0" Foreground="DarkGray" Width="52" FontFamily="pack://application:,,,/Fonts/#Montserrat Light">
@@ -328,13 +328,15 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">
+            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">
                 <Grid Margin="0,0,-0.2,0.4">
+                    <WpfPlot Name="Chart" Width="610" Margin="176,24,16,189"/>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="logo3" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
                     <Label x:Name="nameProject1" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"/>
 
                 </Grid>
+
             </TabItem>
         </TabControl>
 
