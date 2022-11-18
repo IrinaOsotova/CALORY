@@ -42,29 +42,6 @@ namespace CALORY
                 productsBase = new JsonSerializer().Deserialize<List<Product>>(jsr);
             }
             ComboBoxSearch.ItemsSource = productsBase;
-
-            DateTime thisDay = DateTime.Today;;
-            double EatenKkal = 0;
-            double[] values = { 0, 0, 0, 0, 0, 0, 0 };
-            using (var db = new ApplicationContext())
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
-                        EatenKkal += item.kkal;
-                    values[6-i] = EatenKkal;
-                    EatenKkal = 0;
-                }
-                
-            }
-            double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
-            string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
-            Chart.Plot.AddBar(values, positions);
-            Chart.Plot.AddBar(values);
-
-            Chart.Plot.XTicks(positions, labels);
-            Chart.Plot.SetAxisLimits(yMin: 0);
-            Chart.Refresh();
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -88,6 +65,7 @@ namespace CALORY
                 }
             }
         }
+
         public void Add(string timeMeal)
         {
             if (ComboBoxSearch.SelectedItem == null)
@@ -197,5 +175,48 @@ namespace CALORY
             Close();
         }
 
+        private void TabControlDiary_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TabControlDiary.SelectedIndex == 2)
+            {
+                DateTime thisDay = DateTime.Today; ;
+                double EatenKkal = 0;
+                double EatenUgl = 0;
+                double EatenFats = 0;
+                double EatenBel = 0;
+                double[] values = { 0, 0, 0, 0, 0, 0, 0 };
+                using (var db = new ApplicationContext())
+                {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
+                            EatenKkal += item.kkal;
+                        values[6 - i] = EatenKkal;
+                        EatenKkal = 0;
+                    }
+                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
+                        EatenUgl += item.ugl;
+                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
+                        EatenFats += item.fats;
+                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
+                        EatenBel += item.bel;
+
+                }
+                double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
+                string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
+                Chart.Plot.AddBar(values, positions);
+                Chart.Plot.AddBar(values);
+
+                Chart.Plot.XTicks(positions, labels);
+                Chart.Plot.SetAxisLimits(yMin: 0);
+
+                double[] values1 = { EatenUgl, EatenFats, EatenBel };
+                var pie = Donut.Plot.AddPie(values1);
+                pie.Explode = true;
+                pie.DonutSize = .4;
+
+                Chart.Refresh();
+            }
+        }
     }
 }

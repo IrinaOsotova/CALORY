@@ -9,10 +9,9 @@
         Icon="/icons.png"
         Title="Diary" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat">
     <Grid>
-
-        <TabControl Margin="0,-30,-7.6,-8.2" Height="557" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="#FFF0F0F0" >
-            <TabItem Header="Дневник" Style="{DynamicResource TabItemStyle}" Margin="30,274,-28,-274.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">
-                <Grid Margin="0,0,-0.2,0.4">
+        <TabControl x:Name="TabControlDiary" Margin="0,-30,-7.6,-8.2" Height="557" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="#FFF0F0F0" SelectionChanged="TabControlDiary_SelectionChanged">
+            <TabItem Header="Дневник" Style="{DynamicResource TabItemStyle}" Margin="30,274,-28,-274.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
+                <Grid Margin="0,0,-0.2,0.4" Cursor="Hand">
                     <Label x:Name="kkl_Copy1" Background="White" Content="" HorizontalAlignment="Left" Margin="149,477,0,-0.6" VerticalAlignment="Center"  Height="52" Width="644" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="logo" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
@@ -280,7 +279,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-70,362,0,-362.2" RenderTransformOrigin="0.554,0.656" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">
+            <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-70,362,0,-362.2" RenderTransformOrigin="0.554,0.656" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
                 <Grid Margin="0,0,-0.2,0.4">
                     <Button x:Name="ExitButtonDiary" Content="Выход из аккаунта" HorizontalAlignment="Left" Margin="381,449,0,0" VerticalAlignment="Top" Click="ExitButtonDiary_Click" Background="{x:Null}" Width="160" BorderBrush="{x:Null}" Height="36" />
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
@@ -328,9 +327,10 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat">
+            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
                 <Grid Margin="0,0,-0.2,0.4">
-                    <WpfPlot Name="Chart" Width="610" Margin="176,24,16,189"/>
+                    <WpfPlot Name="Donut" Margin="552,350,47,10"/>
+                    <WpfPlot Name="Chart" Width="610" Margin="176,24,16,189" Background="#FFF0F0F0"/>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="logo3" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
                     <Label x:Name="nameProject1" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"/>
