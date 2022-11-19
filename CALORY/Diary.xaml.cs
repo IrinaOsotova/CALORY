@@ -195,18 +195,17 @@ namespace CALORY
                         EatenKkal = 0;
                     }
                     foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
+                    {
                         EatenUgl += item.ugl;
-                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
                         EatenFats += item.fats;
-                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
                         EatenBel += item.bel;
-
+                    }
                 }
                 double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
                 string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
                 Chart.Plot.AddBar(values, positions);
-                Chart.Plot.AddBar(values);
-
+                var bar = Chart.Plot.AddBar(values);
+                bar.ShowValuesAboveBars = true;
                 Chart.Plot.XTicks(positions, labels);
                 Chart.Plot.SetAxisLimits(yMin: 0);
 
@@ -214,8 +213,13 @@ namespace CALORY
                 var pie = Donut.Plot.AddPie(values1);
                 pie.Explode = true;
                 pie.DonutSize = .4;
+                string[] labels1 = { "Углеводы", "Жиры", "Белки"}; 
+                pie.SliceLabels = labels1;
+                Donut.Plot.Legend();
 
+                //pie.ShowValues = true;
                 Chart.Refresh();
+                Donut.Refresh();
             }
         }
     }
