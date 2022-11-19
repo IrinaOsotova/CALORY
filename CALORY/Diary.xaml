@@ -125,7 +125,7 @@
                     </TextBox>
 
                     <!--<Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>-->
-                    <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="454,477,0,0" VerticalAlignment="Top"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
+                    <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="708,477,0,0" VerticalAlignment="Top"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
                     <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="184,35,34,457" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}">
                     </ComboBox>
                     <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="187,42,0,0" Foreground="DarkGray" Width="52" FontFamily="pack://application:,,,/Fonts/#Montserrat Light">
@@ -161,8 +161,8 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <Label x:Name="kkl_Copy" Background="White" Content="Количество ккал на день:" HorizontalAlignment="Left" Margin="170,477,0,2.4" VerticalAlignment="Center" Height="49" Width="215" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="rskGoalTextBox"  HorizontalAlignment="Left" Height="43" Margin="383,480,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
+                    <Label x:Name="kkl_Copy" Background="White" Content="Количество ккал на день:" HorizontalAlignment="Left" Margin="423,477,0,0" VerticalAlignment="Top" Height="49" Width="215" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="rskGoalTextBox"  HorizontalAlignment="Left" Height="43" Margin="637,480,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
                         <TextBox.Template >
                             <ControlTemplate >
                                 <Border>
@@ -329,16 +329,83 @@
             </TabItem>
             <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
                 <Grid Margin="0,0,-0.2,0.4">
-                    <WpfPlot Name="Donut" Margin="552,350,47,10"/>
-                    <WpfPlot Name="Chart" Width="610" Margin="176,24,16,189" Background="#FFF0F0F0"/>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
+                    <WpfPlot Name="Donut" Margin="563,336,36,24" Background="#FFF0F0F0" IsEnabled="False"/>
+                    <WpfPlot Name="Chart" Width="610" Margin="156,23,36,190" Background="#FFF0F0F0" IsEnabled="False"/>
                     <Image x:Name="logo3" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
                     <Label x:Name="nameProject1" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"/>
-
+                    <Ellipse HorizontalAlignment="Left" Height="23" Margin="209,380,0,0" VerticalAlignment="Top" Width="23" Fill="#FFB391D4"/>
+                    <Ellipse HorizontalAlignment="Left" Height="23" Margin="209,420,0,0" VerticalAlignment="Top" Width="23" Fill="#FFD97DA1"/>
+                    <Ellipse HorizontalAlignment="Left" Height="23" Margin="209,460,0,0" VerticalAlignment="Top" Width="23" Fill="#FFBE1D56"/>
+                    <Label Content="Углеводы:" HorizontalAlignment="Left" Margin="244,378,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Жиры:" HorizontalAlignment="Left" Margin="245,418,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Белки:" HorizontalAlignment="Left" Margin="244,458,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxUgl" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="-1.054"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="-0.248"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                        <TextBox.Template >
+                            <ControlTemplate >
+                                <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox x:Name="textBoxFats" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="-1.054"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="-0.248"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                        <TextBox.Template >
+                            <ControlTemplate >
+                                <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox x:Name="textBoxBel" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="-1.054"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="-0.248"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                        <TextBox.Template >
+                            <ControlTemplate >
+                                <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <Label Content="Употреблено калорий:" HorizontalAlignment="Left" Margin="390,16,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"/>
+                    <Label Content="Соотношение белков, углеводов и жиров:" HorizontalAlignment="Left" Margin="209,329,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" Padding="0,5,5,5"/>
+                    <Label x:Name="LabelDonutDay" Content="Data" HorizontalAlignment="Left" Margin="519,406,0,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-91.739"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
                 </Grid>
-
             </TabItem>
-        </TabControl>
 
+        </TabControl>
     </Grid>
 </Window>

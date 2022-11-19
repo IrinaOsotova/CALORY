@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
+using ScottPlot;
+using System.Drawing;
+using Color = System.Drawing.Color;
 
 namespace CALORY
 {
@@ -179,6 +182,8 @@ namespace CALORY
         {
             if (TabControlDiary.SelectedIndex == 2)
             {
+                Chart.Plot.Clear();
+                Donut.Plot.Clear();
                 DateTime thisDay = DateTime.Today; ;
                 double EatenKkal = 0;
                 double EatenUgl = 0;
@@ -208,13 +213,26 @@ namespace CALORY
                 bar.ShowValuesAboveBars = true;
                 Chart.Plot.XTicks(positions, labels);
                 Chart.Plot.SetAxisLimits(yMin: 0);
+                Chart.Plot.Style(ScottPlot.Style.Control);
+                bar.FillColor = Color.FromArgb(179, 145, 212);
+                Chart.Plot.Grid(lineStyle: LineStyle.Dot);
 
                 double[] values1 = { EatenUgl, EatenFats, EatenBel };
+                Donut.Plot.Style(ScottPlot.Style.Control);
                 var pie = Donut.Plot.AddPie(values1);
                 pie.Explode = true;
                 pie.DonutSize = .4;
-                string[] labels1 = { "Углеводы", "Жиры", "Белки"}; 
-                pie.SliceLabels = labels1;
+                //string[] labels1 = { "Углеводы", "Жиры", "Белки"}; 
+                //pie.SliceLabels = labels1;
+                Color color1 = Color.FromArgb(179, 145, 212);
+                Color color2 = Color.FromArgb(217, 125, 161);
+                Color color3 = Color.FromArgb(190, 29, 86);
+                pie.SliceFillColors = new Color[] { color1, color2, color3 };
+                textBoxUgl.Text = EatenUgl.ToString();
+                textBoxFats.Text = EatenFats.ToString();
+                textBoxBel.Text = EatenBel.ToString();
+
+                LabelDonutDay.Content = thisDay.ToString("d");
                 Donut.Plot.Legend();
 
                 //pie.ShowValues = true;
@@ -222,5 +240,7 @@ namespace CALORY
                 Donut.Refresh();
             }
         }
+
+
     }
 }
