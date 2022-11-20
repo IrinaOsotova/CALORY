@@ -279,7 +279,15 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-70,362,0,-362.2" RenderTransformOrigin="0.554,0.656" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
+            <TabItem Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-70,362,0,-362.2" RenderTransformOrigin="0.6,0.6" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.92" Y="-0.236"/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
                 <Grid Margin="0,0,-0.2,0.4">
                     <Button x:Name="ExitButtonDiary" Content="Выход из аккаунта" HorizontalAlignment="Left" Margin="381,449,0,0" VerticalAlignment="Top" Click="ExitButtonDiary_Click" Background="{x:Null}" Width="160" BorderBrush="{x:Null}" Height="36" />
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
@@ -327,10 +335,18 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
+            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand" RenderTransformOrigin="0.6,0.6">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="2" Y="0.421"/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
                 <Grid Margin="0,0,-0.2,0.4">
-                    <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
-                    <WpfPlot Name="Donut" Margin="563,336,36,24" Background="#FFF0F0F0" IsEnabled="False"/>
+                    <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772" OpacityMask="#FFF0F0F0"/>
+                    <WpfPlot Name="Donut" Margin="563,336,36,24"  IsEnabled="False" Visibility="Visible"/>
                     <WpfPlot Name="Chart" Width="610" Margin="156,23,36,190" Background="#FFF0F0F0" IsEnabled="False"/>
                     <Image x:Name="logo3" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
                     <Label x:Name="nameProject1" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"/>
@@ -392,20 +408,39 @@
                         </TextBox.Template>
                     </TextBox>
                     <Label Content="Употреблено калорий:" HorizontalAlignment="Left" Margin="390,16,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"/>
-                    <Label Content="Соотношение белков, углеводов и жиров:" HorizontalAlignment="Left" Margin="209,329,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" Padding="0,5,5,5"/>
-                    <Label x:Name="LabelDonutDay" Content="Data" HorizontalAlignment="Left" Margin="519,406,0,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.5,0.5">
+                    <Label x:Name="LabelDonut" Content="Соотношение белков, углеводов и жиров:" HorizontalAlignment="Left" Margin="209,341,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" Padding="0,5,5,5"/>
+                    <Label Content="Цель: " HorizontalAlignment="Left" Margin="12,452,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Padding="0,5,5,5"/>
+                    <TextBox x:Name="Goal" IsReadOnly ="True" HorizontalAlignment="Left" Margin="12,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="-1.054"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="-0.248"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                        <TextBox.Template >
+                            <ControlTemplate >
+                                <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <Image HorizontalAlignment="Left" Height="192" Margin="561,325,0,0" VerticalAlignment="Top" Width="279" Source="images/BorderDonut.png"/>
+                    <Image x:Name="ImageDonut" HorizontalAlignment="Left" Height="168" Margin="578,337,0,0" VerticalAlignment="Top" Width="191" Source="images/Donut.png" Visibility="Visible"/>
+                    <Label x:Name="LabelDonutDay" Content="Data" HorizontalAlignment="Left" Margin="624,491,0,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.5,0.5">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
-                                <RotateTransform Angle="-91.739"/>
+                                <RotateTransform Angle="0.677"/>
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
                 </Grid>
             </TabItem>
-
         </TabControl>
     </Grid>
 </Window>

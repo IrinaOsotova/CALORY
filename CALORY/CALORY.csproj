@@ -33,6 +33,9 @@
     <None Remove="images\2.png" />
     <None Remove="images\4.png" />
     <None Remove="images\4115235-exit-logout-sign-out_114030.png" />
+    <None Remove="images\Border.png" />
+    <None Remove="images\BorderDonut.png" />
+    <None Remove="images\Donut.png" />
     <None Remove="images\eye.png" />
     <None Remove="images\eyeclose.png" />
     <None Remove="images\icons8-изменить-пользователя-100.png" />
@@ -90,6 +93,9 @@
     <Resource Include="images\2.png" />
     <Resource Include="images\4.png" />
     <Resource Include="images\4115235-exit-logout-sign-out_114030.png" />
+    <Resource Include="images\Border.png" />
+    <Resource Include="images\BorderDonut.png" />
+    <Resource Include="images\Donut.png" />
     <Resource Include="images\eye.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -182,6 +182,7 @@ namespace CALORY
         {
             if (TabControlDiary.SelectedIndex == 2)
             {
+                Goal.Text = rskGoalTextBox.Text + " ккал";
                 Chart.Plot.Clear();
                 Donut.Plot.Clear();
                 DateTime thisDay = DateTime.Today; ;
@@ -217,6 +218,17 @@ namespace CALORY
                 bar.FillColor = Color.FromArgb(179, 145, 212);
                 Chart.Plot.Grid(lineStyle: LineStyle.Dot);
 
+                if (EatenUgl == 0 && EatenFats == 0 && EatenBel == 0)
+                {
+                    Donut.Visibility = Visibility.Hidden;
+                    ImageDonut.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Donut.Visibility = Visibility.Visible;
+                    ImageDonut.Visibility = Visibility.Hidden;
+                }
+                Donut.Visibility = Visibility;
                 double[] values1 = { EatenUgl, EatenFats, EatenBel };
                 Donut.Plot.Style(ScottPlot.Style.Control);
                 var pie = Donut.Plot.AddPie(values1);
@@ -240,7 +252,5 @@ namespace CALORY
                 Donut.Refresh();
             }
         }
-
-
     }
 }
