@@ -20,7 +20,7 @@ namespace CALORY
     public partial class InfoUser : Window
     {
         int numStage = 0;
-        bool? gender = null;
+        //bool? gender = null;
 
         //User virable
         bool? userGender = null;
@@ -28,19 +28,20 @@ namespace CALORY
         short userWeight = -1;
         short userHeight = -1;
         short userActivity = -1;
+        short userPurpose = -1;
         public InfoUser()
         {
             InitializeComponent();
             numStage = 0;
-            gender = null;
-            //add view windows
-
+            //gender = null;
+            //add view windows            
             tb.Visibility = Visibility.Hidden;
             label.Visibility = Visibility.Visible;
             label.Content = "Enter gender";
             GenderGrid.Visibility = Visibility.Visible;
             DateGrid.Visibility = Visibility.Hidden;
             AvtivityGrid.Visibility = Visibility.Hidden;
+            PurposeGrid.Visibility = Visibility.Hidden;
         }        
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -51,16 +52,17 @@ namespace CALORY
             {
                 case 0:
                     // пол (bool) 0 - ж 1 - м
-                    if (gender != null)
+                    if (userGender != null)
                     {
                         numStage++;
-                        userGender = gender.Value;
+                        //userGender = gender.Value;
                         GenderGrid.Visibility = Visibility.Hidden;
                         DateGrid.Visibility = Visibility.Visible;
                         label.Content = "Enter your date";                        
                     }
                     else
                     {
+                        MessageBox.Show("Выберите пол");
                         //chose gender
                     }
                     break;
@@ -78,6 +80,7 @@ namespace CALORY
                     else
                     {
                         //enter date
+                        MessageBox.Show("Выберите дату рождения");
                     }
                     break;
                 case 2:
@@ -104,6 +107,7 @@ namespace CALORY
                     else
                     {
                         //enter weight 20-400
+                        MessageBox.Show("Введите вес (от 20 до 400кг)");
                     }
                     break;
                 case 3:
@@ -133,29 +137,94 @@ namespace CALORY
                     else
                     {
                         //enter height 15-300
+                        MessageBox.Show("Введите рост (от 15 до 300см)");
                     }
                     break;
                 case 4:
-                    // активность 
-                    Diary window = new Diary();
-                    window.Show();
-                    Close();
-                    //Сохранение в бд
-                    break;                
+                    // активность                     
+                    if (userActivity != -1)
+                    {
+                        numStage++;
+                        AvtivityGrid.Visibility = Visibility.Hidden;
+                        PurposeGrid.Visibility = Visibility.Visible;
+                        label.Content = "Enter your purpose";
+                    }
+                    else
+                    {
+                        //chose activity
+                        MessageBox.Show("Выберите активность");
+                    }                    
+                    break;
+                case 5:
+                    //цель
+                    if (userPurpose != -1)
+                    {
+                        numStage++;                        
+                        PurposeGrid.Visibility = Visibility.Hidden;
+
+
+                        //Сохранение в бд
+                        Diary window = new Diary();
+                        window.Show();
+                        Close();
+                    }
+                    else
+                    {
+                        //chose Purpose
+                        MessageBox.Show("Выберите цель");
+                    }
+                    break;
                 default:
                     //Error
                     break;
             }
         }
 
+        #region ButtonEvent
         private void buttonMan_Click(object sender, RoutedEventArgs e)
         {
-            gender = true;
+            userGender = true;
         }
 
         private void buttonWoman_Click(object sender, RoutedEventArgs e)
         {
-            gender = false;
+            userGender = false;
         }
+
+        private void Activity1_Click(object sender, RoutedEventArgs e)
+        {
+            userActivity = 1;
+        }
+
+        private void Activity2_Click(object sender, RoutedEventArgs e)
+        {
+            userActivity = 2;
+        }
+
+        private void Activity3_Click(object sender, RoutedEventArgs e)
+        {
+            userActivity = 3;
+        }
+
+        private void Activity4_Click(object sender, RoutedEventArgs e)
+        {
+            userActivity = 4;
+        }
+
+        private void Purpose1_Click(object sender, RoutedEventArgs e)
+        {
+            userPurpose = 1;
+        }
+
+        private void Purpose2_Click(object sender, RoutedEventArgs e)
+        {
+            userPurpose = 2;
+        }
+
+        private void Purpose3_Click(object sender, RoutedEventArgs e)
+        {
+            userPurpose = 3;
+        }
+        #endregion
     }
 }

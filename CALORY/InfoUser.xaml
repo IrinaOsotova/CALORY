@@ -19,8 +19,18 @@
 
         </Grid>
         <Grid x:Name="AvtivityGrid">
-            
+            <Button x:Name="Activity1" Content="Activity1" HorizontalAlignment="Left" Margin="516,78,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity1_Click"/>
+            <Button x:Name="Activity2" Content="Activity2" HorizontalAlignment="Left" Margin="516,154,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity2_Click"/>
+            <Button x:Name="Activity3" Content="Activity3" HorizontalAlignment="Left" Margin="516,235,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity3_Click"/>
+            <Button x:Name="Activity4" Content="Activity4" HorizontalAlignment="Left" Margin="516,318,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity4_Click"/>
         </Grid>
+        <Grid x:Name="PurposeGrid">
+            <Button x:Name="Purpose1" Content="Purpose1" HorizontalAlignment="Left" Margin="694,130,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Purpose1_Click"/>
+            <Button x:Name="Purpose2" Content="Purpose2" HorizontalAlignment="Left" Margin="694,179,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Purpose2_Click"/>
+            <Button x:Name="Purpose3" Content="Purpose3" HorizontalAlignment="Left" Margin="694,232,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Purpose3_Click"/>
+
+        </Grid>
+
 
 
     </Grid>
