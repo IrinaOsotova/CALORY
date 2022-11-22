@@ -40,18 +40,8 @@ namespace CALORY
                 MessageBox.Show("Пароль должен соответствовать следующим требованиям:\n 1.Длина не менее 7 символов \n 2.Cодержит только латинские буквы и цифры \n 3.Cодержит хотя бы 1 букву верхнего регистра \n 4.Cодержит хотя бы 1 букву нижнего регистра \n 5.Cодержит хотя бы 1 цифру");
                 return;
             }
-            using (var db = new ApplicationContext())
-            {
-                db.Users.Add(new User()
-                {
-                    id = 0,
-                    name = TextBoxNameRegistration.Text,
-                    login = TextBoxLoginRegistration.Text,
-                    password = Crypt.GetHashPassword(PasswordBoxRegistration.Password)
-                });
-                db.SaveChanges();
-            }
-            Diary window = new Diary(TextBoxLoginRegistration.Text);
+            
+            InfoUser window = new(0, TextBoxNameRegistration.Text, TextBoxLoginRegistration.Text, Crypt.GetHashPassword(PasswordBoxRegistration.Password));
             window.Show();
             Close();
         }
