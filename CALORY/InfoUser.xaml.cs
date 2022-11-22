@@ -207,7 +207,7 @@ namespace CALORY
                             db.SaveChanges();
                         }
 
-                        Diary window = new Diary();
+                        Diary window = new Diary(Login);
                         window.Show();
                         Close();
                     }
