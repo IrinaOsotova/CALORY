@@ -9,10 +9,19 @@ namespace CALORY
 {
     public class User
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
+        //[Key]
+        public Int16 id { get; set; }
+        public string? login { get; set; }
+        public string? name { get; set; }
+        public string? password { get; set; }
+        public byte male { get; set; }
+        public DateTime Birth { get; set; }
+        public byte age { get; set; }
+        public byte growth { get; set; }
+        public byte weight { get; set; }
+        public byte activity { get; set; }
+        public byte goal { get; set; }
+        public Int16 rsk { get; set; }
 
     }
     public class ApplicationContext : DbContext

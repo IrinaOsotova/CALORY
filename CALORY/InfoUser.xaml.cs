@@ -25,10 +25,14 @@ namespace CALORY
         //User virable
         bool? userGender = null;
         DateTime? userBirthDate = null;
-        short userWeight = -1;
-        short userHeight = -1;
-        short userActivity = -1;
-        short userPurpose = -1;
+        byte? userWeight = null;
+        byte? userHeight = null;
+        byte? userActivity = null;
+        byte? userPurpose = null;
+        Int16 Id = 0;
+        string? Name;
+        string? Login;
+        string? Password;
         public InfoUser()
         {
             InitializeComponent();
@@ -42,6 +46,24 @@ namespace CALORY
             DateGrid.Visibility = Visibility.Hidden;
             AvtivityGrid.Visibility = Visibility.Hidden;
             PurposeGrid.Visibility = Visibility.Hidden;
+        }
+        public InfoUser(Int16 _id, string? _name, string? _login, string? _password)
+        {
+            InitializeComponent();
+            numStage = 0;
+            //gender = null;
+            //add view windows            
+            tb.Visibility = Visibility.Hidden;
+            label.Visibility = Visibility.Visible;
+            label.Content = "Enter gender";
+            GenderGrid.Visibility = Visibility.Visible;
+            DateGrid.Visibility = Visibility.Hidden;
+            AvtivityGrid.Visibility = Visibility.Hidden;
+            PurposeGrid.Visibility = Visibility.Hidden;
+            Id = _id;
+            Name = _name;
+            Login = _login;
+            Password = _password;
         }        
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -52,7 +74,7 @@ namespace CALORY
             {
                 case 0:
                     // пол (bool) 0 - ж 1 - м
-                    if (userGender != null)
+                    if (userGender.HasValue)
                     {
                         numStage++;
                         //userGender = gender.Value;
@@ -74,7 +96,7 @@ namespace CALORY
                         userBirthDate = DateUser.SelectedDate.Value;
                         DateGrid.Visibility = Visibility.Hidden;
                         tb.Visibility = Visibility.Visible;
-                        tb.Text = "от 20 до 400";
+                        tb.Text = "от 20 до 250";
                         label.Content = "Enter your weight";
                     }
                     else
@@ -97,17 +119,17 @@ namespace CALORY
                             }
                         }
                     }
-                    if (isOk) userWeight = short.Parse(tb.Text);
-                    if (isOk && userWeight <= 400 && userWeight >= 20)
+                    if (isOk) userWeight = byte.Parse(tb.Text);
+                    if (isOk && userWeight.Value <= 250 && userWeight.Value >= 20)                                   
                     {
                         numStage++;                        
-                        tb.Text = "от 15 до 300";
+                        tb.Text = "от 15 до 250";
                         label.Content = "Enter your height";
                     }
                     else
                     {
-                        //enter weight 20-400
-                        MessageBox.Show("Введите вес (от 20 до 400кг)");
+                        //enter weight 20-250
+                        MessageBox.Show("Введите вес (от 20 до 250кг)");
                     }
                     break;
                 case 3:
@@ -125,11 +147,11 @@ namespace CALORY
                             }
                         }
                     }
-                    if (isOk) userHeight = short.Parse(tb.Text);
-                    if (isOk && userHeight <= 300 && userHeight >= 15)
+                    if (isOk) userHeight = byte.Parse(tb.Text);
+                    if (isOk && userHeight.Value <= 250 && userHeight.Value >= 15)                                       
                     {
                         numStage++;
-                        userHeight = short.Parse(tb.Text);
+                        userHeight = byte.Parse(tb.Text);
                         tb.Visibility = Visibility.Hidden;
                         AvtivityGrid.Visibility = Visibility.Visible;
                         label.Content = "Enter your activity";
@@ -137,12 +159,12 @@ namespace CALORY
                     else
                     {
                         //enter height 15-300
-                        MessageBox.Show("Введите рост (от 15 до 300см)");
+                        MessageBox.Show("Введите рост (от 15 до 250см)");
                     }
                     break;
                 case 4:
                     // активность                     
-                    if (userActivity != -1)
+                    if (userActivity.HasValue)
                     {
                         numStage++;
                         AvtivityGrid.Visibility = Visibility.Hidden;
@@ -157,13 +179,34 @@ namespace CALORY
                     break;
                 case 5:
                     //цель
-                    if (userPurpose != -1)
+                    if (userPurpose.HasValue)
                     {
                         numStage++;                        
                         PurposeGrid.Visibility = Visibility.Hidden;
 
 
                         //Сохранение в бд
+
+                        using (var db = new ApplicationContext())
+                        {
+                            db.Users.Add(new User()
+                            {
+                                id = Id,
+                                name = Name,
+                                login = Login,
+                                password = Password,
+                                activity = userActivity.Value,
+                                growth = userHeight.Value,
+                                male = (byte)((userGender.Value) ? 1 : 0),
+                                Birth = userBirthDate.Value,
+                                goal = userPurpose.Value,
+                                weight = userWeight.Value,
+                                rsk = CalculateRSK(),
+                                age = (byte)(DateTime.Now.Year - userBirthDate.Value.Year)
+                            });
+                            db.SaveChanges();
+                        }
+
                         Diary window = new Diary();
                         window.Show();
                         Close();
@@ -178,6 +221,22 @@ namespace CALORY
                     //Error
                     break;
             }
+        }
+        private Int16 CalculateRSK()
+        {
+            double Weight = userWeight.Value;
+            double Age = DateTime.Now.Year - userBirthDate.Value.Year;
+            double Height = userHeight.Value;
+            double result = 10.0 * Weight + 6.25 * Height - 5.0 * Age;
+            if(userGender.Value) result += 5.0;
+            else result -= 161.0;
+            if (userActivity.Value == 1) result *= 1.2;
+            if (userActivity.Value == 2) result *= 1.375;
+            if (userActivity.Value == 3) result *= 1.725;
+            if (userActivity.Value == 4) result *= 1.9;
+            if (userPurpose.Value == 1) result += 250.0;
+            if (userPurpose.Value == 3) result -= 250.0;
+            return (Int16)Math.Round(result);
         }
 
         #region ButtonEvent
