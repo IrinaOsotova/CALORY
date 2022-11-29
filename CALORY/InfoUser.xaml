@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="InfoUser" Height="450" Width="800">
     <Grid>
-        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="495,237,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028" Click="NextButton_Click"/>
-        <TextBox x:Name="tb" HorizontalAlignment="Left" Margin="292,187,0,0" TextWrapping="Wrap" Text="Enter your name" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="Name:" HorizontalAlignment="Left" Margin="292,141,0,0" VerticalAlignment="Top"/>
-        <Grid x:Name="GenderGrid">
+        <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="470,274,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028" Click="NextButton_Click"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="94,274,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028" Width="66" Click="BackButton_Click"/>
+        <TextBox x:Name="tb1" MaxLength="3" HorizontalAlignment="Left" Margin="292,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="tb1_PreviewTextInput"/>
+        <TextBox x:Name="tb2" MaxLength="3" HorizontalAlignment="Left" Margin="292,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="tb2_PreviewTextInput"/>
+        <Label x:Name="label1" Content="Name:" HorizontalAlignment="Left" Margin="292,141,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Name:" HorizontalAlignment="Left" Margin="292,321,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="GenderDateGrid">
             <Button x:Name="buttonMan" Content="М" HorizontalAlignment="Left" Margin="268,237,0,0" VerticalAlignment="Top" Height="63" Width="68" Click="buttonMan_Click"/>
             <Button x:Name="buttonWoman" Content="Ж" HorizontalAlignment="Center" Margin="0,237,0,0" VerticalAlignment="Top" Height="63" Width="68" Click="buttonWoman_Click" />
-        </Grid>
-        <Grid x:Name="DateGrid">
-            <DatePicker x:Name="DateUser" HorizontalAlignment="Left" Margin="131,193,0,0" VerticalAlignment="Top"/>
-
+            <DatePicker x:Name="DateUser" HorizontalAlignment="Left" Margin="302,381,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid x:Name="AvtivityGrid">
             <Button x:Name="Activity1" Content="Activity1" HorizontalAlignment="Left" Margin="516,78,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity1_Click"/>

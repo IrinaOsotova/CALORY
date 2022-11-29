@@ -19,14 +19,13 @@ namespace CALORY
     /// </summary>
     public partial class InfoUser : Window
     {
-        int numStage = 0;
-        //bool? gender = null;
+        int numStage = 0;       
 
         //User virable
         bool? userGender = null;
         DateTime? userBirthDate = null;
-        byte? userWeight = null;
-        byte? userHeight = null;
+        int? userWeight = null;
+        int? userHeight = null;
         byte? userActivity = null;
         byte? userPurpose = null;
         Int16 Id = 0;
@@ -36,30 +35,32 @@ namespace CALORY
         public InfoUser()
         {
             InitializeComponent();
-            numStage = 0;
-            //gender = null;
-            //add view windows            
-            tb.Visibility = Visibility.Hidden;
-            label.Visibility = Visibility.Visible;
-            label.Content = "Enter gender";
-            GenderGrid.Visibility = Visibility.Visible;
-            DateGrid.Visibility = Visibility.Hidden;
+            numStage = 0;                       
+            tb1.Visibility = Visibility.Hidden;
+            tb2.Visibility = Visibility.Hidden;
+            label1.Visibility = Visibility.Visible;
+            label2.Visibility = Visibility.Visible;
+            label1.Content = "Выберите пол";
+            label2.Content = "Выберите дату рождения";
+            GenderDateGrid.Visibility = Visibility.Visible;          
             AvtivityGrid.Visibility = Visibility.Hidden;
             PurposeGrid.Visibility = Visibility.Hidden;
+            DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
         }
         public InfoUser(Int16 _id, string? _name, string? _login, string? _password)
         {
             InitializeComponent();
             numStage = 0;
-            //gender = null;
-            //add view windows            
-            tb.Visibility = Visibility.Hidden;
-            label.Visibility = Visibility.Visible;
-            label.Content = "Enter gender";
-            GenderGrid.Visibility = Visibility.Visible;
-            DateGrid.Visibility = Visibility.Hidden;
+            tb1.Visibility = Visibility.Hidden;
+            tb2.Visibility = Visibility.Hidden;
+            label1.Visibility = Visibility.Visible;
+            label2.Visibility = Visibility.Visible;
+            label1.Content = "Выберите пол";
+            label2.Content = "Выберите дату рождения";
+            GenderDateGrid.Visibility = Visibility.Visible;
             AvtivityGrid.Visibility = Visibility.Hidden;
             PurposeGrid.Visibility = Visibility.Hidden;
+            DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
             Id = _id;
             Name = _name;
             Login = _login;
@@ -74,119 +75,103 @@ namespace CALORY
             {
                 case 0:
                     // пол (bool) 0 - ж 1 - м
-                    if (userGender.HasValue)
+                    // дата рождения (data) проверка на разумность                    
+                    if (!userGender.HasValue && !DateUser.SelectedDate.HasValue)
                     {
-                        numStage++;
-                        //userGender = gender.Value;
-                        GenderGrid.Visibility = Visibility.Hidden;
-                        DateGrid.Visibility = Visibility.Visible;
-                        label.Content = "Enter your date";                        
+                        MessageBox.Show("Выберите пол и дату рождения");
+                        break;
+                    }
+                    if (userGender.HasValue)
+                    {                        
+                        if (DateUser.SelectedDate.HasValue)
+                        {
+                            numStage++;
+                            userBirthDate = DateUser.SelectedDate.Value;
+                            GenderDateGrid.Visibility = Visibility.Hidden;
+
+                            tb1.Visibility = Visibility.Visible;
+                            tb2.Visibility = Visibility.Visible;                            
+                            label1.Content = "Введите ваш вес (от 20 до 250)";
+                            label2.Content = "Введите ваш рост (от 20 до 250)";
+                        }
+                        else
+                        {                            
+                            MessageBox.Show("Выберите дату рождения");
+                        }                                             
                     }
                     else
                     {
-                        MessageBox.Show("Выберите пол");
-                        //chose gender
+                        MessageBox.Show("Выберите пол");                        
                     }
                     break;
                 case 1:
-                    // дата рождения (data) проверка на разумность
-                    if (DateUser.SelectedDate.HasValue)
+                    if (tb1.Text != "") userWeight = int.Parse(tb1.Text);
+                    else userWeight = null;
+                    if (tb2.Text != "") userHeight = int.Parse(tb2.Text);
+                    else userHeight = null;
+                    if (!userWeight.HasValue && !userHeight.HasValue)
                     {
-                        numStage++;
-                        userBirthDate = DateUser.SelectedDate.Value;
-                        DateGrid.Visibility = Visibility.Hidden;
-                        tb.Visibility = Visibility.Visible;
-                        tb.Text = "от 20 до 250";
-                        label.Content = "Enter your weight";
+                        MessageBox.Show("Введите ваш вес и рост");
+                        break;
                     }
-                    else
+                    if (userWeight.HasValue)
                     {
-                        //enter date
-                        MessageBox.Show("Выберите дату рождения");
-                    }
-                    break;
-                case 2:
-                    // вес (short) 20-400                    
-                    isOk = false;                    
-                    if (tb.Text.Length < 4)
-                    {
-                        isOk = true;
-                        foreach (var item in tb.Text)
+                        if(userWeight.Value < 20 || userWeight.Value > 250)
                         {
-                            if (!Numbers.Contains(item)) {
-                                isOk = false;
-                                break;
-                            }
+                            MessageBox.Show("Допустимый вес от 20 до 250");
+                            tb1.Text = "";
+                            break;
                         }
-                    }
-                    if (isOk) userWeight = byte.Parse(tb.Text);
-                    if (isOk && userWeight.Value <= 250 && userWeight.Value >= 20)                                   
-                    {
-                        numStage++;                        
-                        tb.Text = "от 15 до 250";
-                        label.Content = "Enter your height";
-                    }
-                    else
-                    {
-                        //enter weight 20-250
-                        MessageBox.Show("Введите вес (от 20 до 250кг)");
-                    }
-                    break;
-                case 3:
-                    // рост (short) 15-300                    
-                    isOk = false;
-                    if (tb.Text.Length < 4)
-                    {
-                        isOk = true;
-                        foreach (var item in tb.Text)
+                        if (userHeight.HasValue)
                         {
-                            if (!Numbers.Contains(item))
+                            if (userHeight.Value < 20 || userHeight.Value > 250)
                             {
-                                isOk = false;
+                                MessageBox.Show("Допустимый рост от 20 до 250");
+                                tb2.Text = "";
                                 break;
                             }
+                            numStage++;
+                            AvtivityGrid.Visibility = Visibility.Visible;
+                            tb1.Visibility= Visibility.Hidden;
+                            tb2.Visibility= Visibility.Hidden;
+                            label1.Content = "Выберите активность";
+                            label2.Visibility = Visibility.Hidden;                            
                         }
-                    }
-                    if (isOk) userHeight = byte.Parse(tb.Text);
-                    if (isOk && userHeight.Value <= 250 && userHeight.Value >= 15)                                       
-                    {
-                        numStage++;
-                        userHeight = byte.Parse(tb.Text);
-                        tb.Visibility = Visibility.Hidden;
-                        AvtivityGrid.Visibility = Visibility.Visible;
-                        label.Content = "Enter your activity";
+                        else
+                        {
+                            MessageBox.Show("Введите ваш рост");
+                        }
                     }
                     else
                     {
-                        //enter height 15-300
-                        MessageBox.Show("Введите рост (от 15 до 250см)");
+                        MessageBox.Show("Введите ваш вес");
                     }
-                    break;
-                case 4:
+                    break;                    
+                case 2:
                     // активность                     
                     if (userActivity.HasValue)
                     {
                         numStage++;
                         AvtivityGrid.Visibility = Visibility.Hidden;
                         PurposeGrid.Visibility = Visibility.Visible;
-                        label.Content = "Enter your purpose";
+                        label1.Content = "Выберите цель";
                     }
                     else
-                    {
-                        //chose activity
+                    {                        
                         MessageBox.Show("Выберите активность");
                     }                    
                     break;
-                case 5:
+                case 3:
                     //цель
                     if (userPurpose.HasValue)
                     {
                         numStage++;                        
                         PurposeGrid.Visibility = Visibility.Hidden;
-
+                        label1.Visibility = Visibility.Hidden;
+                        NextButton.IsEnabled = false;
+                        BackButton.IsEnabled = false;
 
                         //Сохранение в бд
-
                         using (var db = new ApplicationContext())
                         {
                             db.Users.Add(new User()
@@ -196,11 +181,11 @@ namespace CALORY
                                 login = Login,
                                 password = Password,
                                 activity = userActivity.Value,
-                                growth = userHeight.Value,
+                                growth = (byte)userHeight.Value,
                                 male = (byte)((userGender.Value) ? 1 : 0),
                                 Birth = userBirthDate.Value,
                                 goal = userPurpose.Value,
-                                weight = userWeight.Value,
+                                weight = (byte)userWeight.Value,
                                 rsk = CalculateRSK(),
                                 age = (byte)(DateTime.Now.Year - userBirthDate.Value.Year)
                             });
@@ -212,8 +197,7 @@ namespace CALORY
                         Close();
                     }
                     else
-                    {
-                        //chose Purpose
+                    {                        
                         MessageBox.Show("Выберите цель");
                     }
                     break;
@@ -222,6 +206,47 @@ namespace CALORY
                     break;
             }
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {            
+            if (numStage > 0) numStage--;
+            switch (numStage)
+            {
+                case 0:
+                    //DateUser.SelectedDate = userBirthDate;
+                    tb1.Visibility = Visibility.Hidden;
+                    tb2.Visibility = Visibility.Hidden;
+                    label1.Visibility = Visibility.Visible;
+                    label2.Visibility = Visibility.Visible;
+                    label1.Content = "Выберите пол";
+                    label2.Content = "Выберите дату рождения";
+                    GenderDateGrid.Visibility = Visibility.Visible;
+                    AvtivityGrid.Visibility = Visibility.Hidden;
+                    PurposeGrid.Visibility = Visibility.Hidden;
+                    break;
+                case 1:                    
+                    AvtivityGrid.Visibility = Visibility.Hidden;
+                    tb1.Visibility = Visibility.Visible;
+                    tb2.Visibility = Visibility.Visible;
+                    //tb1.Text = userWeight.ToString();
+                    //tb2.Text = userHeight.ToString();
+                    label1.Content = "Введите ваш вес (от 20 до 250)";
+                    label2.Content = "Введите ваш рост (от 20 до 250)";
+                    break;
+                case 2:
+                    PurposeGrid.Visibility = Visibility.Hidden;
+                    AvtivityGrid.Visibility = Visibility.Visible;
+                    tb1.Visibility = Visibility.Hidden;
+                    tb2.Visibility = Visibility.Hidden;
+                    label1.Content = "Выберите активность";
+                    label2.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    //Error
+                    break;
+            }
+        }
+
         private Int16 CalculateRSK()
         {
             double Weight = userWeight.Value;
@@ -243,47 +268,92 @@ namespace CALORY
         private void buttonMan_Click(object sender, RoutedEventArgs e)
         {
             userGender = true;
+            buttonMan.Content = "М*";
+            buttonWoman.Content = "Ж";
         }
 
         private void buttonWoman_Click(object sender, RoutedEventArgs e)
         {
             userGender = false;
+            buttonMan.Content = "М";
+            buttonWoman.Content = "Ж*";
         }
 
         private void Activity1_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 1;
+            Activity1.Content = "Activity1*";
+            Activity2.Content = "Activity2";
+            Activity3.Content = "Activity3";
+            Activity4.Content = "Activity4";
         }
 
         private void Activity2_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 2;
+            Activity1.Content = "Activity1";
+            Activity2.Content = "Activity2*";
+            Activity3.Content = "Activity3";
+            Activity4.Content = "Activity4";
         }
 
         private void Activity3_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 3;
+            Activity1.Content = "Activity1";
+            Activity2.Content = "Activity2";
+            Activity3.Content = "Activity3*";
+            Activity4.Content = "Activity4";
         }
 
         private void Activity4_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 4;
+            Activity1.Content = "Activity1";
+            Activity2.Content = "Activity2";
+            Activity3.Content = "Activity3";
+            Activity4.Content = "Activity4*";
         }
 
         private void Purpose1_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 1;
+            Purpose1.Content = "Purpose1*";
+            Purpose2.Content = "Purpose2";
+            Purpose3.Content = "Purpose3";
         }
 
         private void Purpose2_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 2;
+            Purpose1.Content = "Purpose1";
+            Purpose2.Content = "Purpose2*";
+            Purpose3.Content = "Purpose3";
         }
 
         private void Purpose3_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 3;
+            Purpose1.Content = "Purpose1";
+            Purpose2.Content = "Purpose2";
+            Purpose3.Content = "Purpose3*";
         }
         #endregion
+
+        private void tb1_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tb2_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
