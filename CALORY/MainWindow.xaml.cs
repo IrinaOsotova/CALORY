@@ -59,13 +59,6 @@ namespace CALORY
             Registration window = new Registration();
             window.Show();
             Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            InfoUser window = new();
-            window.Show();
-            Close();
-        }
+        }      
     }
 }

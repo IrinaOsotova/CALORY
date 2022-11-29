@@ -228,8 +228,8 @@ namespace CALORY
                     AvtivityGrid.Visibility = Visibility.Hidden;
                     tb1.Visibility = Visibility.Visible;
                     tb2.Visibility = Visibility.Visible;
-                    //tb1.Text = userWeight.ToString();
-                    //tb2.Text = userHeight.ToString();
+                    label1.Visibility = Visibility.Visible;
+                    label2.Visibility = Visibility.Visible;                    
                     label1.Content = "Введите ваш вес (от 20 до 250)";
                     label2.Content = "Введите ваш рост (от 20 до 250)";
                     break;
