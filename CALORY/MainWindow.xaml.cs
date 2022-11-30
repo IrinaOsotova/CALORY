@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 
 namespace CALORY
 {
@@ -38,6 +42,7 @@ namespace CALORY
                 }
             }
         }
+
         private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ShowPasswordA.Visibility = Visibility.Hidden;

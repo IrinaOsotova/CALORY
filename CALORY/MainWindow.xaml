@@ -8,21 +8,24 @@
         Icon="/icons.png"
         Title="Authorization" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat" >
     <Grid Background="#FFF0F0F0">
-        <TextBox x:Name="TextBoxLoginAuthorization" MaxLength="18" HorizontalAlignment="Left" Margin="465,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="3,0,3,0">
+        <TextBox x:Name="TextBoxLoginAuthorization" MaxLength="18" HorizontalAlignment="Left" Margin="465,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="4,4,4,4" Cursor="IBeam">
             <TextBox.Template >
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <Viewbox Stretch="Uniform">
+                            <ScrollViewer  Margin="0" x:Name="PART_ContentHost"/>
+                        </Viewbox>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>
+                
         </TextBox>
-
-        <PasswordBox x:Name="PasswordBoxAuthorization" MaxLength="18" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0">
+        
+        <PasswordBox x:Name="PasswordBoxAuthorization" MaxLength="17" HorizontalAlignment="Left" Margin="465,283,0,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="1,0,0,0" Cursor="IBeam">
             <PasswordBox.Template>
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                     </Border>
                 </ControlTemplate>
             </PasswordBox.Template>
@@ -64,11 +67,11 @@
         <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
         <Label x:Name="Authorization" Content="Авторизация" HorizontalAlignment="Left" Margin="489,117,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" FontSize="24"/>
         <Image x:Name="ShowPasswordA" HorizontalAlignment="Left" Height="18" Margin="667,294,0,0" VerticalAlignment="Top" Width="18" Source="/eyeclose2.png" MouseDown="ShowPasswordA_MouseDown" Cursor="Hand" />
-        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left"  Margin="465,283,22,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,22,0"  TextWrapping="Wrap" Text="" IsReadOnly="True" Visibility="Hidden">
+        <TextBox x:Name="TextBoxShowPasswordA" HorizontalAlignment="Left"  Margin="465,283,22,0" VerticalAlignment="Top" Width="229" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="4,0,0,0"  TextWrapping="Wrap" Text="" IsReadOnly="True" Visibility="Hidden">
             <TextBox.Template>
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>

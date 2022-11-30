@@ -5,47 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CALORY"
         mc:Ignorable="d"
-        Title="InfoUser" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="NextButton" Margin="347,346,411,0" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028" Click="NextButton_Click" Height="41" Width="42" BorderBrush="{x:Null}">
+        Title="InfoUser" Height="421" Width="425" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat">
+    <Grid Background="#FFF0F0F0">
+        <Button x:Name="NextButton" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028" Click="NextButton_Click" Height="41" Width="42" BorderBrush="{x:Null}" Margin="344,317,39,0">
             <Button.Background>
                 <ImageBrush ImageSource="/next.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BackButton" HorizontalAlignment="Left" Margin="31,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028"  Click="BackButton_Click" Height="41" Width="41" BorderBrush="{x:Null}">
+        <Button x:Name="BackButton" HorizontalAlignment="Left" Margin="25,317,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.231,1.028"  Click="BackButton_Click" Height="41" Width="41" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/back.png"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="tb1" MaxLength="3" HorizontalAlignment="Left" Margin="74,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="tb1_PreviewTextInput"/>
-        <TextBox x:Name="tb2" MaxLength="3" HorizontalAlignment="Left" Margin="77,256,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="tb2_PreviewTextInput"/>
-        <Label x:Name="label1" Content="Name:" HorizontalAlignment="Left" Margin="70,24,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Name:" HorizontalAlignment="Left" Margin="73,212,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="ImageLenta" HorizontalAlignment="Left" Height="139" Margin="36,116,0,0" VerticalAlignment="Top" Width="348" Source="/images/pngwing.com (31).png"/>
+        <TextBox x:Name="tb1" MaxLength="3" HorizontalAlignment="Left" Margin="34,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" PreviewTextInput="tb1_PreviewTextInput"/>
+        <TextBox x:Name="tb2" MaxLength="3" HorizontalAlignment="Left" Margin="34,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" PreviewTextInput="tb2_PreviewTextInput"/>
+        <Label x:Name="label1" Content="Name:" HorizontalAlignment="Left" Margin="34,24,0,0" VerticalAlignment="Top" Width="326" Padding="0,5,5,5" FontFamily="pack://application:,,,/Fonts/#Montserrat " FontSize="14"/>
+        <Label x:Name="label2" Content="Name:" HorizontalAlignment="Left" Margin="34,242,0,0" VerticalAlignment="Top" Width="326" Padding="0,5,5,5" FontFamily="pack://application:,,,/Fonts/#Montserrat " FontSize="14"/>
+
         <Grid x:Name="GenderDateGrid">
-            <Button x:Name="buttonMan" Margin="54,55,597,0"  VerticalAlignment="Top" Height="139" Click="buttonMan_Click" BorderBrush="#FFA7A4A4" Cursor="Hand">
+            <Button x:Name="buttonMan"  VerticalAlignment="Top" Height="139" Click="buttonMan_Click" BorderBrush="#FFA7A4A4" Cursor="Hand" Width="149" Margin="36,70,240,0">
                 <Button.Background>
                     <ImageBrush ImageSource="/man.png" TileMode="Tile"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="buttonWoman" VerticalAlignment="Top" Height="139" Click="buttonWoman_Click" Margin="231,55,419,0" BorderBrush="#FFA7A4A4" Cursor="Hand" >
+            <Button x:Name="buttonWoman" VerticalAlignment="Top" Height="139" Click="buttonWoman_Click" BorderBrush="#FFA7A4A4" Cursor="Hand" Width="149" Margin="228,68,48,0" >
                 <Button.Background>
                     <ImageBrush ImageSource="/woman.png"/>
                 </Button.Background>
             </Button>
-            <DatePicker x:Name="DateUser" HorizontalAlignment="Left" Margin="73,248,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="DateUser" HorizontalAlignment="Left" Margin="235,240,0,0" VerticalAlignment="Top" Width="140"/>
         </Grid>
         <Grid x:Name="AvtivityGrid">
-            <Button x:Name="Activity1" Content="Сидячий" HorizontalAlignment="Left" Margin="516,78,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity1_Click" BorderBrush="#FFA7A4A4" Background="White"/>
-            <Button x:Name="Activity2" Content="Малоактивный" HorizontalAlignment="Left" Margin="516,154,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity2_Click" Background="White" BorderBrush="#FFA7A4A4"/>
-            <Button x:Name="Activity3" Content="Активный" HorizontalAlignment="Left" Margin="516,235,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity3_Click" Background="White" BorderBrush="#FFA7A4A4"/>
-            <Button x:Name="Activity4" Content="Очень активный" HorizontalAlignment="Left" Margin="516,318,0,0" VerticalAlignment="Top" Height="63" Width="147" Click="Activity4_Click" Background="White" BorderBrush="#FFA7A4A4"/>
+            <Button x:Name="Activity1" Content="Сидячий" HorizontalAlignment="Left" Margin="34,90,0,0" VerticalAlignment="Top" Height="63" Width="148" Click="Activity1_Click" BorderBrush="#FFA7A4A4" Background="White"/>
+            <Button x:Name="Activity2" Content="Малоактивный" HorizontalAlignment="Left" Margin="228,90,0,0" VerticalAlignment="Top" Height="63" Width="148" Click="Activity2_Click" Background="White" BorderBrush="#FFA7A4A4"/>
+            <Button x:Name="Activity3" Content="Активный" HorizontalAlignment="Left" Margin="34,194,0,0" VerticalAlignment="Top" Height="63" Width="148" Click="Activity3_Click" Background="White" BorderBrush="#FFA7A4A4"/>
+            <Button x:Name="Activity4" Content="Очень активный" HorizontalAlignment="Left" Margin="228,194,0,0" VerticalAlignment="Top" Height="63" Width="148" Click="Activity4_Click" Background="White" BorderBrush="#FFA7A4A4"/>
         </Grid>
-        <Grid x:Name="PurposeGrid">
-            <Button x:Name="Purpose1" Content="Набор веса" HorizontalAlignment="Left" Margin="694,130,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Purpose1_Click" Background="White" BorderBrush="#FFA7A4A4"/>
-            <Button x:Name="Purpose2" Content="Удержание" HorizontalAlignment="Left" Margin="694,179,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Purpose2_Click" Background="White" BorderBrush="#FFA7A4A4"/>
-            <Button x:Name="Purpose3" Content="Похудение" HorizontalAlignment="Left" Margin="694,232,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="Purpose3_Click" Background="White" BorderBrush="#FFA7A4A4"/>
+        <Grid x:Name="PurposeGrid" Margin="-1,0,0,0">
+            <Button x:Name="Purpose1" Content="Набор веса" HorizontalAlignment="Left" Margin="33,98,0,0" VerticalAlignment="Top" Height="54" Width="170" Click="Purpose1_Click" Background="White" BorderBrush="#FFA7A4A4"/>
+            <Button x:Name="Purpose2" Content="Удержание" HorizontalAlignment="Left" Margin="219,99,0,0" VerticalAlignment="Top" Height="53" Width="170" Click="Purpose2_Click" Background="White" BorderBrush="#FFA7A4A4"/>
+            <Button x:Name="Purpose3" Content="Похудение" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="170" Click="Purpose3_Click" Background="White" BorderBrush="#FFA7A4A4"/>
 
         </Grid>
+
 
 
 

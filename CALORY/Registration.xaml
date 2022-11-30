@@ -15,7 +15,9 @@
             <TextBox.Template >
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <Viewbox Stretch="Uniform" Margin="4,4,4,4">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Viewbox>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>
@@ -24,7 +26,9 @@
             <TextBox.Template >
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <Viewbox Stretch="Uniform" Margin="4,4,4,4">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Viewbox>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>

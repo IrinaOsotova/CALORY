@@ -126,8 +126,7 @@
 
                     <!--<Label x:Name="kkl" Background="White" Content="Оставшиеся каллории:" HorizontalAlignment="Left" Margin="453,477,0,2.4" VerticalAlignment="Center"  Height="49" Width="193" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>-->
                     <Label x:Name="kkl2" Background="White" Content="ккал" HorizontalAlignment="Left" Margin="708,477,0,0" VerticalAlignment="Top"  Height="49" Width="82" FontSize="14" RenderTransformOrigin="0.521,0.946" VerticalContentAlignment="Center"/>
-                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="184,35,34,457" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}">
-                    </ComboBox>
+                    <ComboBox x:Name="ComboBoxSearch" IsTextSearchEnabled="False" IsEditable="True" ItemsSource="{Binding SearchList}" TextBoxBase.TextChanged="ComboBoxSearch_TextChanged"  Margin="184,35,34,457" VerticalContentAlignment="Center" FontSize="16" Padding="5,2,2,2" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}"/>
                     <TextBlock Padding="6,3,0,0" IsHitTestVisible="False" Text="Поиск" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="187,42,0,0" Foreground="DarkGray" Width="52" FontFamily="pack://application:,,,/Fonts/#Montserrat Light">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">

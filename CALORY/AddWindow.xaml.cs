@@ -56,7 +56,7 @@ namespace CALORY
                 db.SaveChanges();
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             if (correct)
             {
@@ -89,7 +89,7 @@ namespace CALORY
                 grams.Text = "";
             }
         }
-        private void grams_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void grams_TextChanged(object sender, TextChangedEventArgs e)
         {           
             try
             {
@@ -115,11 +115,6 @@ namespace CALORY
                 MessageBox.Show("Ошибка ввода!");
                 grams.Text = grams.Text.Remove(grams.Text.Length - 1);
             }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

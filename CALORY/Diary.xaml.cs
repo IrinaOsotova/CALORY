@@ -48,25 +48,29 @@ namespace CALORY
         }
         private void ComboBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (ComboBoxSearch.Text.Length > 2)
+            var tb = (TextBox)e.OriginalSource;
+            if (tb.SelectionStart == 0 && ComboBoxSearch.SelectedItem == null)
             {
-                var tb = (TextBox)e.OriginalSource;
+                ComboBoxSearch.IsDropDownOpen = false; // Если сбросили текст и элемент не выбран, сбросить фокус выпадающего списка
+                tb.Select(tb.SelectionStart + tb.SelectionLength, 0);
+            }
+            if (ComboBoxSearch.Text.Length > 1)
+            {
                 if (tb.SelectionStart != 0)
                 {
                     ComboBoxSearch.SelectedItem = null; // Если набирается текст сбросить выбраный элемент
                 }
-                if (tb.SelectionStart == 0 && ComboBoxSearch.SelectedItem == null)
-                {
-                    ComboBoxSearch.IsDropDownOpen = false; // Если сбросили текст и элемент не выбран, сбросить фокус выпадающего списка
-                }
-                ComboBoxSearch.IsDropDownOpen = true;
+
                 if (ComboBoxSearch.SelectedItem == null && ComboBoxSearch.Text.Length > 0)
                 {
                     // Если элемент не выбран менять фильтр
                     CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(ComboBoxSearch.ItemsSource);
                     cv.Filter = s => s.ToString().IndexOf(ComboBoxSearch.Text, StringComparison.CurrentCultureIgnoreCase) >= 0;
                 }
+                ComboBoxSearch.IsDropDownOpen = true;
+                tb.Select(tb.SelectionStart + tb.SelectionLength, 0);
             }
+
         }
 
         public void Add(string timeMeal)

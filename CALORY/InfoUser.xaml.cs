@@ -53,6 +53,7 @@ namespace CALORY
             numStage = 0;
             tb1.Visibility = Visibility.Hidden;
             tb2.Visibility = Visibility.Hidden;
+            ImageLenta.Visibility = Visibility.Hidden;
             label1.Visibility = Visibility.Visible;
             label2.Visibility = Visibility.Visible;
             label1.Content = "Выберите пол";
@@ -90,7 +91,8 @@ namespace CALORY
                             GenderDateGrid.Visibility = Visibility.Hidden;
 
                             tb1.Visibility = Visibility.Visible;
-                            tb2.Visibility = Visibility.Visible;                            
+                            tb2.Visibility = Visibility.Visible;      
+                            ImageLenta.Visibility = Visibility.Visible;
                             label1.Content = "Введите ваш вес (от 20 до 250)";
                             label2.Content = "Введите ваш рост (от 20 до 250)";
                         }
@@ -136,7 +138,8 @@ namespace CALORY
                             tb1.Visibility= Visibility.Hidden;
                             tb2.Visibility= Visibility.Hidden;
                             label1.Content = "Выберите активность";
-                            label2.Visibility = Visibility.Hidden;                            
+                            label2.Visibility = Visibility.Hidden;
+                            ImageLenta.Visibility = Visibility.Hidden;
                         }
                         else
                         {
@@ -218,6 +221,7 @@ namespace CALORY
                     
                     tb1.Visibility = Visibility.Hidden;
                     tb2.Visibility = Visibility.Hidden;
+                    ImageLenta.Visibility = Visibility.Hidden;
                     label1.Visibility = Visibility.Visible;
                     label2.Visibility = Visibility.Visible;
                     label1.Content = "Выберите пол";
@@ -240,6 +244,7 @@ namespace CALORY
                     AvtivityGrid.Visibility = Visibility.Hidden;
                     tb1.Visibility = Visibility.Visible;
                     tb2.Visibility = Visibility.Visible;
+                    ImageLenta.Visibility = Visibility.Visible;
                     label1.Visibility = Visibility.Visible;
                     label2.Visibility = Visibility.Visible;                    
                     label1.Content = "Введите ваш вес (от 20 до 250)";
@@ -252,6 +257,8 @@ namespace CALORY
                     tb2.Visibility = Visibility.Hidden;
                     label1.Content = "Выберите активность";
                     label2.Visibility = Visibility.Hidden;
+                    ImageLenta.Visibility = Visibility.Hidden;
+
                     break;
                 default:
                     //Error

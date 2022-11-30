@@ -50,6 +50,7 @@
     <None Remove="images\man.png" />
     <None Remove="images\next.png" />
     <None Remove="images\plus_minus_icon_173627.png" />
+    <None Remove="images\pngwing.com %2831%29.png" />
     <None Remove="images\Rectangle 1.png" />
     <None Remove="images\woman.png" />
     <None Remove="man.png" />
@@ -122,6 +123,7 @@
     <Resource Include="images\man.png" />
     <Resource Include="images\next.png" />
     <Resource Include="images\plus_minus_icon_173627.png" />
+    <Resource Include="images\pngwing.com (31).png" />
     <Resource Include="images\Rectangle 1.png" />
     <Resource Include="images\woman.png" />
     <Resource Include="man.png" />
