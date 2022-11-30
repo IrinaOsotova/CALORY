@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="back.png" />
     <None Remove="eye2.png" />
     <None Remove="eyeclose2.png" />
     <None Remove="Fonts\Montserrat-Black.ttf" />
@@ -33,6 +34,7 @@
     <None Remove="images\2.png" />
     <None Remove="images\4.png" />
     <None Remove="images\4115235-exit-logout-sign-out_114030.png" />
+    <None Remove="images\back.png" />
     <None Remove="images\Border.png" />
     <None Remove="images\BorderDonut.png" />
     <None Remove="images\Donut.png" />
@@ -45,10 +47,16 @@
     <None Remove="images\icons8-умножение-96.png" />
     <None Remove="images\logo.png" />
     <None Remove="images\logotype.png" />
+    <None Remove="images\man.png" />
+    <None Remove="images\next.png" />
     <None Remove="images\plus_minus_icon_173627.png" />
     <None Remove="images\Rectangle 1.png" />
+    <None Remove="images\woman.png" />
+    <None Remove="man.png" />
+    <None Remove="next.png" />
     <None Remove="plus_minus_icon_173627.png" />
     <None Remove="products.txt" />
+    <None Remove="woman.png" />
     <None Remove="фонавторизация 1.png" />
     <None Remove="фонавторизация.png" />
   </ItemGroup>
@@ -69,6 +77,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="back.png" />
     <Resource Include="eye2.png" />
     <Resource Include="eyeclose2.png" />
     <Resource Include="Fonts\Montserrat-Black.ttf" />
@@ -93,6 +102,7 @@
     <Resource Include="images\2.png" />
     <Resource Include="images\4.png" />
     <Resource Include="images\4115235-exit-logout-sign-out_114030.png" />
+    <Resource Include="images\back.png" />
     <Resource Include="images\Border.png" />
     <Resource Include="images\BorderDonut.png" />
     <Resource Include="images\Donut.png" />
@@ -109,10 +119,16 @@
     <Resource Include="images\icons8-умножение-96.png" />
     <Resource Include="images\logo.png" />
     <Resource Include="images\logotype.png" />
+    <Resource Include="images\man.png" />
+    <Resource Include="images\next.png" />
     <Resource Include="images\plus_minus_icon_173627.png" />
     <Resource Include="images\Rectangle 1.png" />
+    <Resource Include="images\woman.png" />
+    <Resource Include="man.png" />
+    <Resource Include="next.png" />
     <Resource Include="plus_minus_icon_173627.png" />
     <Resource Include="products.txt" />
+    <Resource Include="woman.png" />
     <Resource Include="фонавторизация 1.png" />
   </ItemGroup>
 

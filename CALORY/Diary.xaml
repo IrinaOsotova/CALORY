@@ -408,7 +408,7 @@
                         </TextBox.Template>
                     </TextBox>
                     <Label Content="Употреблено калорий:" HorizontalAlignment="Left" Margin="390,16,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"/>
-                    <Label x:Name="LabelDonut" Content="Соотношение белков, углеводов и жиров:" HorizontalAlignment="Left" Margin="209,341,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" Padding="0,5,5,5"/>
+                    <Label x:Name="LabelDonut" Content="Соотношение белков, углеводов и жиров:" HorizontalAlignment="Left" Margin="209,322,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" Padding="0,5,5,5"/>
                     <Label Content="Цель: " HorizontalAlignment="Left" Margin="12,452,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Padding="0,5,5,5"/>
                     <TextBox x:Name="Goal" IsReadOnly ="True" HorizontalAlignment="Left" Margin="12,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <TextBox.RenderTransform>
@@ -429,7 +429,7 @@
                     </TextBox>
                     <Image HorizontalAlignment="Left" Height="192" Margin="561,325,0,0" VerticalAlignment="Top" Width="279" Source="images/BorderDonut.png"/>
                     <Image x:Name="ImageDonut" HorizontalAlignment="Left" Height="168" Margin="578,337,0,0" VerticalAlignment="Top" Width="191" Source="images/Donut.png" Visibility="Visible"/>
-                    <Label x:Name="LabelDonutDay" Content="Data" HorizontalAlignment="Left" Margin="624,491,0,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.5,0.5">
+                    <Label x:Name="LabelDonutDay" Content="Data" HorizontalAlignment="Left" Margin="209,342,0,0" VerticalAlignment="Top" Padding="0,5,5,5" RenderTransformOrigin="0.5,0.5">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

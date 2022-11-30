@@ -54,11 +54,19 @@ namespace CALORY
             PasswordBoxAuthorization.IsEnabled = true;
             PasswordBoxAuthorization.Focus();
         }
+        private void HidePasswordA_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            ShowPasswordA.Visibility = Visibility;
+            HidePasswordA.Visibility = Visibility.Hidden;
+            TextBoxShowPasswordA.Visibility = Visibility.Hidden;
+            PasswordBoxAuthorization.IsEnabled = true;
+            PasswordBoxAuthorization.Focus();
+        }
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
         {
             Registration window = new Registration();
             window.Show();
             Close();
-        }      
+        }
     }
 }

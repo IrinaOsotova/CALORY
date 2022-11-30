@@ -21,6 +21,12 @@ namespace CALORY
         {
             InitializeComponent();
         }
+        public Registration(string Name, string Login)
+        {
+            InitializeComponent();
+            TextBoxNameRegistration.Text = Name;
+            TextBoxLoginRegistration.Text = Login;
+        }
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             if (!Verification(TextBoxNameRegistration))
@@ -84,6 +90,14 @@ namespace CALORY
             PasswordBoxRegistration.IsEnabled = false;
         }
         private void HidePassword_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ShowPassword.Visibility = Visibility;
+            HidePassword.Visibility = Visibility.Hidden;
+            TextBoxShowPassword.Visibility = Visibility.Hidden;
+            PasswordBoxRegistration.IsEnabled = true;
+            PasswordBoxRegistration.Focus();
+        }
+        private void HidePassword_MouseLeave(object sender, MouseEventArgs e)
         {
             ShowPassword.Visibility = Visibility;
             HidePassword.Visibility = Visibility.Hidden;

@@ -105,6 +105,7 @@ namespace CALORY
                     }
                     break;
                 case 1:
+                    BackButton.Visibility = Visibility.Visible;
                     if (tb1.Text != "") userWeight = int.Parse(tb1.Text);
                     else userWeight = null;
                     if (tb2.Text != "") userHeight = int.Parse(tb2.Text);
@@ -214,17 +215,28 @@ namespace CALORY
             {
                 case 0:
                     //DateUser.SelectedDate = userBirthDate;
+                    
                     tb1.Visibility = Visibility.Hidden;
                     tb2.Visibility = Visibility.Hidden;
                     label1.Visibility = Visibility.Visible;
                     label2.Visibility = Visibility.Visible;
                     label1.Content = "Выберите пол";
                     label2.Content = "Выберите дату рождения";
-                    GenderDateGrid.Visibility = Visibility.Visible;
-                    AvtivityGrid.Visibility = Visibility.Hidden;
-                    PurposeGrid.Visibility = Visibility.Hidden;
+                    if (GenderDateGrid.Visibility == Visibility.Visible)
+                    {
+                        Registration window = new Registration(Name, Login);
+                        window.Show();
+                        Close();
+                    }
+                    else
+                    {
+                        GenderDateGrid.Visibility = Visibility.Visible;
+                        AvtivityGrid.Visibility = Visibility.Hidden;
+                        PurposeGrid.Visibility = Visibility.Hidden;
+                    }
+                    
                     break;
-                case 1:                    
+                case 1:
                     AvtivityGrid.Visibility = Visibility.Hidden;
                     tb1.Visibility = Visibility.Visible;
                     tb2.Visibility = Visibility.Visible;
@@ -268,75 +280,133 @@ namespace CALORY
         private void buttonMan_Click(object sender, RoutedEventArgs e)
         {
             userGender = true;
-            buttonMan.Content = "М*";
-            buttonWoman.Content = "Ж";
+            buttonMan.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            buttonMan.Opacity = 1;
+            buttonWoman.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            buttonWoman.Opacity = 0.5;
+            //buttonMan.Content = "М*";
+            //buttonWoman.Content = "Ж";
         }
 
         private void buttonWoman_Click(object sender, RoutedEventArgs e)
         {
             userGender = false;
-            buttonMan.Content = "М";
-            buttonWoman.Content = "Ж*";
+            buttonWoman.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            buttonWoman.Opacity = 1;
+            buttonMan.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            buttonMan.Opacity = 0.5;
+            //buttonMan.Content = "М";
+            //buttonWoman.Content = "Ж*";
         }
 
         private void Activity1_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 1;
-            Activity1.Content = "Activity1*";
-            Activity2.Content = "Activity2";
-            Activity3.Content = "Activity3";
-            Activity4.Content = "Activity4";
+            Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity1.Opacity = 1;
+            Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity2.Opacity = 0.5;
+            Activity3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity3.Opacity = 0.5;
+            Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity4.Opacity = 0.5;
+            //Activity1.Content = "Activity1*";
+            //Activity2.Content = "Activity2";
+            //Activity3.Content = "Activity3";
+            //Activity4.Content = "Activity4";
         }
 
         private void Activity2_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 2;
-            Activity1.Content = "Activity1";
-            Activity2.Content = "Activity2*";
-            Activity3.Content = "Activity3";
-            Activity4.Content = "Activity4";
+            Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity2.Opacity = 1;
+            Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity1.Opacity = 0.5;
+            Activity3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity3.Opacity = 0.5;
+            Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity4.Opacity = 0.5;
+            //Activity1.Content = "Activity1";
+            //Activity2.Content = "Activity2*";
+            //Activity3.Content = "Activity3";
+            //Activity4.Content = "Activity4";
         }
 
         private void Activity3_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 3;
-            Activity1.Content = "Activity1";
-            Activity2.Content = "Activity2";
-            Activity3.Content = "Activity3*";
-            Activity4.Content = "Activity4";
+            Activity3.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity3.Opacity = 1;
+            Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity2.Opacity = 0.5;
+            Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity1.Opacity = 0.5;
+            Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity4.Opacity = 0.5;
+            //Activity1.Content = "Activity1";
+            //Activity2.Content = "Activity2";
+            //Activity3.Content = "Activity3*";
+            //Activity4.Content = "Activity4";
         }
 
         private void Activity4_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 4;
-            Activity1.Content = "Activity1";
-            Activity2.Content = "Activity2";
-            Activity3.Content = "Activity3";
-            Activity4.Content = "Activity4*";
+            Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity4.Opacity = 1;
+            Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity2.Opacity = 0.5;
+            Activity3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity3.Opacity = 0.5;
+            Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Activity1.Opacity = 0.5;
+            //Activity1.Content = "Activity1";
+            //Activity2.Content = "Activity2";
+            //Activity3.Content = "Activity3";
+            //Activity4.Content = "Activity4*";
         }
 
         private void Purpose1_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 1;
-            Purpose1.Content = "Purpose1*";
-            Purpose2.Content = "Purpose2";
-            Purpose3.Content = "Purpose3";
+            Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Purpose1.Opacity = 1;
+            Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Purpose2.Opacity = 0.5;
+            Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Purpose3.Opacity = 0.5;
+            //Purpose1.Content = "Purpose1*";
+            //Purpose2.Content = "Purpose2";
+            //Purpose3.Content = "Purpose3";
         }
 
         private void Purpose2_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 2;
-            Purpose1.Content = "Purpose1";
-            Purpose2.Content = "Purpose2*";
-            Purpose3.Content = "Purpose3";
+            Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Purpose2.Opacity = 1;
+            Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Purpose1.Opacity = 0.5;
+            Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Purpose3.Opacity = 0.5;
+            //Purpose1.Content = "Purpose1";
+            //Purpose2.Content = "Purpose2*";
+            //Purpose3.Content = "Purpose3";
         }
 
         private void Purpose3_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 3;
-            Purpose1.Content = "Purpose1";
-            Purpose2.Content = "Purpose2";
-            Purpose3.Content = "Purpose3*";
+            Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Purpose3.Opacity = 1;
+            Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Purpose2.Opacity = 0.5;
+            Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
+            Purpose1.Opacity = 0.5;
+            //Purpose1.Content = "Purpose1";
+            //Purpose2.Content = "Purpose2";
+            //Purpose3.Content = "Purpose3*";
         }
         #endregion
 
