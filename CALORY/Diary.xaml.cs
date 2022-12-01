@@ -23,10 +23,10 @@ namespace CALORY
 {
     public partial class Diary : Window
     {
-        public List<Product> productsBreakfast = new List<Product>();
-        public List<Product> productsLunch = new List<Product>();
-        public List<Product> productsDiner = new List<Product>();
-        public List<Product> productsBase = new List<Product>();
+        public List<Repast> productsBreakfast = new List<Repast>();
+        public List<Repast> productsLunch = new List<Repast>();
+        public List<Repast> productsDiner = new List<Repast>();
+        public List<Repast> productsBase = new List<Repast>();
         public static Diary? instance;
         private string Login;
      
@@ -35,14 +35,13 @@ namespace CALORY
             Login = login;
             InitializeComponent();
             instance = this;
-            //CalendarPiker.BlackoutDates.Add(new CalendarDateRange(DateTime.Now.AddDays(1), DateTime.Now.AddDays(340)));
             CalendarPiker.SelectedDate = DateTime.Now;
             CalendarPiker.DisplayDateStart = DateTime.Today.AddDays(-7);
             CalendarPiker.DisplayDateEnd = DateTime.Now;
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
                 var jsr = new JsonTextReader(GroceryList);
-                productsBase = new JsonSerializer().Deserialize<List<Product>>(jsr);
+                productsBase = new JsonSerializer().Deserialize<List<Repast>>(jsr);
             }
             ComboBoxSearch.ItemsSource = productsBase;
         }
@@ -70,9 +69,8 @@ namespace CALORY
                 ComboBoxSearch.IsDropDownOpen = true;
                 tb.Select(tb.SelectionStart + tb.SelectionLength, 0);
             }
-
         }
-
+        #region Добавление еды
         public void Add(string timeMeal)
         {
             if (ComboBoxSearch.SelectedItem == null)
@@ -91,7 +89,7 @@ namespace CALORY
 
         private void AddDinner_Click(object sender, RoutedEventArgs e){
             Add("Diner"); }
-
+        #endregion
         private void CalendarPiker_Changed(object sender, SelectionChangedEventArgs e)
         {
             listBoxBreakfast.Items.Clear();
@@ -120,10 +118,9 @@ namespace CALORY
                     listBoxLunch.Items.Add(item.ToStringFull());
                     productsLunch.Add(item);
                 }
-                var user = db.Users.FirstOrDefault(x => x.login == Login);
-                rskGoalTextBox.Text = user.rsk.ToString();
+                //var user = db.Users.FirstOrDefault(x => x.login == Login);
+                //rskGoalTextBox.Text = user.rsk.ToString();
             }
-            //if (sender.ToString() == "") CalendarPiker.Text = "";
         }
 
         private void buttonDeleteBreakfast_Click(object sender, RoutedEventArgs e)
@@ -184,76 +181,192 @@ namespace CALORY
 
         private void TabControlDiary_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TabControlDiary.SelectedIndex == 2)
+            switch (TabControlDiary.SelectedIndex)
             {
-                Goal.Text = rskGoalTextBox.Text + " ккал";
-                Chart.Plot.Clear();
-                Donut.Plot.Clear();
-                DateTime thisDay = DateTime.Today; ;
-                double EatenKkal = 0;
-                double EatenUgl = 0;
-                double EatenFats = 0;
-                double EatenBel = 0;
-                double[] values = { 0, 0, 0, 0, 0, 0, 0 };
+                case 0:
+                    using (var db = new ApplicationContext())
+                    {
+                        var user = db.Users.FirstOrDefault(x => x.login == Login);
+                        rskGoalTextBox.Text = user.rsk.ToString();
+                    }
+                    break;
+                case 1:
+                    ChangeProfileButton.Content = "Изменить параметры";
+                    using (var db = new ApplicationContext())
+                    {
+                        var user = db.Users.FirstOrDefault(x => x.login == Login);
+                        textBoxName.Text = user.name;
+                        textBoxHeight.Text = user.growth.ToString();
+                        textBoxWeight.Text = user.weight.ToString();
+                        DataOfBirth.SelectedDate = user.Birth;
+                        if (user.activity == 1) ActivityComboBox.Text = "Сидячий";
+                        if (user.activity == 2) ActivityComboBox.Text = "Малоактивный";
+                        if (user.activity == 3) ActivityComboBox.Text = "Активный";
+                        if (user.activity == 4) ActivityComboBox.Text = "Очень активный";
+                        if (user.goal == 1) GoalComboBox.Text = "Набор веса";
+                        if (user.goal == 2) GoalComboBox.Text = "Удержание";
+                        if (user.goal == 3) GoalComboBox.Text = "Похудение";
+                        if (user.male == 1) GenderComboBox.Text = "Мужской";
+                        if (user.male == 0) GenderComboBox.Text = "Женский";
+                    }
+                    break;
+                case 3:
+                    #region Отчет
+                    Goal.Text = rskGoalTextBox.Text + " ккал";
+                    Chart.Plot.Clear();
+                    Donut.Plot.Clear();
+                    DateTime thisDay = DateTime.Today; ;
+                    double EatenKkal = 0;
+                    double EatenUgl = 0;
+                    double EatenFats = 0;
+                    double EatenBel = 0;
+                    double[] values = { 0, 0, 0, 0, 0, 0, 0 };
+                    using (var db = new ApplicationContext())
+                    {
+                        for (int i = 0; i < 7; i++)
+                        {
+                            foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
+                                EatenKkal += item.kkal;
+                            values[6 - i] = EatenKkal;
+                            EatenKkal = 0;
+                        }
+                        foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
+                        {
+                            EatenUgl += item.ugl;
+                            EatenFats += item.fats;
+                            EatenBel += item.bel;
+                        }
+                    }
+                    double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
+                    string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
+                    Chart.Plot.AddBar(values, positions);
+                    var bar = Chart.Plot.AddBar(values);
+                    bar.ShowValuesAboveBars = true;
+                    Chart.Plot.XTicks(positions, labels);
+                    Chart.Plot.SetAxisLimits(yMin: 0);
+                    Chart.Plot.Style(ScottPlot.Style.Control);
+                    bar.FillColor = Color.FromArgb(179, 145, 212);
+                    Chart.Plot.Grid(lineStyle: LineStyle.Dot);
+                    if (EatenUgl == 0 && EatenFats == 0 && EatenBel == 0)
+                    {
+                        Donut.Visibility = Visibility.Hidden;
+                        ImageDonut.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        Donut.Visibility = Visibility.Visible;
+                        ImageDonut.Visibility = Visibility.Hidden;
+                    }
+                    Donut.Visibility = Visibility;
+                    double[] values1 = { EatenUgl, EatenFats, EatenBel };
+                    Donut.Plot.Style(ScottPlot.Style.Control);
+                    var pie = Donut.Plot.AddPie(values1);
+                    pie.Explode = true;
+                    pie.DonutSize = .4;
+                    Color color1 = Color.FromArgb(179, 145, 212);
+                    Color color2 = Color.FromArgb(217, 125, 161);
+                    Color color3 = Color.FromArgb(190, 29, 86);
+                    pie.SliceFillColors = new Color[] { color1, color2, color3 };
+                    textBoxUgl.Text = EatenUgl.ToString();
+                    textBoxFats.Text = EatenFats.ToString();
+                    textBoxBel.Text = EatenBel.ToString();
+                    LabelDonutDay.Content = thisDay.ToString("d");
+                    Donut.Plot.Legend();
+                    Chart.Refresh();
+                    Donut.Refresh();
+                    #endregion
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private protected void ChangeProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChangeProfileButton.Content == "Изменить параметры")
+            {
+                ChangeProfileButton.Content = "Сохранить";
+                textBoxName.IsReadOnly = false;
+                textBoxHeight.IsReadOnly = false;
+                textBoxWeight.IsReadOnly = false;
+                ActivityComboBox.IsEnabled = true;
+                GoalComboBox.IsEnabled = true;
+                GenderComboBox.IsEnabled = true;
+            }
+            else
+            {
+                if (Convert.ToByte(textBoxWeight.Text) < 30 || Convert.ToByte(textBoxWeight.Text) > 250)
+                {
+                    MessageBox.Show("Допустимый вес от 30 до 250 кг");
+                    return;
+                }
+                if (Convert.ToByte(textBoxHeight.Text) < 100 || Convert.ToByte(textBoxHeight.Text) > 250)
+                {
+                    MessageBox.Show("Допустимый рост от 100 до 250 см");
+                    return;
+                }
+                if (!Registration.Verification(textBoxName))
+                {
+                    MessageBox.Show("Имя должно соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры");
+                    return;
+                }
+                ChangeProfileButton.Content = "Изменить параметры";
+                textBoxName.IsReadOnly = true;
+                textBoxHeight.IsReadOnly = true;
+                textBoxWeight.IsReadOnly = true;
+                ActivityComboBox.IsEnabled = false;
+                GoalComboBox.IsEnabled = false;
+                GenderComboBox.IsEnabled = false;
+                bool _gender = false;
+                int _activity = 1;
+                int _goal = 1;
+                if (ActivityComboBox.Text == "Сидячий") _activity = 1;
+                if (ActivityComboBox.Text == "Малоактивный") _activity = 2;
+                if (ActivityComboBox.Text == "Активный") _activity = 3;
+                if (ActivityComboBox.Text == "Очень активный") _activity = 4;
+                if (GoalComboBox.Text == "Набор веса") _goal = 1;
+                if (GoalComboBox.Text == "Удержание") _goal = 2;
+                if (GoalComboBox.Text == "Похудение") _goal = 3;
+                if (GenderComboBox.Text == "Мужской") _gender = true;
+                if (GenderComboBox.Text == "Женский") _gender = false;
                 using (var db = new ApplicationContext())
                 {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
-                            EatenKkal += item.kkal;
-                        values[6 - i] = EatenKkal;
-                        EatenKkal = 0;
-                    }
-                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
-                    {
-                        EatenUgl += item.ugl;
-                        EatenFats += item.fats;
-                        EatenBel += item.bel;
-                    }
+                    var users = db.Users.FirstOrDefault(x => x.login == Login);
+                    users.name = textBoxName.Text;
+                    users.growth = Convert.ToByte(textBoxHeight.Text);
+                    users.weight = Convert.ToByte(textBoxWeight.Text);
+                    users.activity = Convert.ToByte(_activity);
+                    users.goal = Convert.ToByte(_goal);
+                    users.male = (byte)((_gender) ? 1 : 0);
+                    users.Birth = DataOfBirth.SelectedDate.Value;
+                    users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
+                    users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
+                    db.SaveChanges();
                 }
-                double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
-                string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
-                Chart.Plot.AddBar(values, positions);
-                var bar = Chart.Plot.AddBar(values);
-                bar.ShowValuesAboveBars = true;
-                Chart.Plot.XTicks(positions, labels);
-                Chart.Plot.SetAxisLimits(yMin: 0);
-                Chart.Plot.Style(ScottPlot.Style.Control);
-                bar.FillColor = Color.FromArgb(179, 145, 212);
-                Chart.Plot.Grid(lineStyle: LineStyle.Dot);
+            }
+        }
 
-                if (EatenUgl == 0 && EatenFats == 0 && EatenBel == 0)
-                {
-                    Donut.Visibility = Visibility.Hidden;
-                    ImageDonut.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    Donut.Visibility = Visibility.Visible;
-                    ImageDonut.Visibility = Visibility.Hidden;
-                }
-                Donut.Visibility = Visibility;
-                double[] values1 = { EatenUgl, EatenFats, EatenBel };
-                Donut.Plot.Style(ScottPlot.Style.Control);
-                var pie = Donut.Plot.AddPie(values1);
-                pie.Explode = true;
-                pie.DonutSize = .4;
-                //string[] labels1 = { "Углеводы", "Жиры", "Белки"}; 
-                //pie.SliceLabels = labels1;
-                Color color1 = Color.FromArgb(179, 145, 212);
-                Color color2 = Color.FromArgb(217, 125, 161);
-                Color color3 = Color.FromArgb(190, 29, 86);
-                pie.SliceFillColors = new Color[] { color1, color2, color3 };
-                textBoxUgl.Text = EatenUgl.ToString();
-                textBoxFats.Text = EatenFats.ToString();
-                textBoxBel.Text = EatenBel.ToString();
+        private void textBoxName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
 
-                LabelDonutDay.Content = thisDay.ToString("d");
-                Donut.Plot.Legend();
+        private void textBoxHeight_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
 
-                //pie.ShowValues = true;
-                Chart.Refresh();
-                Donut.Refresh();
+        private void textBoxWeight_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
             }
         }
     }

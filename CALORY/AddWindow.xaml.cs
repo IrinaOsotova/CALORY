@@ -21,7 +21,7 @@ namespace CALORY
     public partial class AddWindow : Window
     {
         public static AddWindow? instance;
-        public Product current;
+        public Repast current;
         public string _time;
         private bool correct = false;
         private string Login;
@@ -34,13 +34,12 @@ namespace CALORY
             instance = this;
             TextBoxSelectedProduct.Text = Diary.instance.ComboBoxSearch.SelectedItem.ToString();
             _time = time;
-            
         }
         public void AddDB(string _time)
         {
             using (var db = new ApplicationContext())
             {
-                db.Meal.Add(new Product()
+                db.Meal.Add(new Repast()
                 {
                     code = 0,
                     day = Diary.instance.CalendarPiker.SelectedDate,
@@ -81,7 +80,6 @@ namespace CALORY
                     AddDB(_time);
                     Close();
                 }
-                //Diary.instance.caloryTextBox.Text = $"{Math.Round(Convert.ToDouble(Diary.instance.caloryTextBox.Text), 2) - Math.Round(Convert.ToDouble(KalTextBox.Text),2)}";
             }
             else
             {
@@ -95,7 +93,7 @@ namespace CALORY
             {
                 if (grams.Text != "" && grams.Text != "0")
                 {
-                    current = ((Product)Diary.instance.ComboBoxSearch.SelectedItem).Copy();
+                    current = ((Repast)Diary.instance.ComboBoxSearch.SelectedItem).Copy();
                     current.gram = Int16.Parse(grams.Text);
                     current.Recalculate();
                     KalTextBox.Text = current.kkal.ToString();

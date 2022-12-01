@@ -47,11 +47,11 @@ namespace CALORY
                 return;
             }
             
-            InfoUser window = new(0, TextBoxNameRegistration.Text, TextBoxLoginRegistration.Text, Crypt.GetHashPassword(PasswordBoxRegistration.Password));
+            InfoUser window = new(TextBoxNameRegistration.Text, TextBoxLoginRegistration.Text, Crypt.GetHashPassword(PasswordBoxRegistration.Password));
             window.Show();
             Close();
         }
-        static bool Verification(TextBox temp)
+        public static bool Verification(TextBox temp)
         {
             string regex = "^[0-9A-zА-я]{3,}$";
             return Regex.IsMatch(temp.Text, regex);

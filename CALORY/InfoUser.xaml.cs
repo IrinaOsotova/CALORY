@@ -28,26 +28,25 @@ namespace CALORY
         int? userHeight = null;
         byte? userActivity = null;
         byte? userPurpose = null;
-        Int16 Id = 0;
-        string? Name;
-        string? Login;
-        string? Password;
-        public InfoUser()
-        {
-            InitializeComponent();
-            numStage = 0;                       
-            tb1.Visibility = Visibility.Hidden;
-            tb2.Visibility = Visibility.Hidden;
-            label1.Visibility = Visibility.Visible;
-            label2.Visibility = Visibility.Visible;
-            label1.Content = "Выберите пол";
-            label2.Content = "Выберите дату рождения";
-            GenderDateGrid.Visibility = Visibility.Visible;          
-            AvtivityGrid.Visibility = Visibility.Hidden;
-            PurposeGrid.Visibility = Visibility.Hidden;
-            DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
-        }
-        public InfoUser(Int16 _id, string? _name, string? _login, string? _password)
+        private string? Name;
+        private string? Login;
+        private string? Password;
+        //public InfoUser()
+        //{
+        //    InitializeComponent();
+        //    numStage = 0;                       
+        //    tb1.Visibility = Visibility.Hidden;
+        //    tb2.Visibility = Visibility.Hidden;
+        //    label1.Visibility = Visibility.Visible;
+        //    label2.Visibility = Visibility.Visible;
+        //    label1.Content = "Выберите пол";
+        //    label2.Content = "Выберите дату рождения";
+        //    GenderDateGrid.Visibility = Visibility.Visible;          
+        //    AvtivityGrid.Visibility = Visibility.Hidden;
+        //    PurposeGrid.Visibility = Visibility.Hidden;
+        //    DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
+        //}
+        public InfoUser(string? _name, string? _login, string? _password)
         {
             InitializeComponent();
             numStage = 0;
@@ -62,16 +61,27 @@ namespace CALORY
             AvtivityGrid.Visibility = Visibility.Hidden;
             PurposeGrid.Visibility = Visibility.Hidden;
             DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
-            Id = _id;
             Name = _name;
             Login = _login;
             Password = _password;
-        }        
-
+        }
+        public static Int16 CalculateRSK(double Weight, double Age, double Height, bool Gender, int Activity, int Purpose)
+        {
+            double result = 10.0 * Weight + 6.25 * Height - 5.0 * Age;
+            if (Gender) result += 5.0;
+            else result -= 161.0;
+            if (Activity == 1) result *= 1.2;
+            if (Activity == 2) result *= 1.375;
+            if (Activity == 3) result *= 1.725;
+            if (Activity == 4) result *= 1.9;
+            if (Purpose == 1) result += 250.0;
+            if (Purpose == 3) result -= 250.0;
+            return (Int16)Math.Round(result);
+        }
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            char[] Numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            bool isOk = true;
+            //char[] Numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            //bool isOk = true;
             switch (numStage)
             {
                 case 0:
@@ -93,18 +103,12 @@ namespace CALORY
                             tb1.Visibility = Visibility.Visible;
                             tb2.Visibility = Visibility.Visible;      
                             ImageLenta.Visibility = Visibility.Visible;
-                            label1.Content = "Введите ваш вес (от 20 до 250)";
-                            label2.Content = "Введите ваш рост (от 20 до 250)";
+                            label1.Content = "Введите ваш вес (от 30 до 250 кг)";
+                            label2.Content = "Введите ваш рост (от 100 до 250 см)";
                         }
-                        else
-                        {                            
-                            MessageBox.Show("Выберите дату рождения");
-                        }                                             
+                        else MessageBox.Show("Выберите дату рождения");                                          
                     }
-                    else
-                    {
-                        MessageBox.Show("Выберите пол");                        
-                    }
+                    else MessageBox.Show("Выберите пол");     
                     break;
                 case 1:
                     BackButton.Visibility = Visibility.Visible;
@@ -119,17 +123,17 @@ namespace CALORY
                     }
                     if (userWeight.HasValue)
                     {
-                        if(userWeight.Value < 20 || userWeight.Value > 250)
+                        if(userWeight.Value < 30 || userWeight.Value > 250)
                         {
-                            MessageBox.Show("Допустимый вес от 20 до 250");
+                            MessageBox.Show("Допустимый вес от 30 до 250 кг");
                             tb1.Text = "";
                             break;
                         }
                         if (userHeight.HasValue)
                         {
-                            if (userHeight.Value < 20 || userHeight.Value > 250)
+                            if (userHeight.Value < 100 || userHeight.Value > 250)
                             {
-                                MessageBox.Show("Допустимый рост от 20 до 250");
+                                MessageBox.Show("Допустимый рост от 100 до 250 см");
                                 tb2.Text = "";
                                 break;
                             }
@@ -141,15 +145,9 @@ namespace CALORY
                             label2.Visibility = Visibility.Hidden;
                             ImageLenta.Visibility = Visibility.Hidden;
                         }
-                        else
-                        {
-                            MessageBox.Show("Введите ваш рост");
-                        }
+                        else MessageBox.Show("Введите ваш рост");
                     }
-                    else
-                    {
-                        MessageBox.Show("Введите ваш вес");
-                    }
+                    else MessageBox.Show("Введите ваш вес");
                     break;                    
                 case 2:
                     // активность                     
@@ -160,10 +158,7 @@ namespace CALORY
                         PurposeGrid.Visibility = Visibility.Visible;
                         label1.Content = "Выберите цель";
                     }
-                    else
-                    {                        
-                        MessageBox.Show("Выберите активность");
-                    }                    
+                    else MessageBox.Show("Выберите активность");           
                     break;
                 case 3:
                     //цель
@@ -180,7 +175,7 @@ namespace CALORY
                         {
                             db.Users.Add(new User()
                             {
-                                id = Id,
+                                id = 0,
                                 name = Name,
                                 login = Login,
                                 password = Password,
@@ -190,20 +185,16 @@ namespace CALORY
                                 Birth = userBirthDate.Value,
                                 goal = userPurpose.Value,
                                 weight = (byte)userWeight.Value,
-                                rsk = CalculateRSK(),
+                                rsk = CalculateRSK(userWeight.Value, DateTime.Now.Year - userBirthDate.Value.Year, userHeight.Value, userGender.Value, userActivity.Value, userPurpose.Value),
                                 age = (byte)(DateTime.Now.Year - userBirthDate.Value.Year)
                             });
                             db.SaveChanges();
                         }
-
                         Diary window = new Diary(Login);
                         window.Show();
                         Close();
                     }
-                    else
-                    {                        
-                        MessageBox.Show("Выберите цель");
-                    }
+                    else MessageBox.Show("Выберите цель"); 
                     break;
                 default:
                     //Error
@@ -247,8 +238,8 @@ namespace CALORY
                     ImageLenta.Visibility = Visibility.Visible;
                     label1.Visibility = Visibility.Visible;
                     label2.Visibility = Visibility.Visible;                    
-                    label1.Content = "Введите ваш вес (от 20 до 250)";
-                    label2.Content = "Введите ваш рост (от 20 до 250)";
+                    label1.Content = "Введите ваш вес (от 30 до 250)";
+                    label2.Content = "Введите ваш рост (от 100 до 250)";
                     break;
                 case 2:
                     PurposeGrid.Visibility = Visibility.Hidden;
@@ -265,24 +256,6 @@ namespace CALORY
                     break;
             }
         }
-
-        private Int16 CalculateRSK()
-        {
-            double Weight = userWeight.Value;
-            double Age = DateTime.Now.Year - userBirthDate.Value.Year;
-            double Height = userHeight.Value;
-            double result = 10.0 * Weight + 6.25 * Height - 5.0 * Age;
-            if(userGender.Value) result += 5.0;
-            else result -= 161.0;
-            if (userActivity.Value == 1) result *= 1.2;
-            if (userActivity.Value == 2) result *= 1.375;
-            if (userActivity.Value == 3) result *= 1.725;
-            if (userActivity.Value == 4) result *= 1.9;
-            if (userPurpose.Value == 1) result += 250.0;
-            if (userPurpose.Value == 3) result -= 250.0;
-            return (Int16)Math.Round(result);
-        }
-
         #region ButtonEvent
         private void buttonMan_Click(object sender, RoutedEventArgs e)
         {
@@ -291,8 +264,6 @@ namespace CALORY
             buttonMan.Opacity = 1;
             buttonWoman.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             buttonWoman.Opacity = 0.5;
-            //buttonMan.Content = "М*";
-            //buttonWoman.Content = "Ж";
         }
 
         private void buttonWoman_Click(object sender, RoutedEventArgs e)
@@ -302,8 +273,6 @@ namespace CALORY
             buttonWoman.Opacity = 1;
             buttonMan.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             buttonMan.Opacity = 0.5;
-            //buttonMan.Content = "М";
-            //buttonWoman.Content = "Ж*";
         }
 
         private void Activity1_Click(object sender, RoutedEventArgs e)
@@ -317,10 +286,6 @@ namespace CALORY
             Activity3.Opacity = 0.5;
             Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity4.Opacity = 0.5;
-            //Activity1.Content = "Activity1*";
-            //Activity2.Content = "Activity2";
-            //Activity3.Content = "Activity3";
-            //Activity4.Content = "Activity4";
         }
 
         private void Activity2_Click(object sender, RoutedEventArgs e)
@@ -334,10 +299,6 @@ namespace CALORY
             Activity3.Opacity = 0.5;
             Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity4.Opacity = 0.5;
-            //Activity1.Content = "Activity1";
-            //Activity2.Content = "Activity2*";
-            //Activity3.Content = "Activity3";
-            //Activity4.Content = "Activity4";
         }
 
         private void Activity3_Click(object sender, RoutedEventArgs e)
@@ -351,10 +312,6 @@ namespace CALORY
             Activity1.Opacity = 0.5;
             Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity4.Opacity = 0.5;
-            //Activity1.Content = "Activity1";
-            //Activity2.Content = "Activity2";
-            //Activity3.Content = "Activity3*";
-            //Activity4.Content = "Activity4";
         }
 
         private void Activity4_Click(object sender, RoutedEventArgs e)
@@ -368,10 +325,6 @@ namespace CALORY
             Activity3.Opacity = 0.5;
             Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity1.Opacity = 0.5;
-            //Activity1.Content = "Activity1";
-            //Activity2.Content = "Activity2";
-            //Activity3.Content = "Activity3";
-            //Activity4.Content = "Activity4*";
         }
 
         private void Purpose1_Click(object sender, RoutedEventArgs e)
@@ -383,9 +336,6 @@ namespace CALORY
             Purpose2.Opacity = 0.5;
             Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Purpose3.Opacity = 0.5;
-            //Purpose1.Content = "Purpose1*";
-            //Purpose2.Content = "Purpose2";
-            //Purpose3.Content = "Purpose3";
         }
 
         private void Purpose2_Click(object sender, RoutedEventArgs e)
@@ -397,9 +347,6 @@ namespace CALORY
             Purpose1.Opacity = 0.5;
             Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Purpose3.Opacity = 0.5;
-            //Purpose1.Content = "Purpose1";
-            //Purpose2.Content = "Purpose2*";
-            //Purpose3.Content = "Purpose3";
         }
 
         private void Purpose3_Click(object sender, RoutedEventArgs e)
@@ -411,9 +358,6 @@ namespace CALORY
             Purpose2.Opacity = 0.5;
             Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Purpose1.Opacity = 0.5;
-            //Purpose1.Content = "Purpose1";
-            //Purpose2.Content = "Purpose2";
-            //Purpose3.Content = "Purpose3*";
         }
         #endregion
 

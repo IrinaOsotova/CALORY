@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CALORY
 {
-    public class Product
+    public class Repast
     {
         [Key]
         public Int16 code { get; set; }
@@ -15,11 +15,11 @@ namespace CALORY
         public string? ration { get; set; }
         public string? name { get; set; }
         public double kkal { get; set; }
-        public string? loginUser { get; set; }
         public double ugl { get; set; }
         public double fats { get; set; }
         public double bel { get; set; }
         private static Int16 gramm = 100;
+        public string? loginUser { get; set; }
         public Int16 gram
         {
             get
@@ -40,9 +40,9 @@ namespace CALORY
             fats = Math.Round(fats * gramm / 100, 2);
         }
 
-        public Product Copy()
+        public Repast Copy()
         {
-            return new Product(name, gramm.ToString(), kkal.ToString(), bel.ToString(), fats.ToString(), ugl.ToString());
+            return new Repast(name, gramm.ToString(), kkal.ToString(), bel.ToString(), fats.ToString(), ugl.ToString());
         }
         public override string ToString()
         {
@@ -52,7 +52,7 @@ namespace CALORY
         {
             return name + " " + gram + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.";
         }
-        public Product(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
+        public Repast(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
         {
             name = _name;
             kkal = double.Parse(_kkal);
@@ -61,6 +61,6 @@ namespace CALORY
             ugl = double.Parse(_ugl);
             gramm = Int16.Parse(_gram);
         }
-        public Product() { }
+        public Repast() { }
     }
 }
