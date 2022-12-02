@@ -7,33 +7,33 @@
         mc:Ignorable="d"
         Icon="/icons.png"
         Title="Registration" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat">
-    <Grid Background="#FFF0F0F0" Cursor="Hand">
+    <Grid Background="#FFF0F0F0">
         <Label x:Name="Authorization" Content="Регистрация" HorizontalAlignment="Left" Margin="489,83,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" FontSize="24"/>
         <Label x:Name="LabelNameRegistration" Content="Ваше имя:" HorizontalAlignment="Left" Margin="451,136,0,0" VerticalAlignment="Top" Width="114" FontFamily="pack://application:,,,/Fonts/#Montserrat" FontSize="14"/>
-        <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png" Cursor="Hand"/>
-        <TextBox x:Name="TextBoxNameRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="450,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="3,0,3,0">
+        <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
+        <TextBox x:Name="TextBoxNameRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="450,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="4,4,4,4" Cursor="IBeam">
             <TextBox.Template >
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <Viewbox Stretch="Uniform" Margin="4,4,4,4">
-                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
+                            <ScrollViewer  Margin="0" x:Name="PART_ContentHost"/>
                         </Viewbox>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>
         </TextBox>
-        <TextBox x:Name="TextBoxLoginRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="452,244,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="257" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="3,0,3,0">
+        <TextBox x:Name="TextBoxLoginRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="452,244,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="257" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="4,4,4,4" Cursor="IBeam">
             <TextBox.Template >
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <Viewbox Stretch="Uniform" Margin="4,4,4,4">
-                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
+                            <ScrollViewer  Margin="0" x:Name="PART_ContentHost"/>
                         </Viewbox>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>
         </TextBox>
-        <PasswordBox x:Name="PasswordBoxRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0">
+        <PasswordBox x:Name="PasswordBoxRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="Montserrat Medium" FontSize="18" Height="39" VerticalContentAlignment="Center" Padding="3,0,0,0" Cursor="IBeam">
             <PasswordBox.Template>
                 <ControlTemplate >
                     <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
@@ -75,11 +75,13 @@
             </Button.Style>
         </Button>
         <Image x:Name="ShowPassword" HorizontalAlignment="Left" Height="18" Margin="680,327,0,0" VerticalAlignment="Top" Width="18" Cursor="Hand" MouseDown="ShowPassword_MouseDown" Source="/eyeclose2.png"/>
-        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18"  IsReadOnly="True" Height="39" VerticalContentAlignment="Center" Padding="3,0,22,0" TextWrapping="Wrap" Text="" Visibility="Hidden" Cursor="Hand">
+        <TextBox x:Name="TextBoxShowPassword" HorizontalAlignment="Left" Margin="452,316,0,0" VerticalAlignment="Top" Width="257" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium" FontSize="18"  IsReadOnly="True" Height="39" VerticalContentAlignment="Center" Padding="4,4,4,4" TextWrapping="Wrap" Text="" Visibility="Hidden" Cursor="Hand">
             <TextBox.Template> 
                 <ControlTemplate >
-                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White">
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                    <Border Background="White" CornerRadius="10" Padding="2" BorderThickness="1" BorderBrush="White" Margin="0,0,32,0">
+                       <Viewbox Stretch="Uniform" RenderTransformOrigin="1,0.5" HorizontalAlignment="Left">
+                            <ScrollViewer  Margin="0" x:Name="PART_ContentHost"/>
+                        </Viewbox>
                     </Border>
                 </ControlTemplate>
             </TextBox.Template>

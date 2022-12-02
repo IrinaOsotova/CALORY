@@ -37,6 +37,7 @@ namespace CALORY
             instance = this;
             CalendarPiker.SelectedDate = DateTime.Now;
             CalendarPiker.DisplayDateStart = DateTime.Today.AddDays(-7);
+            DataOfBirth.DisplayDateEnd = DateTime.Now.AddYears(-14);
             CalendarPiker.DisplayDateEnd = DateTime.Now;
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
@@ -73,8 +74,15 @@ namespace CALORY
         #region Добавление еды
         public void Add(string timeMeal)
         {
+            bool b = productsBreakfast.Exists(x => x.name == ComboBoxSearch.SelectedItem.ToString());
+            bool d = productsDiner.Exists(x => x.name == ComboBoxSearch.SelectedItem.ToString());
+            bool l = productsLunch.Exists(x => x.name == ComboBoxSearch.SelectedItem.ToString());
             if (ComboBoxSearch.SelectedItem == null)
                 MessageBox.Show("Продукт не выбран", "Ошибка добавления");
+            else if ((timeMeal == "Breakfast" && b) || (timeMeal == "Diner" && d) || (timeMeal == "Lunch" && l))
+            {
+                MessageBox.Show("Данный продукт уже выбран, если вы хотите изменить граммы - удалите старый продукт из списка", "Выбор продукта");
+            }
             else
             {
                 AddWindow SelectedProductsWindow = new AddWindow(timeMeal, Login);
@@ -222,7 +230,11 @@ namespace CALORY
                         #region Отчет
                         using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
                         {
-                            Goal.Text = rskGoalTextBox.Text + " ккал";
+                            using (var db = new ApplicationContext())
+                            {
+                                var user = db.Users.FirstOrDefault(x => x.login == Login);
+                                Goal.Text = user.rsk.ToString() + " ккал";
+                            }
                             Chart.Plot.Clear();
                             Donut.Plot.Clear();
                             DateTime thisDay = DateTime.Today; ;
@@ -304,6 +316,7 @@ namespace CALORY
                 ActivityComboBox.IsEnabled = true;
                 GoalComboBox.IsEnabled = true;
                 GenderComboBox.IsEnabled = true;
+                RectangleCalendar.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -329,6 +342,7 @@ namespace CALORY
                 ActivityComboBox.IsEnabled = false;
                 GoalComboBox.IsEnabled = false;
                 GenderComboBox.IsEnabled = false;
+                RectangleCalendar.Visibility = Visibility.Visible;
                 bool _gender = false;
                 int _activity = 1;
                 int _goal = 1;

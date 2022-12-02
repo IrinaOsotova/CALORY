@@ -52,6 +52,8 @@ namespace CALORY
         {
             return name + " " + gram + " г. " + " - " + kkal + " ккал., " + bel + " г. бел., " + fats + " г. жир., " + ugl + " г. угл.";
         }
+
+
         public Repast(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
         {
             name = _name;

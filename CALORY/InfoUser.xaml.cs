@@ -40,8 +40,8 @@ namespace CALORY
             ImageLenta.Visibility = Visibility.Hidden;
             label1.Visibility = Visibility.Visible;
             label2.Visibility = Visibility.Visible;
-            label1.Content = "Выберите пол";
-            label2.Content = "Выберите дату рождения";
+            label1.Content = "Выберите пол:";
+            label2.Content = "Выберите дату рождения:";
             GenderDateGrid.Visibility = Visibility.Visible;
             AvtivityGrid.Visibility = Visibility.Hidden;
             PurposeGrid.Visibility = Visibility.Hidden;
@@ -84,8 +84,8 @@ namespace CALORY
                             tb1.Visibility = Visibility.Visible;
                             tb2.Visibility = Visibility.Visible;      
                             ImageLenta.Visibility = Visibility.Visible;
-                            label1.Content = "Введите ваш вес (от 30 до 250 кг)";
-                            label2.Content = "Введите ваш рост (от 100 до 250 см)";
+                            label1.Content = "Введите ваш вес (от 30 до 250 кг):";
+                            label2.Content = "Введите ваш рост (от 100 до 250 см):";
                         }
                         else MessageBox.Show("Выберите дату рождения", "Ошибка ввода");                                          
                     }
@@ -122,7 +122,7 @@ namespace CALORY
                             AvtivityGrid.Visibility = Visibility.Visible;
                             tb1.Visibility= Visibility.Hidden;
                             tb2.Visibility= Visibility.Hidden;
-                            label1.Content = "Выберите активность";
+                            label1.Content = "Выберите активность:";
                             label2.Visibility = Visibility.Hidden;
                             ImageLenta.Visibility = Visibility.Hidden;
                         }
@@ -137,7 +137,7 @@ namespace CALORY
                         numStage++;
                         AvtivityGrid.Visibility = Visibility.Hidden;
                         PurposeGrid.Visibility = Visibility.Visible;
-                        label1.Content = "Выберите цель";
+                        label1.Content = "Выберите цель:";
                     }
                     else MessageBox.Show("Выберите активность", "Ошибка ввода");           
                     break;
@@ -199,8 +199,8 @@ namespace CALORY
                     ImageLenta.Visibility = Visibility.Hidden;
                     label1.Visibility = Visibility.Visible;
                     label2.Visibility = Visibility.Visible;
-                    label1.Content = "Выберите пол";
-                    label2.Content = "Выберите дату рождения";
+                    label1.Content = "Выберите пол:";
+                    label2.Content = "Выберите дату рождения:";
                     if (GenderDateGrid.Visibility == Visibility.Visible)
                     {
                         Registration window = new Registration(Name, Login);
@@ -222,15 +222,15 @@ namespace CALORY
                     ImageLenta.Visibility = Visibility.Visible;
                     label1.Visibility = Visibility.Visible;
                     label2.Visibility = Visibility.Visible;                    
-                    label1.Content = "Введите ваш вес (от 30 до 250)";
-                    label2.Content = "Введите ваш рост (от 100 до 250)";
+                    label1.Content = "Введите ваш вес (от 30 до 250):";
+                    label2.Content = "Введите ваш рост (от 100 до 250):";
                     break;
                 case 2:
                     PurposeGrid.Visibility = Visibility.Hidden;
                     AvtivityGrid.Visibility = Visibility.Visible;
                     tb1.Visibility = Visibility.Hidden;
                     tb2.Visibility = Visibility.Hidden;
-                    label1.Content = "Выберите активность";
+                    label1.Content = "Выберите активность:";
                     label2.Visibility = Visibility.Hidden;
                     ImageLenta.Visibility = Visibility.Hidden;
 
@@ -244,7 +244,7 @@ namespace CALORY
         private void buttonMan_Click(object sender, RoutedEventArgs e)
         {
             userGender = true;
-            buttonMan.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            buttonMan.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             buttonMan.Opacity = 1;
             buttonWoman.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             buttonWoman.Opacity = 0.5;
@@ -253,7 +253,7 @@ namespace CALORY
         private void buttonWoman_Click(object sender, RoutedEventArgs e)
         {
             userGender = false;
-            buttonWoman.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            buttonWoman.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             buttonWoman.Opacity = 1;
             buttonMan.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             buttonMan.Opacity = 0.5;
@@ -262,7 +262,7 @@ namespace CALORY
         private void Activity1_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 1;
-            Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Activity1.Opacity = 1;
             Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity2.Opacity = 0.5;
@@ -275,7 +275,7 @@ namespace CALORY
         private void Activity2_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 2;
-            Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Activity2.Opacity = 1;
             Activity1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity1.Opacity = 0.5;
@@ -288,7 +288,7 @@ namespace CALORY
         private void Activity3_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 3;
-            Activity3.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity3.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Activity3.Opacity = 1;
             Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity2.Opacity = 0.5;
@@ -301,7 +301,7 @@ namespace CALORY
         private void Activity4_Click(object sender, RoutedEventArgs e)
         {
             userActivity = 4;
-            Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Activity4.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Activity4.Opacity = 1;
             Activity2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Activity2.Opacity = 0.5;
@@ -314,7 +314,7 @@ namespace CALORY
         private void Purpose1_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 1;
-            Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Purpose1.Opacity = 1;
             Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Purpose2.Opacity = 0.5;
@@ -325,7 +325,7 @@ namespace CALORY
         private void Purpose2_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 2;
-            Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Purpose2.Opacity = 1;
             Purpose1.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Purpose1.Opacity = 0.5;
@@ -336,7 +336,7 @@ namespace CALORY
         private void Purpose3_Click(object sender, RoutedEventArgs e)
         {
             userPurpose = 3;
-            Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 102, 22));
+            Purpose3.BorderBrush = new SolidColorBrush(Color.FromRgb(179, 145, 212));
             Purpose3.Opacity = 1;
             Purpose2.BorderBrush = new SolidColorBrush(Color.FromRgb(167, 164, 164));
             Purpose2.Opacity = 0.5;

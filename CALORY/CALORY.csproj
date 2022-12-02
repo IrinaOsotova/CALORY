@@ -34,6 +34,8 @@
     <None Remove="images\2.png" />
     <None Remove="images\4.png" />
     <None Remove="images\4115235-exit-logout-sign-out_114030.png" />
+    <None Remove="images\arrowLeft.png" />
+    <None Remove="images\arrowRight.png" />
     <None Remove="images\back.png" />
     <None Remove="images\Border.png" />
     <None Remove="images\BorderDonut.png" />
@@ -102,23 +104,14 @@
     <Resource Include="icons.png" />
     <Resource Include="images\2.png" />
     <Resource Include="images\4.png" />
-    <Resource Include="images\4115235-exit-logout-sign-out_114030.png" />
+    <Resource Include="images\arrowLeft.png" />
+    <Resource Include="images\arrowRight.png" />
     <Resource Include="images\back.png" />
     <Resource Include="images\Border.png" />
     <Resource Include="images\BorderDonut.png" />
     <Resource Include="images\Donut.png" />
-    <Resource Include="images\eye.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\eyeclose.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="images\icons8-изменить-пользователя-100.png" />
-    <Resource Include="images\icons8-карандаш-100.png" />
     <Resource Include="images\icons8-поиск-30.png" />
     <Resource Include="images\icons8-привод-96.png" />
-    <Resource Include="images\icons8-умножение-96.png" />
-    <Resource Include="images\logo.png" />
     <Resource Include="images\logotype.png" />
     <Resource Include="images\man.png" />
     <Resource Include="images\next.png" />

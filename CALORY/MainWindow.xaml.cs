@@ -78,5 +78,10 @@ namespace CALORY
             window.Show();
             Close();
         }
+
+        private void TextBoxLoginAuthorization_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
