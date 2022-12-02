@@ -31,21 +31,6 @@ namespace CALORY
         private string? Name;
         private string? Login;
         private string? Password;
-        //public InfoUser()
-        //{
-        //    InitializeComponent();
-        //    numStage = 0;                       
-        //    tb1.Visibility = Visibility.Hidden;
-        //    tb2.Visibility = Visibility.Hidden;
-        //    label1.Visibility = Visibility.Visible;
-        //    label2.Visibility = Visibility.Visible;
-        //    label1.Content = "Выберите пол";
-        //    label2.Content = "Выберите дату рождения";
-        //    GenderDateGrid.Visibility = Visibility.Visible;          
-        //    AvtivityGrid.Visibility = Visibility.Hidden;
-        //    PurposeGrid.Visibility = Visibility.Hidden;
-        //    DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
-        //}
         public InfoUser(string? _name, string? _login, string? _password)
         {
             InitializeComponent();
@@ -80,16 +65,12 @@ namespace CALORY
         }
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            //char[] Numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            //bool isOk = true;
             switch (numStage)
             {
-                case 0:
-                    // пол (bool) 0 - ж 1 - м
-                    // дата рождения (data) проверка на разумность                    
+                case 0:                  
                     if (!userGender.HasValue && !DateUser.SelectedDate.HasValue)
                     {
-                        MessageBox.Show("Выберите пол и дату рождения");
+                        MessageBox.Show("Выберите пол и дату рождения", "Ошибка ввода");
                         break;
                     }
                     if (userGender.HasValue)
@@ -106,9 +87,9 @@ namespace CALORY
                             label1.Content = "Введите ваш вес (от 30 до 250 кг)";
                             label2.Content = "Введите ваш рост (от 100 до 250 см)";
                         }
-                        else MessageBox.Show("Выберите дату рождения");                                          
+                        else MessageBox.Show("Выберите дату рождения", "Ошибка ввода");                                          
                     }
-                    else MessageBox.Show("Выберите пол");     
+                    else MessageBox.Show("Выберите пол", "Ошибка ввода");     
                     break;
                 case 1:
                     BackButton.Visibility = Visibility.Visible;
@@ -118,14 +99,14 @@ namespace CALORY
                     else userHeight = null;
                     if (!userWeight.HasValue && !userHeight.HasValue)
                     {
-                        MessageBox.Show("Введите ваш вес и рост");
+                        MessageBox.Show("Введите ваш вес и рост", "Ошибка ввода");
                         break;
                     }
                     if (userWeight.HasValue)
                     {
                         if(userWeight.Value < 30 || userWeight.Value > 250)
                         {
-                            MessageBox.Show("Допустимый вес от 30 до 250 кг");
+                            MessageBox.Show("Допустимый вес от 30 до 250 кг", "Ошибка ввода");
                             tb1.Text = "";
                             break;
                         }
@@ -133,7 +114,7 @@ namespace CALORY
                         {
                             if (userHeight.Value < 100 || userHeight.Value > 250)
                             {
-                                MessageBox.Show("Допустимый рост от 100 до 250 см");
+                                MessageBox.Show("Допустимый рост от 100 до 250 см", "Ошибка ввода");
                                 tb2.Text = "";
                                 break;
                             }
@@ -145,9 +126,9 @@ namespace CALORY
                             label2.Visibility = Visibility.Hidden;
                             ImageLenta.Visibility = Visibility.Hidden;
                         }
-                        else MessageBox.Show("Введите ваш рост");
+                        else MessageBox.Show("Введите ваш рост", "Ошибка ввода");
                     }
-                    else MessageBox.Show("Введите ваш вес");
+                    else MessageBox.Show("Введите ваш вес", "Ошибка ввода");
                     break;                    
                 case 2:
                     // активность                     
@@ -158,7 +139,7 @@ namespace CALORY
                         PurposeGrid.Visibility = Visibility.Visible;
                         label1.Content = "Выберите цель";
                     }
-                    else MessageBox.Show("Выберите активность");           
+                    else MessageBox.Show("Выберите активность", "Ошибка ввода");           
                     break;
                 case 3:
                     //цель
@@ -190,11 +171,14 @@ namespace CALORY
                             });
                             db.SaveChanges();
                         }
-                        Diary window = new Diary(Login);
-                        window.Show();
-                        Close();
+                        using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
+                        {
+                            Diary window = new Diary(Login);
+                            window.Show();
+                            Close();
+                        }
                     }
-                    else MessageBox.Show("Выберите цель"); 
+                    else MessageBox.Show("Выберите цель", "Ошибка ввода"); 
                     break;
                 default:
                     //Error

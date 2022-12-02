@@ -23,7 +23,7 @@
             </TextBox.Template>
         </TextBox>
         <Label Content="Укажите колличество грамм:" HorizontalAlignment="Left" Margin="33,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="199"/>
-        <TextBox x:Name="grams" HorizontalAlignment="Left" MaxLength="4" Height="32" Margin="70,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"  VerticalContentAlignment="Center" TextChanged="grams_TextChanged" IsEnabled="True" BorderBrush="{x:Null}" Background="#FFF0F0F0" RenderTransformOrigin="0.5,0.5">
+        <TextBox x:Name="grams" HorizontalAlignment="Left" MaxLength="4" Height="32" Margin="70,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"  VerticalContentAlignment="Center" TextChanged="grams_TextChanged" IsEnabled="True" BorderBrush="{x:Null}" Background="#FFF0F0F0" RenderTransformOrigin="0.5,0.5" PreviewTextInput="grams_PreviewTextInput">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

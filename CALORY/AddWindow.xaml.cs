@@ -83,7 +83,7 @@ namespace CALORY
             }
             else
             {
-                MessageBox.Show("Ошибка ввода!");
+                MessageBox.Show("Некорректно введены граммы", "Ошибка ввода");
                 grams.Text = "";
             }
         }
@@ -91,7 +91,7 @@ namespace CALORY
         {           
             try
             {
-                if (grams.Text != "" && grams.Text != "0")
+                if (grams.Text != "" && grams.Text != "0" && grams.Text != "00" && grams.Text != "000" && grams.Text != "0000")
                 {
                     current = ((Repast)Diary.instance.ComboBoxSearch.SelectedItem).Copy();
                     current.gram = Int16.Parse(grams.Text);
@@ -110,8 +110,16 @@ namespace CALORY
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка ввода!");
+                MessageBox.Show("Некорректно введены граммы", "Ошибка ввода");
                 grams.Text = grams.Text.Remove(grams.Text.Length - 1);
+            }
+        }
+
+        private void grams_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
             }
         }
     }
