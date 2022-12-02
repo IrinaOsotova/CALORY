@@ -28,7 +28,7 @@ namespace CALORY
         public List<Repast> productsDiner = new List<Repast>();
         public List<Repast> productsBase = new List<Repast>();
         public static Diary? instance;
-        private string Login;
+        private string  Login;
      
         public Diary(string login)
         {
