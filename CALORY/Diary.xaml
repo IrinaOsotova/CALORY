@@ -299,7 +299,34 @@
                     <Rectangle HorizontalAlignment="Left" Height="176" Margin="488,206,0,0" VerticalAlignment="Top" Width="266" RenderTransformOrigin="1,0" RadiusX="27.133" RadiusY="27.133" Stroke="#FFDFDFDF" StrokeThickness="2"/>
                     <Rectangle HorizontalAlignment="Left" Height="176" Margin="220,206,0,0" VerticalAlignment="Top" Width="255" RenderTransformOrigin="1,0" RadiusX="27.133" RadiusY="27.133" Stroke="#FFDFDFDF" StrokeThickness="2"/>
                     <Rectangle HorizontalAlignment="Left" Height="149" Margin="220,31,0,0" VerticalAlignment="Top" Width="534" RenderTransformOrigin="1,0" RadiusX="27.133" RadiusY="27.133" Stroke="#FFDFDFDF" StrokeThickness="2"/>
-                    <Button x:Name="ExitButtonDiary" Content="Выход из аккаунта" HorizontalAlignment="Left" Margin="411,469,0,0" VerticalAlignment="Top" Click="ExitButtonDiary_Click" Background="{x:Null}" Width="160" BorderBrush="{x:Null}" Height="36" />
+                    <Button x:Name="ExitButtonDiary" Content="Выход из аккаунта" HorizontalAlignment="Left" Margin="411,469,0,0" VerticalAlignment="Top" Click="ExitButtonDiary_Click" Background="{x:Null}" Width="160" BorderBrush="{x:Null}" Height="36">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                    <Setter Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    </Button>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="logo2" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
                     <!--<Image x:Name="profile" Height="219" Margin="343,21,204,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>-->
