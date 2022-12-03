@@ -320,12 +320,12 @@ namespace CALORY
             }
             else
             {
-                if (Convert.ToByte(textBoxWeight.Text) < 30 || Convert.ToByte(textBoxWeight.Text) > 250)
+                if (Convert.ToInt32(textBoxWeight.Text) < 30 || Convert.ToInt32(textBoxWeight.Text) > 250)
                 {
                     MessageBox.Show("Допустимый вес от 30 до 250 кг", "Некорректно введен вес");
                     return;
                 }
-                if (Convert.ToByte(textBoxHeight.Text) < 100 || Convert.ToByte(textBoxHeight.Text) > 250)
+                if (Convert.ToInt32(textBoxHeight.Text) < 100 || Convert.ToInt32(textBoxHeight.Text) > 250)
                 {
                     MessageBox.Show("Допустимый рост от 100 до 250 см", "Некорректно введен рост");
                     return;

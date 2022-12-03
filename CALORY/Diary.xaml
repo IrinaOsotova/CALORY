@@ -420,17 +420,17 @@
                     <Label Content="кг" HorizontalAlignment="Left" Margin="383,279,0,0" VerticalAlignment="Top"/>
                     <Label Content="cм" HorizontalAlignment="Left" Margin="379,231,0,0" VerticalAlignment="Top"/>
                     <Label Content="Имя:" HorizontalAlignment="Left" Margin="271,69,0,0" VerticalAlignment="Top" Width="45"/>
-                    <ComboBox x:Name="GenderComboBox" HorizontalAlignment="Left" Margin="311,328,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" IsEnabled="False" RenderTransformOrigin="1,0">
+                    <ComboBox x:Name="GenderComboBox" HorizontalAlignment="Left" Margin="311,328,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" IsEnabled="False" RenderTransformOrigin="1,0" IsReadOnly="True">
                         <ComboBoxItem Content="Мужской"/>
                         <ComboBoxItem Content="Женский"/>
                     </ComboBox>
-                    <ComboBox x:Name="ActivityComboBox" HorizontalAlignment="Left" Margin="515,260,0,0" VerticalAlignment="Top" Width="198" IsEditable="True" IsEnabled="False"  >
+                    <ComboBox x:Name="ActivityComboBox" HorizontalAlignment="Left" Margin="515,260,0,0" VerticalAlignment="Top" Width="198" IsEditable="True" IsEnabled="False" IsReadOnly="True"  >
                         <ComboBoxItem Content="Сидячий"/>
                         <ComboBoxItem Content="Малоактивный"/>
                         <ComboBoxItem Content="Активный"/>
                         <ComboBoxItem Content="Очень активный"/>
                     </ComboBox>
-                    <ComboBox x:Name="GoalComboBox" HorizontalAlignment="Left" Margin="515,326,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" IsEnabled="False">
+                    <ComboBox x:Name="GoalComboBox" HorizontalAlignment="Left" Margin="515,326,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" IsEnabled="False" IsReadOnly="True">
                         <ComboBoxItem Content="Набор веса"/>
                         <ComboBoxItem Content="Удержание"/>
                         <ComboBoxItem Content="Похудение"/>
