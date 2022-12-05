@@ -126,8 +126,6 @@ namespace CALORY
                     listBoxLunch.Items.Add(item.ToStringFull());
                     productsLunch.Add(item);
                 }
-                //var user = db.Users.FirstOrDefault(x => x.login == Login);
-                //rskGoalTextBox.Text = user.rsk.ToString();
             }
         }
 
@@ -195,65 +193,7 @@ namespace CALORY
                 switch (TabControlDiary.SelectedIndex)
                 {
                     case 0:
-                        if (ChangeProfileButton.Content == "Сохранить")
-                        {
-                            MessageBoxResult result;
-                            if(MessageBox.Show("Желаете ли сохранить данные, которые были изменены в вашем профиле?", "Кнопка сохранить", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                            {
-                                if (Convert.ToInt32(textBoxWeight.Text) < 30 || Convert.ToInt32(textBoxWeight.Text) > 250)
-                                {
-                                    MessageBox.Show("Допустимый вес от 30 до 250 кг, поэтому сохранить изменения не удалось", "Некорректно был введен вес");
-                                    return;
-                                }
-                                if (Convert.ToInt32(textBoxHeight.Text) < 100 || Convert.ToInt32(textBoxHeight.Text) > 250)
-                                {
-                                    MessageBox.Show("Допустимый рост от 100 до 250 см, поэтому сохранить изменения не удалось", "Некорректно был введен рост");
-                                    return;
-                                }
-                                if (!Registration.Verification(textBoxName))
-                                {
-                                    MessageBox.Show("Имя должно соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры, поэтому сохранить изменения не удалось", "Некорректно введено имя");
-                                    return;
-                                }
-                                ChangeProfileButton.Content = "Изменить параметры";
-                                textBoxName.IsReadOnly = true;
-                                textBoxHeight.IsReadOnly = true;
-                                textBoxWeight.IsReadOnly = true;
-                                textBoxWeight.IsEnabled = false;
-                                textBoxHeight.IsEnabled = false;
-                                textBoxName.IsEnabled = false;
-                                ActivityComboBox.IsEnabled = false;
-                                GoalComboBox.IsEnabled = false;
-                                GenderComboBox.IsEnabled = false;
-                                RectangleCalendar.Visibility = Visibility.Visible;
-                                bool _gender = false;
-                                int _activity = 1;
-                                int _goal = 1;
-                                if (ActivityComboBox.Text == "Сидячий") _activity = 1;
-                                if (ActivityComboBox.Text == "Малоактивный") _activity = 2;
-                                if (ActivityComboBox.Text == "Активный") _activity = 3;
-                                if (ActivityComboBox.Text == "Очень активный") _activity = 4;
-                                if (GoalComboBox.Text == "Набор веса") _goal = 1;
-                                if (GoalComboBox.Text == "Удержание") _goal = 2;
-                                if (GoalComboBox.Text == "Похудение") _goal = 3;
-                                if (GenderComboBox.Text == "Мужской") _gender = true;
-                                if (GenderComboBox.Text == "Женский") _gender = false;
-                                using (var db = new ApplicationContext())
-                                {
-                                    var users = db.Users.FirstOrDefault(x => x.login == Login);
-                                    users.name = textBoxName.Text;
-                                    users.growth = Convert.ToByte(textBoxHeight.Text);
-                                    users.weight = Convert.ToByte(textBoxWeight.Text);
-                                    users.activity = Convert.ToByte(_activity);
-                                    users.goal = Convert.ToByte(_goal);
-                                    users.male = (byte)((_gender) ? 1 : 0);
-                                    users.Birth = DataOfBirth.SelectedDate.Value;
-                                    users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
-                                    users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
-                                    db.SaveChanges();
-                                }
-                            }
-                        }
+                        SaveButtonNotPressed();
                         using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
                         {
                             using (var db = new ApplicationContext())
@@ -297,65 +237,7 @@ namespace CALORY
                         break;
                     case 2:
                         #region Отчет
-                        if (ChangeProfileButton.Content == "Сохранить")
-                        {
-                            MessageBoxResult result;
-                            if (MessageBox.Show("Желаете ли сохранить данные, которые были изменены в вашем профиле?", "Кнопка сохранить", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                            {
-                                if (Convert.ToInt32(textBoxWeight.Text) < 30 || Convert.ToInt32(textBoxWeight.Text) > 250)
-                                {
-                                    MessageBox.Show("Допустимый вес от 30 до 250 кг, поэтому сохранить изменения не удалось", "Некорректно был введен вес");
-                                    return;
-                                }
-                                if (Convert.ToInt32(textBoxHeight.Text) < 100 || Convert.ToInt32(textBoxHeight.Text) > 250)
-                                {
-                                    MessageBox.Show("Допустимый рост от 100 до 250 см, поэтому сохранить изменения не удалось", "Некорректно был введен рост");
-                                    return;
-                                }
-                                if (!Registration.Verification(textBoxName))
-                                {
-                                    MessageBox.Show("Имя должно соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры, поэтому сохранить изменения не удалось", "Некорректно введено имя");
-                                    return;
-                                }
-                                ChangeProfileButton.Content = "Изменить параметры";
-                                textBoxName.IsReadOnly = true;
-                                textBoxHeight.IsReadOnly = true;
-                                textBoxWeight.IsReadOnly = true;
-                                textBoxWeight.IsEnabled = false;
-                                textBoxHeight.IsEnabled = false;
-                                textBoxName.IsEnabled = false;
-                                ActivityComboBox.IsEnabled = false;
-                                GoalComboBox.IsEnabled = false;
-                                GenderComboBox.IsEnabled = false;
-                                RectangleCalendar.Visibility = Visibility.Visible;
-                                bool _gender = false;
-                                int _activity = 1;
-                                int _goal = 1;
-                                if (ActivityComboBox.Text == "Сидячий") _activity = 1;
-                                if (ActivityComboBox.Text == "Малоактивный") _activity = 2;
-                                if (ActivityComboBox.Text == "Активный") _activity = 3;
-                                if (ActivityComboBox.Text == "Очень активный") _activity = 4;
-                                if (GoalComboBox.Text == "Набор веса") _goal = 1;
-                                if (GoalComboBox.Text == "Удержание") _goal = 2;
-                                if (GoalComboBox.Text == "Похудение") _goal = 3;
-                                if (GenderComboBox.Text == "Мужской") _gender = true;
-                                if (GenderComboBox.Text == "Женский") _gender = false;
-                                using (var db = new ApplicationContext())
-                                {
-                                    var users = db.Users.FirstOrDefault(x => x.login == Login);
-                                    users.name = textBoxName.Text;
-                                    users.growth = Convert.ToByte(textBoxHeight.Text);
-                                    users.weight = Convert.ToByte(textBoxWeight.Text);
-                                    users.activity = Convert.ToByte(_activity);
-                                    users.goal = Convert.ToByte(_goal);
-                                    users.male = (byte)((_gender) ? 1 : 0);
-                                    users.Birth = DataOfBirth.SelectedDate.Value;
-                                    users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
-                                    users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
-                                    db.SaveChanges();
-                                }
-                            }
-                        }
+                        SaveButtonNotPressed();
                         using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
                         {
                             using (var db = new ApplicationContext())
@@ -451,58 +333,14 @@ namespace CALORY
             }
             else
             {
-                if (Convert.ToInt32(textBoxWeight.Text) < 30 || Convert.ToInt32(textBoxWeight.Text) > 250)
-                {
-                    MessageBox.Show("Допустимый вес от 30 до 250 кг", "Некорректно введен вес");
-                    return;
-                }
-                if (Convert.ToInt32(textBoxHeight.Text) < 100 || Convert.ToInt32(textBoxHeight.Text) > 250)
-                {
-                    MessageBox.Show("Допустимый рост от 100 до 250 см", "Некорректно введен рост");
-                    return;
-                }
+                if (!WeightCheck(textBoxHeight.Text)) return;
+                if (!HeightCheck(textBoxWeight.Text)) return;
                 if (!Registration.Verification(textBoxName))
                 {
                     MessageBox.Show("Имя должно соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры", "Некорректно введено имя");
                     return;
                 }
-                ChangeProfileButton.Content = "Изменить параметры";
-                textBoxName.IsReadOnly = true;
-                textBoxHeight.IsReadOnly = true;
-                textBoxWeight.IsReadOnly = true;
-                textBoxWeight.IsEnabled = false;
-                textBoxHeight.IsEnabled = false;
-                textBoxName.IsEnabled = false;
-                ActivityComboBox.IsEnabled = false;
-                GoalComboBox.IsEnabled = false;
-                GenderComboBox.IsEnabled = false;
-                RectangleCalendar.Visibility = Visibility.Visible;
-                bool _gender = false;
-                int _activity = 1;
-                int _goal = 1;
-                if (ActivityComboBox.Text == "Сидячий") _activity = 1;
-                if (ActivityComboBox.Text == "Малоактивный") _activity = 2;
-                if (ActivityComboBox.Text == "Активный") _activity = 3;
-                if (ActivityComboBox.Text == "Очень активный") _activity = 4;
-                if (GoalComboBox.Text == "Набор веса") _goal = 1;
-                if (GoalComboBox.Text == "Удержание") _goal = 2;
-                if (GoalComboBox.Text == "Похудение") _goal = 3;
-                if (GenderComboBox.Text == "Мужской") _gender = true;
-                if (GenderComboBox.Text == "Женский") _gender = false;
-                using (var db = new ApplicationContext())
-                {
-                    var users = db.Users.FirstOrDefault(x => x.login == Login);
-                    users.name = textBoxName.Text;
-                    users.growth = Convert.ToByte(textBoxHeight.Text);
-                    users.weight = Convert.ToByte(textBoxWeight.Text);
-                    users.activity = Convert.ToByte(_activity);
-                    users.goal = Convert.ToByte(_goal);
-                    users.male = (byte)((_gender) ? 1 : 0);
-                    users.Birth = DataOfBirth.SelectedDate.Value;
-                    users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
-                    users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
-                    db.SaveChanges();
-                }
+                SaveProfileData();
             }
         }
 
@@ -522,5 +360,87 @@ namespace CALORY
             }
         }
 
+        public void SaveButtonNotPressed()
+        {
+            if (ChangeProfileButton.Content == "Сохранить")
+            {
+                MessageBoxResult result;
+                if (MessageBox.Show("Желаете ли сохранить данные, которые были изменены в вашем профиле?", "Кнопка сохранить", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    if (!WeightCheck(textBoxHeight.Text)) return;
+                    if (!HeightCheck(textBoxWeight.Text)) return;
+                    if (!Registration.Verification(textBoxName))
+                    {
+                        MessageBox.Show("Имя должно соответствовать следующим требованиям:\n 1.Длина не менее 3 символов \n 2.Cодержит только латинские буквы и цифры", "Некорректно введено имя");
+                        return;
+                    }
+                    SaveProfileData();
+                }
+            }
+        }
+
+        public Boolean WeightCheck(string height)
+        {
+            if (Convert.ToInt32(height) < 100 || Convert.ToInt32(height) > 250)
+            {
+                MessageBox.Show("Допустимый рост от 100 до 250 см", "Некорректно введен рост");
+                return false;
+            }
+            return true;
+        }
+        public Boolean HeightCheck(string weiht)
+        {
+            if (Convert.ToInt32(weiht) < 30 || Convert.ToInt32(weiht) > 250)
+            {
+                MessageBox.Show("Допустимый вес от 30 до 250 кг", "Некорректно введен вес");
+                return false;
+            }
+            return true;
+        }
+        public void SaveProfileData()
+        {
+            ChangeProfileButton.Content = "Изменить параметры";
+            textBoxName.IsReadOnly = true;
+            textBoxHeight.IsReadOnly = true;
+            textBoxWeight.IsReadOnly = true;
+            textBoxWeight.IsEnabled = false;
+            textBoxHeight.IsEnabled = false;
+            textBoxName.IsEnabled = false;
+            ActivityComboBox.IsEnabled = false;
+            GoalComboBox.IsEnabled = false;
+            GenderComboBox.IsEnabled = false;
+            RectangleCalendar.Visibility = Visibility.Visible;
+            bool _gender = false;
+            int _activity = 1;
+            int _goal = 1;
+            if (ActivityComboBox.Text == "Сидячий") _activity = 1;
+            if (ActivityComboBox.Text == "Малоактивный") _activity = 2;
+            if (ActivityComboBox.Text == "Активный") _activity = 3;
+            if (ActivityComboBox.Text == "Очень активный") _activity = 4;
+            if (GoalComboBox.Text == "Набор веса") _goal = 1;
+            if (GoalComboBox.Text == "Удержание") _goal = 2;
+            if (GoalComboBox.Text == "Похудение") _goal = 3;
+            if (GenderComboBox.Text == "Мужской") _gender = true;
+            if (GenderComboBox.Text == "Женский") _gender = false;
+            DataUpload(_activity, _goal, _gender);
+        }
+        public void DataUpload(int _activity, int _goal, bool _gender)
+        {
+            using (var db = new ApplicationContext())
+            {
+                var users = db.Users.FirstOrDefault(x => x.login == Login);
+                users.name = textBoxName.Text;
+                users.growth = Convert.ToByte(textBoxHeight.Text);
+                users.weight = Convert.ToByte(textBoxWeight.Text);
+                users.activity = Convert.ToByte(_activity);
+                users.goal = Convert.ToByte(_goal);
+                users.male = (byte)((_gender) ? 1 : 0);
+                users.Birth = DataOfBirth.SelectedDate.Value;
+                users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
+                users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
+                db.SaveChanges();
+            }
+            MessageBox.Show("Данные были успешно сохранены", "Сохранение данных профиля");
+        }
     }
 }
