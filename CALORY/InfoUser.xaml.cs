@@ -45,6 +45,7 @@ namespace CALORY
             GenderDateGrid.Visibility = Visibility.Visible;
             AvtivityGrid.Visibility = Visibility.Hidden;
             PurposeGrid.Visibility = Visibility.Hidden;
+            DateUser.DisplayDateStart = DateTime.Now.AddYears(-100);
             DateUser.DisplayDateEnd = DateTime.Now.AddYears(-14);
             Name = _name;
             Login = _login;

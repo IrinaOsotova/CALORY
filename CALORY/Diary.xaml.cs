@@ -38,6 +38,7 @@ namespace CALORY
             CalendarPiker.SelectedDate = DateTime.Now;
             CalendarPiker.DisplayDateStart = DateTime.Today.AddDays(-7);
             DataOfBirth.DisplayDateEnd = DateTime.Now.AddYears(-14);
+            DataOfBirth.DisplayDateStart = DateTime.Now.AddYears(-100);
             CalendarPiker.DisplayDateEnd = DateTime.Now;
             using (StreamReader GroceryList = new StreamReader("..\\..\\..\\products.txt"))
             {
@@ -330,6 +331,7 @@ namespace CALORY
                 GoalComboBox.IsEnabled = true;
                 GenderComboBox.IsEnabled = true;
                 RectangleCalendar.Visibility = Visibility.Hidden;
+                
             }
             else
             {
