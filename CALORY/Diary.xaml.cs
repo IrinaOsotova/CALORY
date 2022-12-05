@@ -313,6 +313,9 @@ namespace CALORY
                 textBoxName.IsReadOnly = false;
                 textBoxHeight.IsReadOnly = false;
                 textBoxWeight.IsReadOnly = false;
+                textBoxWeight.IsEnabled = true;
+                textBoxHeight.IsEnabled = true;
+                textBoxName.IsEnabled = true;
                 ActivityComboBox.IsEnabled = true;
                 GoalComboBox.IsEnabled = true;
                 GenderComboBox.IsEnabled = true;
@@ -339,6 +342,9 @@ namespace CALORY
                 textBoxName.IsReadOnly = true;
                 textBoxHeight.IsReadOnly = true;
                 textBoxWeight.IsReadOnly = true;
+                textBoxWeight.IsEnabled = false;
+                textBoxHeight.IsEnabled = false;
+                textBoxName.IsEnabled = false;
                 ActivityComboBox.IsEnabled = false;
                 GoalComboBox.IsEnabled = false;
                 GenderComboBox.IsEnabled = false;
@@ -387,5 +393,6 @@ namespace CALORY
                 e.Handled = true;
             }
         }
+
     }
 }

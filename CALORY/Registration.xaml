@@ -10,7 +10,7 @@
     <Grid Background="#FFF0F0F0">
         <Label x:Name="Authorization" Content="Регистрация" HorizontalAlignment="Left" Margin="489,83,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" FontSize="24"/>
         <Label x:Name="LabelNameRegistration" Content="Ваше имя:" HorizontalAlignment="Left" Margin="451,136,0,0" VerticalAlignment="Top" Width="114" FontFamily="pack://application:,,,/Fonts/#Montserrat" FontSize="14"/>
-        <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/фонавторизация 1.png"/>
+        <Image HorizontalAlignment="Left" Height="571" VerticalAlignment="Center" Width="447" Source="/images/фон.png"/>
         <TextBox x:Name="TextBoxNameRegistration" MaxLength="18" HorizontalAlignment="Left" Margin="450,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259" FontFamily="Montserrat Medium" FontSize="18" Height="39"  VerticalContentAlignment="Center" Padding="4,4,4,4" Cursor="IBeam">
             <TextBox.Template >
                 <ControlTemplate >

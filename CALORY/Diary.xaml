@@ -10,7 +10,7 @@
         Title="Diary" Height="550" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontFamily="pack://application:,,,/Fonts/#Montserrat">
     <Grid>
         <TabControl x:Name="TabControlDiary" Margin="0,-30,-7.6,-8.2" Height="557" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="#FFF0F0F0" SelectionChanged="TabControlDiary_SelectionChanged">
-            <TabItem x:Name="Diaryy" Header="Дневник" Style="{DynamicResource TabItemStyle}" Margin="28,271,-28,-274.2"  FontSize="14" Cursor="Hand" FontFamily="pack://application:,,,/Fonts/#Montserrat" RenderTransformOrigin="0.6,0.6" >
+            <TabItem x:Name="Diaryy" Header="Дневник" Style="{DynamicResource TabItemStyle}" Margin="28,271,-28,-274.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" RenderTransformOrigin="0.6,0.6"  >
                 <TabItem.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
@@ -19,10 +19,10 @@
                         <TranslateTransform X="2" Y="0.421"/>
                     </TransformGroup>
                 </TabItem.RenderTransform>
-                <Grid Margin="0,0,-0.2,0.4" Cursor="Hand">
+                <Grid Margin="0,0,-0.2,0.4">
                     <Label x:Name="kkl_Copy1" Background="White" Content="" HorizontalAlignment="Left" Margin="149,477,0,-0.6" VerticalAlignment="Center"  Height="52" Width="644" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
-                    <Image x:Name="logo" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
+                    <Image x:Name="logo" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772" IsEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                     <Label Content="Завтрак" HorizontalAlignment="Left" Margin="183,105,0,371.4" VerticalAlignment="Center"  Height="52" Width="99" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
                     <Label Content="Обед" HorizontalAlignment="Left" Margin="185,217,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
                     <Label Content="Ужин" HorizontalAlignment="Left" Margin="185,330,0,0" VerticalAlignment="Top" Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat"/>
@@ -148,7 +148,7 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="737,39,0,0" VerticalAlignment="Top" Foreground="White" Background="White" RenderTransformOrigin="0.5,0.5" Width="16" Height="27">
+                    <Label Content="Label" HorizontalAlignment="Left" Margin="712,36,0,0" VerticalAlignment="Top" Foreground="White" Background="White" RenderTransformOrigin="0.5,0.5" Width="41" Height="34" Cursor="IBeam">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -158,16 +158,6 @@
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
-                    <Image Height="33" Margin="726,43,41,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246">
-                        <Image.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform AngleX="0" AngleY="0.019"/>
-                                <RotateTransform Angle="0.046"/>
-                                <TranslateTransform X="0.021" Y="0.29"/>
-                            </TransformGroup>
-                        </Image.RenderTransform>
-                    </Image>
                     <Label x:Name="kkl_Copy" Background="White" Content="Количество ккал на день:" HorizontalAlignment="Left" Margin="423,477,0,0" VerticalAlignment="Top" Height="49" Width="215" FontSize="14" RenderTransformOrigin="0.521,0.946" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                     <TextBox x:Name="rskGoalTextBox"  HorizontalAlignment="Left" Height="43" Margin="637,480,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="67" BorderBrush="White" IsReadOnly ="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
                         <TextBox.Template >
@@ -284,9 +274,19 @@
                             </Style>
                         </Button.Style>
                     </Button>
+                    <Image Height="33" Margin="726,43,41,0" VerticalAlignment="Top" Source="images\icons8-поиск-30.png" RenderTransformOrigin="9.188,-0.246" Cursor="IBeam">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="0" AngleY="0.019"/>
+                                <RotateTransform Angle="0.046"/>
+                                <TranslateTransform X="0.021" Y="0.29"/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Profile" Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-70,362,0,-362.2" RenderTransformOrigin="0.6,0.6" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand">
+            <TabItem x:Name="Profile" Header="Профиль" Style="{DynamicResource TabItemStyle}" Margin="-70,362,0,-362.2" RenderTransformOrigin="0.6,0.6" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" >
                 <TabItem.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
@@ -300,38 +300,38 @@
                     <Rectangle HorizontalAlignment="Left" Height="176" Margin="220,206,0,0" VerticalAlignment="Top" Width="255" RenderTransformOrigin="1,0" RadiusX="27.133" RadiusY="27.133" Stroke="#FFDFDFDF" StrokeThickness="2"/>
                     <Rectangle HorizontalAlignment="Left" Height="149" Margin="220,31,0,0" VerticalAlignment="Top" Width="534" RenderTransformOrigin="1,0" RadiusX="27.133" RadiusY="27.133" Stroke="#FFDFDFDF" StrokeThickness="2"/>
                     <Button x:Name="ExitButtonDiary" Content="Выход из аккаунта" HorizontalAlignment="Left" Margin="411,469,0,0" VerticalAlignment="Top" Click="ExitButtonDiary_Click" Background="{x:Null}" Width="160" BorderBrush="{x:Null}" Height="36">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border CornerRadius="12"
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="12"
                                 Background="{TemplateBinding Background}">
 
-                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
-                                    <Setter Property="RenderTransform">
-                                        <Setter.Value>
-                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
                     </Button>
                     <Image Height="478" Margin="-43,118,607,-73.2" VerticalAlignment="Top" Source="images\4.png" RenderTransformOrigin="0.5,0.772"/>
                     <Image x:Name="logo2" Height="92" Margin="35,88,662,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>
                     <!--<Image x:Name="profile" Height="219" Margin="343,21,204,0" VerticalAlignment="Top" Source="/images/logotype.png" RenderTransformOrigin="0.5,0.772"/>-->
                     <Label x:Name="nameProject2" Content="CALORY" HorizontalAlignment="Left" Margin="35,186,0,0" VerticalAlignment="Top"  Height="52" Width="89" FontSize="18" RenderTransformOrigin="0.521,0.946" FontFamily="pack://application:,,,/Fonts/#Montserrat Medium"/>
-                    <TextBox x:Name="textBoxName" MaxLength="30" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="325,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}">
+                    <TextBox x:Name="textBoxName" MaxLength="30" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="325,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="366" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -348,7 +348,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxHeight" MaxLength="3" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="311,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" VerticalContentAlignment="Center"  BorderBrush="{x:Null}" PreviewTextInput="textBoxHeight_PreviewTextInput">
+                    <TextBox x:Name="textBoxHeight" MaxLength="3" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="311,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" VerticalContentAlignment="Center"  BorderBrush="{x:Null}" PreviewTextInput="textBoxHeight_PreviewTextInput" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -366,7 +366,7 @@
                         </TextBox.Template>
                     </TextBox>
 
-                    <TextBox x:Name="textBoxWeight" MaxLength="3" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="311,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" VerticalContentAlignment="Center" BorderBrush="{x:Null}" PreviewTextInput="textBoxWeight_PreviewTextInput">
+                    <TextBox x:Name="textBoxWeight" MaxLength="3" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="311,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" VerticalContentAlignment="Center" BorderBrush="{x:Null}" PreviewTextInput="textBoxWeight_PreviewTextInput" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -451,7 +451,7 @@
                     </Rectangle>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Cursor="Hand" RenderTransformOrigin="0.6,0.6">
+            <TabItem x:Name="Report" Header="Отчёт" Style="{DynamicResource TabItemStyle}" Margin="-171,319,0,-319.2"  FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" RenderTransformOrigin="0.6,0.6">
                 <TabItem.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
@@ -472,7 +472,7 @@
                     <Label Content="Углеводы:" HorizontalAlignment="Left" Margin="244,378,0,0" VerticalAlignment="Top"/>
                     <Label Content="Жиры:" HorizontalAlignment="Left" Margin="245,418,0,0" VerticalAlignment="Top"/>
                     <Label Content="Белки:" HorizontalAlignment="Left" Margin="244,458,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxUgl" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox x:Name="textBoxUgl" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -489,7 +489,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxFats" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox x:Name="textBoxFats" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -506,7 +506,7 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <TextBox x:Name="textBoxBel" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox x:Name="textBoxBel" IsReadOnly ="True" HorizontalAlignment="Center" Margin="0,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -523,10 +523,10 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
-                    <Label Content="Употреблено калорий:" HorizontalAlignment="Left" Margin="390,16,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold"/>
+                    <Label x:Name="labelKkal" Content="Употреблено калорий:" HorizontalAlignment="Left" Margin="390,16,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" />
                     <Label x:Name="LabelDonut" Content="Соотношение белков, углеводов и жиров:" HorizontalAlignment="Left" Margin="209,322,0,0" VerticalAlignment="Top" FontFamily="pack://application:,,,/Fonts/#Montserrat SemiBold" Padding="0,5,5,5"/>
                     <Label Content="Цель: " HorizontalAlignment="Left" Margin="12,452,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="pack://application:,,,/Fonts/#Montserrat" Padding="0,5,5,5"/>
-                    <TextBox x:Name="Goal" IsReadOnly ="True" HorizontalAlignment="Left" Margin="12,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox x:Name="Goal" IsReadOnly ="True" HorizontalAlignment="Left" Margin="12,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False">
                         <TextBox.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

@@ -55,6 +55,7 @@
     <None Remove="images\pngwing.com %2831%29.png" />
     <None Remove="images\Rectangle 1.png" />
     <None Remove="images\woman.png" />
+    <None Remove="images\фон.png" />
     <None Remove="man.png" />
     <None Remove="next.png" />
     <None Remove="plus_minus_icon_173627.png" />
@@ -119,6 +120,7 @@
     <Resource Include="images\pngwing.com (31).png" />
     <Resource Include="images\Rectangle 1.png" />
     <Resource Include="images\woman.png" />
+    <Resource Include="images\фон.png" />
     <Resource Include="man.png" />
     <Resource Include="next.png" />
     <Resource Include="plus_minus_icon_173627.png" />

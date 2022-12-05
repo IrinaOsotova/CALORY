@@ -392,7 +392,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
-                        <Grid Name="Panel">
+                        <Grid Name="Panel" Cursor="Hand">
                             <ContentPresenter x:Name="ContentSite"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
