@@ -81,6 +81,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LibraryConnectDB\LibraryConnectDB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="back.png" />
     <Resource Include="eye2.png" />
     <Resource Include="eyeclose2.png" />

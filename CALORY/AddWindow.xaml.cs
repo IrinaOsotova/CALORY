@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LibraryConnectDB;
 
 
 namespace CALORY
@@ -20,12 +21,12 @@ namespace CALORY
     /// </summary>
     public partial class AddWindow : Window
     {
+        private IConnectBD dbconnect;
         public static AddWindow? instance;
         public Repast current;
         public string _time;
         private bool correct = false;
         private string Login;
-       
 
         public AddWindow(string time, string login)
         {
@@ -37,6 +38,7 @@ namespace CALORY
         }
         public void AddDB(string _time)
         {
+
             using (var db = new ApplicationContext())
             {
                 db.Meal.Add(new Repast()

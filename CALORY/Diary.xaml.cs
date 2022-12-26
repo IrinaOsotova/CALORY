@@ -18,11 +18,13 @@ using System.ComponentModel.DataAnnotations;
 using ScottPlot;
 using System.Drawing;
 using Color = System.Drawing.Color;
+using LibraryConnectDB;
 
 namespace CALORY
 {
     public partial class Diary : Window
     {
+        private IConnectBD dbconnect;
         public List<Repast> productsBreakfast = new List<Repast>();
         public List<Repast> productsLunch = new List<Repast>();
         public List<Repast> productsDiner = new List<Repast>();
@@ -32,6 +34,7 @@ namespace CALORY
      
         public Diary(string login)
         {
+            dbconnect = new ConnectingBD();
             Login = login;
             InitializeComponent();
             instance = this;
@@ -136,12 +139,13 @@ namespace CALORY
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
             else 
             {
-                using (var db = new ApplicationContext())
-                {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
-                    db.Meal.RemoveRange(deleting);
-                    db.SaveChanges();
-                }
+                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsBreakfast[listBoxBreakfast.SelectedIndex].name);
+                //using (var db = new ApplicationContext())
+                //{
+                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
+                //    db.Meal.RemoveRange(deleting);
+                //    db.SaveChanges();
+                //}
                 productsBreakfast.RemoveAt(listBoxBreakfast.SelectedIndex);
                 listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
                 
@@ -153,12 +157,13 @@ namespace CALORY
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
             else
             {
-                using (var db = new ApplicationContext())
-                {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
-                    db.Meal.RemoveRange(deleting);
-                    db.SaveChanges();
-                }
+                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsLunch[listBoxLunch.SelectedIndex].name);
+                //using (var db = new ApplicationContext())
+                //{
+                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
+                //    db.Meal.RemoveRange(deleting);
+                //    db.SaveChanges();
+                //}
                 productsLunch.RemoveAt(listBoxLunch.SelectedIndex);
                 listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
             }
@@ -169,6 +174,7 @@ namespace CALORY
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
             else 
             {
+
                 using (var db = new ApplicationContext())
                 {
                     var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsDiner[listBoxDiner.SelectedIndex].name);
