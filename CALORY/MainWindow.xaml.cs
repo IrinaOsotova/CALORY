@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Input;
-using LibraryConnectDB;
+using LibraryConnectingDB;
 
 namespace CALORY
 {
@@ -16,6 +16,7 @@ namespace CALORY
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IConnectDB dbconnect;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,9 +33,11 @@ namespace CALORY
                 MessageBox.Show("Введите пароль", "Ошибка ввода");
                 return;
             }
-            using (var db = new ApplicationContext())
-            {
-                var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
+            //using (var db = new ApplicationContext())
+            //{
+            dbconnect = new ConnectingBD();
+            var user = dbconnect.FirstOrDefaultLoginAndPassword(TextBoxLoginAuthorization.Text, Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
+                //var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginAuthorization.Text && item.password == Crypt.GetHashPassword(PasswordBoxAuthorization.Password));
                 if (user == null)
                     MessageBox.Show("Не правильно введен логин или пароль", "Ошибка ввода");
                 else
@@ -46,7 +49,7 @@ namespace CALORY
                         Close();
                     }
                 }
-            }
+            //}
         }
 
         private void ShowPasswordA_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

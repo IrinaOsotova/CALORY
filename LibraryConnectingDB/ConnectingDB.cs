@@ -1,15 +1,14 @@
-Ôªøusing Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace LibraryConnectDB
+namespace LibraryConnectingDB
 {
-    public class ConnectingBD : IConnectBD
+    public class ConnectingBD : IConnectDB
     {
         public void AddMealToBD(Repast repast)
         {
@@ -47,11 +46,10 @@ namespace LibraryConnectDB
             User user = db.Users.FirstOrDefault(item => item.login == Login && item.password == password);
             return user;
         }
-        public Repast FirstOrDefault(string Login, DateTime dateTime)
+        public Repast? FirstOrDefault(string Login, DateTime dateTime)
         {
-            var db = new ConnectBD();
-            Repast meal = db.Meal.FirstOrDefault(x => x.loginUser == Login && x.day == dateTime.Date);
-            return meal;
+            var db = new ConnectBD();            
+            return db.Meal.FirstOrDefault(x => x.loginUser == Login && x.day == dateTime.Date);
         }
         public void DataUpload(string Login, string name, byte growth, byte weight, byte activity, byte goal, byte male, DateTime dateTime, byte age, short rsk)
         {
@@ -87,7 +85,7 @@ namespace LibraryConnectDB
         public Int16 rsk { get; set; }
 
     }
-    public class Repast
+    public class Repast// : IEnumerator<Repast>
     {
         [Key]
         public Int16 code { get; set; }
@@ -112,6 +110,15 @@ namespace LibraryConnectDB
                     gramm = value;
             }
         }
+
+        //public Repast Current => throw new NotImplementedException();
+
+        //object IEnumerator.Current => throw new NotImplementedException();
+
+        //public DbEnumerator GetEnumerator()
+        // {  
+        //    return new DbEnumerator((System.Data.IDataReader)this);
+        // }
         public void Recalculate()
         {
             kkal = Math.Round(kkal * gramm / 100, 2);
@@ -130,8 +137,24 @@ namespace LibraryConnectDB
         }
         public string ToStringFull()
         {
-            return name + " " + gram + " –≥. " + " - " + kkal + " –∫–∫–∞–ª., " + bel + " –≥. –±–µ–ª., " + fats + " –≥. –∂–∏—Ä., " + ugl + " –≥. —É–≥–ª.";
+            return name + " " + gram + " „. " + " - " + kkal + " ÍÍ‡Î., " + bel + " „. ·ÂÎ., " + fats + " „. ÊË., " + ugl + " „. Û„Î.";
         }
+
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
         public Repast(string _name, string _gram, string _kkal, string _bel, string _fat, string _ugl)
         {
             name = _name;
@@ -151,7 +174,7 @@ namespace LibraryConnectDB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("workstation id=Calories.mssql.somee.com;packet size=4096;user id=AnroMel_SQLLogin_1;pwd=yza3c59w31;data source=Calories.mssql.somee.com;persist security info=False;initial catalog=Calories");
+            optionsBuilder.UseSqlServer("workstation id=Calories.mssql.somee.com;packet size=4096;user id=AnroMel_SQLLogin_1;pwd=yza3c59w31;data source=Calories.mssql.somee.com;persist security info=False;initial catalog=Calories; TrustServerCertificate = true");
         }
     }
 }

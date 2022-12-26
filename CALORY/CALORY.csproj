@@ -81,7 +81,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryConnectDB\LibraryConnectDB.csproj" />
+    <ProjectReference Include="..\LibraryConnectingDB\LibraryConnectingDB.csproj" />
   </ItemGroup>
 
   <ItemGroup>

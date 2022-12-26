@@ -12,12 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
-using LibraryConnectDB;
+using LibraryConnectingDB;
 
 namespace CALORY
 {
     public partial class Registration : Window
     {
+        private IConnectDB dbconnect;
         public Registration()
         {
             InitializeComponent();
@@ -64,9 +65,11 @@ namespace CALORY
         }
         public Boolean IsUserExists()
         {
-            using (var db = new ApplicationContext())
-            {
-                var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginRegistration.Text);
+            //using (var db = new ApplicationContext())
+            //{
+            dbconnect = new ConnectingBD();
+                //var user = db.Users.FirstOrDefault(item => item.login == TextBoxLoginRegistration.Text);
+            var user = dbconnect.FirstOrDefault(TextBoxLoginRegistration.Text);
                 if (user != null)
                 {
                     MessageBox.Show("Пользователь с таким логином уже существует ");
@@ -74,7 +77,7 @@ namespace CALORY
                 }
                 else
                     return false;
-            }
+            //}
         }
         private void ButtonLinkToRegistrationAuthorization_Click(object sender, RoutedEventArgs e)
         {

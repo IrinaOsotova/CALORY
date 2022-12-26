@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryConnectingDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using LibraryConnectDB;
 
 namespace CALORY
 {
@@ -32,6 +32,7 @@ namespace CALORY
         private string? Name;
         private string? Login;
         private string? Password;
+        private IConnectDB dbconnect;
         public InfoUser(string? _name, string? _login, string? _password)
         {
             InitializeComponent();
@@ -154,9 +155,11 @@ namespace CALORY
                         BackButton.IsEnabled = false;
 
                         //Сохранение в бд
-                        using (var db = new ApplicationContext())
-                        {
-                            db.Users.Add(new User()
+                        //using (var db = new ApplicationContext())
+                        //{
+                        dbconnect = new ConnectingBD();
+
+                        dbconnect.AddUserToBD(new LibraryConnectingDB.User()
                             {
                                 id = 0,
                                 name = Name,
@@ -171,8 +174,8 @@ namespace CALORY
                                 rsk = CalculateRSK(userWeight.Value, DateTime.Now.Year - userBirthDate.Value.Year, userHeight.Value, userGender.Value, userActivity.Value, userPurpose.Value),
                                 age = (byte)(DateTime.Now.Year - userBirthDate.Value.Year)
                             });
-                            db.SaveChanges();
-                        }
+                            //db.SaveChanges();
+                        //}
                         using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
                         {
                             Diary window = new Diary(Login);

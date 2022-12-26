@@ -18,20 +18,20 @@ using System.ComponentModel.DataAnnotations;
 using ScottPlot;
 using System.Drawing;
 using Color = System.Drawing.Color;
-using LibraryConnectDB;
+using LibraryConnectingDB;
 
 namespace CALORY
 {
     public partial class Diary : Window
     {
-        private IConnectBD dbconnect;
+        private IConnectDB dbconnect;
         public List<Repast> productsBreakfast = new List<Repast>();
         public List<Repast> productsLunch = new List<Repast>();
         public List<Repast> productsDiner = new List<Repast>();
         public List<Repast> productsBase = new List<Repast>();
         public static Diary? instance;
-        private string  Login;
-     
+        private string Login;
+
         public Diary(string login)
         {
             dbconnect = new ConnectingBD();
@@ -93,14 +93,20 @@ namespace CALORY
                 SelectedProductsWindow.ShowDialog();
             }
         }
-        private void AddBreakfast_Click(object sender, RoutedEventArgs e){          
-            Add("Breakfast");}
-        
-        private void AddLunch_Click(object sender, RoutedEventArgs e){
-            Add("Lunch"); }
+        private void AddBreakfast_Click(object sender, RoutedEventArgs e)
+        {
+            Add("Breakfast");
+        }
 
-        private void AddDinner_Click(object sender, RoutedEventArgs e){
-            Add("Diner"); }
+        private void AddLunch_Click(object sender, RoutedEventArgs e)
+        {
+            Add("Lunch");
+        }
+
+        private void AddDinner_Click(object sender, RoutedEventArgs e)
+        {
+            Add("Diner");
+        }
         #endregion
         private void CalendarPiker_Changed(object sender, SelectionChangedEventArgs e)
         {
@@ -111,44 +117,45 @@ namespace CALORY
             productsLunch.Clear();
             productsDiner.Clear();
             var calendarDay = CalendarPiker.SelectedDate;
-            using (var db = new ApplicationContext())
+            //dbconnect.TakeMealFromBD(Login, (DateTime)calendarDay, "Breakfast");
+            //using (var db = new ApplicationContext())
+            //{
+            foreach (var item in dbconnect.TakeMealFromBD(Login, (DateTime)calendarDay, "Breakfast"))//db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Breakfast"))
             {
-                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Breakfast"))
-                {
-                    listBoxBreakfast.Items.Add(item.ToStringFull());
-                    productsBreakfast.Add(item);
-                }
-
-                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Diner"))
-                {
-                    listBoxDiner.Items.Add(item.ToStringFull());
-                    productsDiner.Add(item);
-                }
-
-                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Lunch"))
-                {
-                    listBoxLunch.Items.Add(item.ToStringFull());
-                    productsLunch.Add(item);
-                }
+                listBoxBreakfast.Items.Add(item.ToStringFull());
+                //productsBreakfast.Add(item);
             }
+
+            foreach (var item in dbconnect.TakeMealFromBD(Login, (DateTime)calendarDay, "Diner"))//db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Diner"))
+            {
+                listBoxDiner.Items.Add(item.ToStringFull());
+                //productsDiner.Add(item);
+            }
+
+            foreach (var item in dbconnect.TakeMealFromBD(Login, (DateTime)calendarDay, "Lunch"))//db.Meal.Where(x => x.loginUser == Login && x.day == calendarDay && x.ration == "Lunch"))
+            {
+                listBoxLunch.Items.Add(item.ToStringFull());
+                //productsLunch.Add(item);
+            }
+            //}
         }
 
         private void buttonDeleteBreakfast_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxBreakfast.SelectedItems.Count == 0)
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
-            else 
+            else
             {
-                //dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsBreakfast[listBoxBreakfast.SelectedIndex].name);
-                using (var db = new ApplicationContext())
-                {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
-                    db.Meal.RemoveRange(deleting);
-                    db.SaveChanges();
-                }
+                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsBreakfast[listBoxBreakfast.SelectedIndex].name);
+                //using (var db = new ApplicationContext())
+                //{
+                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
+                //    db.Meal.RemoveRange(deleting);
+                //    db.SaveChanges();
+                //}
                 productsBreakfast.RemoveAt(listBoxBreakfast.SelectedIndex);
                 listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
-                
+
             }
         }
         private void buttonDeleteLunch_Click(object sender, RoutedEventArgs e)
@@ -157,13 +164,13 @@ namespace CALORY
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
             else
             {
-                //dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsLunch[listBoxLunch.SelectedIndex].name);
-                using (var db = new ApplicationContext())
-                {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
-                    db.Meal.RemoveRange(deleting);
-                    db.SaveChanges();
-                }
+                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsLunch[listBoxLunch.SelectedIndex].name);
+                //using (var db = new ApplicationContext())
+                //{
+                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
+                //    db.Meal.RemoveRange(deleting);
+                //    db.SaveChanges();
+                //}
                 productsLunch.RemoveAt(listBoxLunch.SelectedIndex);
                 listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
             }
@@ -172,17 +179,17 @@ namespace CALORY
         {
             if (listBoxDiner.SelectedItems.Count == 0)
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
-            else 
+            else
             {
-
-                using (var db = new ApplicationContext())
-                {
-                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsDiner[listBoxDiner.SelectedIndex].name);
-                    db.Meal.RemoveRange(deleting);
-                    db.SaveChanges();
-                }
+                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsLunch[listBoxDiner.SelectedIndex].name);
+                //using (var db = new ApplicationContext())
+                //{
+                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsDiner[listBoxDiner.SelectedIndex].name);
+                //    db.Meal.RemoveRange(deleting);
+                //    db.SaveChanges();
+                //}
                 productsDiner.RemoveAt(listBoxDiner.SelectedIndex);
-                listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex); 
+                listBoxDiner.Items.RemoveAt(listBoxDiner.SelectedIndex);
             }
         }
         private void ExitButtonDiary_Click(object sender, RoutedEventArgs e)
@@ -194,7 +201,7 @@ namespace CALORY
 
         private void TabControlDiary_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
             if (e.Source is TabControl)
             {
                 switch (TabControlDiary.SelectedIndex)
@@ -203,11 +210,12 @@ namespace CALORY
                         SaveButtonNotPressed();
                         using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
                         {
-                            using (var db = new ApplicationContext())
-                            {
-                                var user = db.Users.FirstOrDefault(x => x.login == Login);
-                                rskGoalTextBox.Text = user.rsk.ToString();
-                            }
+                            dbconnect.FirstOrDefault(Login);
+                            //using (var db = new ApplicationContext())
+                            // {
+                            var user = dbconnect.FirstOrDefault(Login);//db.Users.FirstOrDefault(x => x.login == Login);
+                            rskGoalTextBox.Text = user.rsk.ToString();
+                            //}
                         }
                         break;
                     case 1:
@@ -223,23 +231,23 @@ namespace CALORY
                             GoalComboBox.IsEnabled = false;
                             GenderComboBox.IsEnabled = false;
                             ChangeProfileButton.Content = "Изменить параметры";
-                            using (var db = new ApplicationContext())
-                            {
-                                var user = db.Users.FirstOrDefault(x => x.login == Login);
-                                textBoxName.Text = user.name;
-                                textBoxHeight.Text = user.growth.ToString();
-                                textBoxWeight.Text = user.weight.ToString();
-                                DataOfBirth.SelectedDate = user.Birth;
-                                if (user.activity == 1) ActivityComboBox.Text = "Сидячий";
-                                if (user.activity == 2) ActivityComboBox.Text = "Малоактивный";
-                                if (user.activity == 3) ActivityComboBox.Text = "Активный";
-                                if (user.activity == 4) ActivityComboBox.Text = "Очень активный";
-                                if (user.goal == 1) GoalComboBox.Text = "Набор веса";
-                                if (user.goal == 2) GoalComboBox.Text = "Удержание";
-                                if (user.goal == 3) GoalComboBox.Text = "Похудение";
-                                if (user.male == 1) GenderComboBox.Text = "Мужской";
-                                if (user.male == 0) GenderComboBox.Text = "Женский";
-                            }
+
+
+                            var user = dbconnect.FirstOrDefault(Login);//db.Users.FirstOrDefault(x => x.login == Login);
+                            textBoxName.Text = user.name;
+                            textBoxHeight.Text = user.growth.ToString();
+                            textBoxWeight.Text = user.weight.ToString();
+                            DataOfBirth.SelectedDate = user.Birth;
+                            if (user.activity == 1) ActivityComboBox.Text = "Сидячий";
+                            if (user.activity == 2) ActivityComboBox.Text = "Малоактивный";
+                            if (user.activity == 3) ActivityComboBox.Text = "Активный";
+                            if (user.activity == 4) ActivityComboBox.Text = "Очень активный";
+                            if (user.goal == 1) GoalComboBox.Text = "Набор веса";
+                            if (user.goal == 2) GoalComboBox.Text = "Удержание";
+                            if (user.goal == 3) GoalComboBox.Text = "Похудение";
+                            if (user.male == 1) GenderComboBox.Text = "Мужской";
+                            if (user.male == 0) GenderComboBox.Text = "Женский";
+
                         }
                         break;
                     case 2:
@@ -247,11 +255,11 @@ namespace CALORY
                         SaveButtonNotPressed();
                         using (OverrideCursor cursor = new OverrideCursor(Cursors.Wait))
                         {
-                            using (var db = new ApplicationContext())
-                            {
-                                var user = db.Users.FirstOrDefault(x => x.login == Login);
-                                Goal.Text = user.rsk.ToString() + " ккал";
-                            }
+                            //using (var db = new ApplicationContext())
+                            //{
+                            var user = dbconnect.FirstOrDefault(Login);//db.Users.FirstOrDefault(x => x.login == Login);
+                            Goal.Text = user.rsk.ToString() + " ккал";
+                            //}
                             Chart.Plot.Clear();
                             Donut.Plot.Clear();
                             DateTime thisDay = DateTime.Today; ;
@@ -260,22 +268,34 @@ namespace CALORY
                             double EatenFats = 0;
                             double EatenBel = 0;
                             double[] values = { 0, 0, 0, 0, 0, 0, 0 };
-                            using (var db = new ApplicationContext())
+                            //using (var db = new ApplicationContext())
+                            //{
+                            for (int i = 0; i < 7; i++)
                             {
-                                for (int i = 0; i < 7; i++)
+                                //foreach (var item in dbconnect.FirstOrDefault(Login, thisDay.AddDays(-i).Date))//db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
+                                //EatenKkal += item.kkal;
+                                if (dbconnect.FirstOrDefault(Login, thisDay.AddDays(-i).Date) != null)
                                 {
-                                    foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.AddDays(-i).Date))
-                                        EatenKkal += item.kkal;
-                                    values[6 - i] = Math.Round(EatenKkal);
-                                    EatenKkal = 0;
+                                    EatenKkal += dbconnect.FirstOrDefault(Login, thisDay.AddDays(-i).Date).kkal;
                                 }
-                                foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
-                                {
-                                    EatenUgl += item.ugl;
-                                    EatenFats += item.fats;
-                                    EatenBel += item.bel;
-                                }
+
+                                values[6 - i] = Math.Round(EatenKkal);
+                                EatenKkal = 0;
                             }
+                            //foreach (var item in db.Meal.Where(x => x.loginUser == Login && x.day == thisDay.Date))
+                            //{
+                            //EatenUgl += item.ugl;
+                            //EatenFats += item.fats;
+                            //EatenBel += item.bel;
+                            if (dbconnect.FirstOrDefault(Login, thisDay.Date) != null)
+                            {
+                                EatenUgl += dbconnect.FirstOrDefault(Login, thisDay.Date).ugl;
+                                EatenFats += dbconnect.FirstOrDefault(Login, thisDay.Date).fats;
+                                EatenBel += dbconnect.FirstOrDefault(Login, thisDay.Date).bel;
+                            }
+                            
+                            //}
+                            // }
                             double[] positions = { 0, 1, 2, 3, 4, 5, 6 };
                             string[] labels = { thisDay.AddDays(-6).ToString("d"), thisDay.AddDays(-5).ToString("d"), thisDay.AddDays(-4).ToString("d"), thisDay.AddDays(-3).ToString("d"), thisDay.AddDays(-2).ToString("d"), thisDay.AddDays(-1).ToString("d"), thisDay.ToString("d") };
                             Chart.Plot.AddBar(values, positions);
@@ -337,7 +357,7 @@ namespace CALORY
                 GoalComboBox.IsEnabled = true;
                 GenderComboBox.IsEnabled = true;
                 RectangleCalendar.Visibility = Visibility.Hidden;
-                
+
             }
             else
             {
@@ -434,20 +454,19 @@ namespace CALORY
         }
         public void DataUpload(int _activity, int _goal, bool _gender)
         {
-            using (var db = new ApplicationContext())
-            {
-                var users = db.Users.FirstOrDefault(x => x.login == Login);
-                users.name = textBoxName.Text;
-                users.growth = Convert.ToByte(textBoxHeight.Text);
-                users.weight = Convert.ToByte(textBoxWeight.Text);
-                users.activity = Convert.ToByte(_activity);
-                users.goal = Convert.ToByte(_goal);
-                users.male = (byte)((_gender) ? 1 : 0);
-                users.Birth = DataOfBirth.SelectedDate.Value;
-                users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
-                users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
-                db.SaveChanges();
-            }
+
+            var users = dbconnect.FirstOrDefault(Login);//db.Users.FirstOrDefault(x => x.login == Login);
+            users.name = textBoxName.Text;
+            users.growth = Convert.ToByte(textBoxHeight.Text);
+            users.weight = Convert.ToByte(textBoxWeight.Text);
+            users.activity = Convert.ToByte(_activity);
+            users.goal = Convert.ToByte(_goal);
+            users.male = (byte)((_gender) ? 1 : 0);
+            users.Birth = DataOfBirth.SelectedDate.Value;
+            users.age = (byte)(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year);
+            users.rsk = InfoUser.CalculateRSK(Convert.ToDouble(textBoxWeight.Text), Convert.ToDouble(DateTime.Now.Year - DataOfBirth.SelectedDate.Value.Year), Convert.ToDouble(textBoxHeight.Text), _gender, _activity, _goal);
+            //db.SaveChanges();
+
             MessageBox.Show("Данные были успешно сохранены", "Сохранение данных профиля");
         }
     }

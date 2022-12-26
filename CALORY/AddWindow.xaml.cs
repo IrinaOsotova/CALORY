@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using LibraryConnectDB;
+using LibraryConnectingDB;
 
 
 namespace CALORY
@@ -21,12 +21,13 @@ namespace CALORY
     /// </summary>
     public partial class AddWindow : Window
     {
-        private IConnectBD dbconnect;
+        private IConnectDB dbconnect;
         public static AddWindow? instance;
         public Repast current;
         public string _time;
         private bool correct = false;
         private string Login;
+        //private IConnectDB dbconnect;
 
         public AddWindow(string time, string login)
         {
@@ -35,27 +36,28 @@ namespace CALORY
             instance = this;
             TextBoxSelectedProduct.Text = Diary.instance.ComboBoxSearch.SelectedItem.ToString();
             _time = time;
+
         }
         public void AddDB(string _time)
         {
 
-            using (var db = new ApplicationContext())
+            dbconnect = new ConnectingBD();
+
+            dbconnect.AddMealToBD(new LibraryConnectingDB.Repast()
             {
-                db.Meal.Add(new Repast()
-                {
-                    code = 0,
-                    day = Diary.instance.CalendarPiker.SelectedDate,
-                    ration = _time,
-                    name = TextBoxSelectedProduct.Text,
-                    gram = Convert.ToInt16(grams.Text),
-                    kkal = current.kkal,
-                    loginUser = Login,
-                    bel = current.bel,
-                    fats = current.fats,
-                    ugl = current.ugl
-                });
-                db.SaveChanges();
-            }
+                code = 0,
+                day = Diary.instance.CalendarPiker.SelectedDate,
+                ration = _time,
+                name = TextBoxSelectedProduct.Text,
+                gram = Convert.ToInt16(grams.Text),
+                kkal = current.kkal,
+                loginUser = Login,
+                bel = current.bel,
+                fats = current.fats,
+                ugl = current.ugl
+            });
+            //dbconnect.SaveChanges();
+
         }
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
