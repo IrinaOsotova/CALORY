@@ -32,8 +32,10 @@ namespace CALORY
         public DbSet<User> Users { get; set; }
         public DbSet<Repast> Meal { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
-            optionsBuilder.UseSqlServer("workstation id=Calories.mssql.somee.com;packet size=4096;user id=AnroMel_SQLLogin_1;pwd=yza3c59w31;data source=Calories.mssql.somee.com;persist security info=False;initial catalog=Calories");}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("workstation id=Calories.mssql.somee.com;packet size=4096;user id=AnroMel_SQLLogin_1;pwd=yza3c59w31;data source=Calories.mssql.somee.com;persist security info=False;initial catalog=Calories");
+        }
     }
 }
 

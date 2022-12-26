@@ -139,13 +139,13 @@ namespace CALORY
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
             else 
             {
-                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsBreakfast[listBoxBreakfast.SelectedIndex].name);
-                //using (var db = new ApplicationContext())
-                //{
-                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
-                //    db.Meal.RemoveRange(deleting);
-                //    db.SaveChanges();
-                //}
+                //dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsBreakfast[listBoxBreakfast.SelectedIndex].name);
+                using (var db = new ApplicationContext())
+                {
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsBreakfast[listBoxBreakfast.SelectedIndex].name);
+                    db.Meal.RemoveRange(deleting);
+                    db.SaveChanges();
+                }
                 productsBreakfast.RemoveAt(listBoxBreakfast.SelectedIndex);
                 listBoxBreakfast.Items.RemoveAt(listBoxBreakfast.SelectedIndex);
                 
@@ -157,13 +157,13 @@ namespace CALORY
                 MessageBox.Show("Выберите продукт для удаления", "Ошибка удаления");
             else
             {
-                dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsLunch[listBoxLunch.SelectedIndex].name);
-                //using (var db = new ApplicationContext())
-                //{
-                //    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
-                //    db.Meal.RemoveRange(deleting);
-                //    db.SaveChanges();
-                //}
+                //dbconnect.RemoveMealfromDB((DateTime)CalendarPiker.SelectedDate, Login, productsLunch[listBoxLunch.SelectedIndex].name);
+                using (var db = new ApplicationContext())
+                {
+                    var deleting = db.Meal.Where(x => x.day == CalendarPiker.SelectedDate && x.loginUser == Login && x.name == productsLunch[listBoxLunch.SelectedIndex].name);
+                    db.Meal.RemoveRange(deleting);
+                    db.SaveChanges();
+                }
                 productsLunch.RemoveAt(listBoxLunch.SelectedIndex);
                 listBoxLunch.Items.RemoveAt(listBoxLunch.SelectedIndex);
             }
